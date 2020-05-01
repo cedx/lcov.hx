@@ -31,7 +31,7 @@ class FunctionData {
     @param map A JSON object representing a function data.
     @return The instance corresponding to the specified JSON object.
   **/
-  public static function fromJson(map: DynamicAccess<Dynamic>) return new FunctionData(
+  public static function fromJson(map: DynamicAccess<Any>) return new FunctionData(
     Std.is(map['functionName'], String) ? map['functionName'] : '',
     Std.is(map['lineNumber'], Int) ? map['lineNumber'] : 0,
     Std.is(map['executionCount'], Int) ? map['executionCount'] : 0

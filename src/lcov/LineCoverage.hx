@@ -31,10 +31,10 @@ class LineCoverage {
     @param map A JSON object representing a line coverage.
     @return The instance corresponding to the specified JSON object.
   **/
-  public static function fromJson(map: DynamicAccess<Dynamic>) return new LineCoverage(
+  public static function fromJson(map: DynamicAccess<Any>) return new LineCoverage(
     Std.is(map['found'], Int) ? map['found'] : 0,
     Std.is(map['hit'], Int) ? map['hit'] : 0,
-    Std.is(map['data'], Array) ? map['data'].map(item -> LineData.fromJson(item)) : []
+    Std.is(map['data'], Array) ? (map['data']: Array<Any>).map(item -> LineData.fromJson(item)) : []
   );
 
   /**

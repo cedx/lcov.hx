@@ -36,7 +36,7 @@ class BranchData {
     @param map A JSON object representing a branch data.
     @return The instance corresponding to the specified JSON object.
   **/
-  public static function fromJson(map: DynamicAccess<Dynamic>) return new BranchData(
+  public static function fromJson(map: DynamicAccess<Any>) return new BranchData(
     Std.is(map['lineNumber'], Int) ? map['lineNumber'] : 0,
     Std.is(map['blockNumber'], Int) ? map['blockNumber'] : 0,
     Std.is(map['branchNumber'], Int) ? map['branchNumber'] : 0,

@@ -31,10 +31,10 @@ class BranchCoverage {
     @param map A JSON object representing a branch data.
     @return The instance corresponding to the specified JSON object.
   **/
-  public static function fromJson(map: DynamicAccess<Dynamic>) return new BranchCoverage(
+  public static function fromJson(map: DynamicAccess<Any>) return new BranchCoverage(
     Std.is(map['found'], Int) ? map['found'] : 0,
     Std.is(map['hit'], Int) ? map['hit'] : 0,
-    Std.is(map['data'], Array) ? map['data'].map(item -> BranchData.fromJson(item)) : []
+    Std.is(map['data'], Array) ? (map['data']: Array<Any>).map(item -> BranchData.fromJson(item)) : []
   );
 
   /**

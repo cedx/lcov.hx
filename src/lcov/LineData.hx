@@ -31,7 +31,7 @@ class LineData {
     @param map A JSON object representing a line data.
     @return The instance corresponding to the specified JSON object.
   **/
-  public static function fromJson(map: DynamicAccess<Dynamic>) return new LineData(
+  public static function fromJson(map: DynamicAccess<Any>) return new LineData(
     Std.is(map['lineNumber'], Int) ? map['lineNumber'] : 0,
     Std.is(map['executionCount'], Int) ? map['executionCount'] : 0,
     Std.is(map['checksum'], String) ? map['checksum'] : ''
