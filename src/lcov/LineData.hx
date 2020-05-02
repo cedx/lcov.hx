@@ -1,7 +1,5 @@
 package lcov;
 
-import haxe.DynamicAccess;
-
 /** Provides details for line coverage. **/
 class LineData {
 

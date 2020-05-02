@@ -1,7 +1,5 @@
 package lcov;
 
-import haxe.DynamicAccess;
-
 /** Provides the coverage data of branches. **/
 class BranchCoverage {
 
