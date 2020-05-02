@@ -1,16 +1,16 @@
 package lcov;
 
 /** An exception caused by a parsing error. **/
-class LcovException {
+@:expose class LcovException {
 
   /** A message describing the error. **/
-  var message(default, null): String;
+  public var message(default, null): String;
 
   /** The offset in `source` where the error was detected. **/
-  var offset(default, null): Int;
+  public var offset(default, null): Int;
 
   /** The actual source input which caused the error. **/
-  var source(default, null): String;
+  public var source(default, null): String;
 
   /**
     Creates a new LCOV error.

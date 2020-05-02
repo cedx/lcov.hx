@@ -8,16 +8,16 @@ class BranchData implements php.JsonSerializable {
 #end
   
   /** The block number. **/
-  var blockNumber: Int;
+  public var blockNumber: Int;
 
   /** The branch number. **/
-  var branchNumber: Int;
+  public var branchNumber: Int;
 
   /** The line number. **/
-  var lineNumber: Int;
+  public var lineNumber: Int;
 
   /** A number indicating how often this branch was taken. **/
-  var taken: Int;
+  public var taken: Int;
 
   /**
     Creates a new branch data.
@@ -49,7 +49,7 @@ class BranchData implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
+  public function toJson() return {
     blockNumber: blockNumber,
     branchNumber: branchNumber,
     lineNumber: lineNumber,

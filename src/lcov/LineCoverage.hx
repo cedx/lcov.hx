@@ -8,13 +8,13 @@ class LineCoverage implements php.JsonSerializable {
 #end
 
   /** The coverage data. **/
-  var data: Array<LineData>;
+  public var data: Array<LineData>;
 
   /** The number of lines found. **/
-  var found: Int;
+  public var found: Int;
 
   /** The number of lines hit. **/
-  var hit: Int;
+  public var hit: Int;
 
   /**
     Creates a new line coverage.
@@ -43,8 +43,8 @@ class LineCoverage implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
-    data: data.map(item -> item.toJSON()),
+  public function toJson() return {
+    data: data.map(item -> item.toJson()),
     found: found,
     hit: hit
   };

@@ -8,13 +8,13 @@ class FunctionData implements php.JsonSerializable {
 #end
   
   /** The execution count. **/
-  var executionCount: Int;
+  public var executionCount: Int;
 
   /** The function name. **/
-  var functionName: String;
+  public var functionName: String;
 
   /** The line number of the function start. **/
-  var lineNumber: Int;
+  public var lineNumber: Int;
 
   /**
     Creates a new function data.
@@ -43,7 +43,7 @@ class FunctionData implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
+  public function toJson() return {
     executionCount: executionCount,
     functionName: functionName,
     lineNumber: lineNumber
@@ -54,7 +54,7 @@ class FunctionData implements php.JsonSerializable {
     @param asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
     @return The string representation of this object.
   **/
-  toString(asDefinition: Bool = false): String {
+  public function toString(asDefinition: Bool = false): String {
     final token = asDefinition ? Token.functionName : Token.functionData;
     final count = asDefinition ? lineNumber : executionCount;
     return '$token:$count,$functionName';

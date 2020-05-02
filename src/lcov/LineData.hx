@@ -8,13 +8,13 @@ class LineData implements php.JsonSerializable {
 #end
   
   /** The data checksum. **/
-  var checksum: String;
+  public var checksum: String;
 
   /** The execution count. **/
-  var executionCount: Int;
+  public var executionCount: Int;
 
   /** The line number. **/
-  var lineNumber: Int;
+  public var lineNumber: Int;
 
   /**
     Creates a new line data.
@@ -43,7 +43,7 @@ class LineData implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
+  public function toJson() return {
     checksum: checksum,
     executionCount: executionCount,
     lineNumber: lineNumber

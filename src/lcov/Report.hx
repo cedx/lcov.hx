@@ -8,10 +8,10 @@ class Report implements php.JsonSerializable {
 #end
   
   /** The record list. **/
-  var records: Array<Record>;
+  public var records: Array<Record>;
 
   /** The test name. **/
-  var testName: String;
+  public var testName: String;
 
   /**
     Creates a new report.

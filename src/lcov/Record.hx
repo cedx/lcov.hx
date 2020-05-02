@@ -8,26 +8,26 @@ class Record implements php.JsonSerializable {
 #end
   
   /** The branch coverage. **/
-  var branches: Null<BranchCoverage>;
+  public var branches: Null<BranchCoverage>;
 
   /** The function coverage. **/
-  var functions: Null<FunctionCoverage>;
+  public var functions: Null<FunctionCoverage>;
 
   /** The line coverage. **/
-  var lines: Null<LineCoverage>;
+  public var lines: Null<LineCoverage>;
 
   /** The path to the source file. **/
-  var sourceFile: String;
+  public var sourceFile: String;
 
   /**
     Creates a new record.
     @param sourceFile The path to the source file.
     @param options An object specifying values used to initialize this instance.
   **/
-  public function new(sourceFile: String, options: RecordOptions = {}) {
-    this.branches = options.branches != null ? branches : null;
-    this.functions = options.functions != null ? functions : null;
-    this.lines = options.lines != null ? lines : null;
+  public function new(sourceFile: String, ?options: RecordOptions) {
+    this.branches = options != null && options.branches != null ? branches : null;
+    this.functions = options != null && options.functions != null ? functions : null;
+    this.lines = options != null && options.lines != null ? lines : null;
     this.sourceFile = sourceFile;
   }
 
@@ -46,10 +46,10 @@ class Record implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
-    branches: branches != null ? branches.toJSON() : null,
-    functions: functions != null ? functions.toJSON() : null,
-    lines: lines != null ? lines.toJSON() : null,
+  public function toJson() return {
+    branches: branches != null ? branches.toJson() : null,
+    functions: functions != null ? functions.toJson() : null,
+    lines: lines != null ? lines.toJson() : null,
     sourceFile: sourceFile
   };
 
@@ -62,7 +62,7 @@ class Record implements php.JsonSerializable {
     if (functions != null) output.push(functions.toString());
     if (branches != null) output.push(branches.toString());
     if (lines != null) output.push(lines.toString());
-    output.push(Token.endOfRecord);
+    output.push('${Token.endOfRecord}');
     return output.join('\n');
   }
 
