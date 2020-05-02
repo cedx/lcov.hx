@@ -64,4 +64,12 @@ class BranchData implements php.JsonSerializable {
     final value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
     return taken > 0 ? '$value,$taken' : '$value,-';
   }
+
+  #if js
+  /** An alias for the `toJson()` method. **/
+	public function toJSON() return toJson();
+  #elseif php
+  /** An alias for the `toJson()` method. **/
+	public function jsonSerialize() return toJson();
+  #end
 }

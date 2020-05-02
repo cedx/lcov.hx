@@ -57,4 +57,12 @@ class LineData implements php.JsonSerializable {
     final value = '${Token.lineData}:$lineNumber,$executionCount';
     return checksum.length > 0 ? '$value,$checksum' : value;
   }
+
+  #if js
+  /** An alias for the `toJson()` method. **/
+	public function toJSON() return toJson();
+  #elseif php
+  /** An alias for the `toJson()` method. **/
+	public function jsonSerialize() return toJson();
+  #end
 }

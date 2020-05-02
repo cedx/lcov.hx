@@ -59,4 +59,12 @@ class FunctionData implements php.JsonSerializable {
     final count = asDefinition ? lineNumber : executionCount;
     return '$token:$count,$functionName';
   }
+
+  #if js
+  /** An alias for the `toJson()` method. **/
+	public function toJSON() return toJson();
+  #elseif php
+  /** An alias for the `toJson()` method. **/
+	public function jsonSerialize() return toJson();
+  #end
 }

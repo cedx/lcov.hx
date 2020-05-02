@@ -65,6 +65,14 @@ class Record implements php.JsonSerializable {
     output.push(Token.endOfRecord);
     return output.join('\n');
   }
+
+  #if js
+  /** An alias for the `toJson()` method. **/
+	public function toJSON() return toJson();
+  #elseif php
+  /** An alias for the `toJson()` method. **/
+	public function jsonSerialize() return toJson();
+  #end
 }
 
 /** Defines the options of a `Record` instance. */

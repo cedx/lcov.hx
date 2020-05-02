@@ -60,4 +60,12 @@ class FunctionCoverage implements php.JsonSerializable {
     lines.push('${Token.functionsHit}:$hit');
     return lines.join('\n');
   }
+
+  #if js
+  /** An alias for the `toJson()` method. **/
+	public function toJSON() return toJson();
+  #elseif php
+  /** An alias for the `toJson()` method. **/
+	public function jsonSerialize() return toJson();
+  #end
 }
