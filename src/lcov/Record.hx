@@ -1,8 +1,12 @@
 package lcov;
 
 /** Provides the coverage data of a source file. **/
-class Record {
-
+#if php
+class Record implements php.JsonSerializable {
+#else
+@:expose class Record {
+#end
+  
   /** The branch coverage. **/
   var branches: Null<BranchCoverage>;
 

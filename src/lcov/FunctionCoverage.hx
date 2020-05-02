@@ -1,8 +1,12 @@
 package lcov;
 
 /** Provides the coverage data of functions. **/
-class FunctionCoverage {
-
+#if php
+class FunctionCoverage implements php.JsonSerializable {
+#else
+@:expose class FunctionCoverage {
+#end
+  
   /** The coverage data. **/
   var data: Array<FunctionData>;
 

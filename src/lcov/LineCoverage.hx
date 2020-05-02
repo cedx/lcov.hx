@@ -1,7 +1,11 @@
 package lcov;
 
 /** Provides the coverage data of lines. **/
-class LineCoverage {
+#if php
+class LineCoverage implements php.JsonSerializable {
+#else
+@:expose class LineCoverage {
+#end
 
   /** The coverage data. **/
   var data: Array<LineData>;

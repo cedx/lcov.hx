@@ -1,8 +1,12 @@
 package lcov;
 
 /** Represents a trace file, that is a coverage report. **/
-class Report {
-
+#if php
+class Report implements php.JsonSerializable {
+#else
+@:expose class Report {
+#end
+  
   /** The record list. **/
   var records: Array<Record>;
 

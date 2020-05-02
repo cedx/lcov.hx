@@ -1,7 +1,11 @@
 package lcov;
 
 /** Provides the coverage data of branches. **/
-class BranchCoverage {
+#if php
+class BranchCoverage implements php.JsonSerializable {
+#else
+@:expose class BranchCoverage {
+#end
 
   /** The coverage data. **/
   var data: Array<BranchData>;
