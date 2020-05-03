@@ -27,14 +27,14 @@ class Report implements php.JsonSerializable {
     Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
     @param coverage The coverage data.
     @return The resulting coverage report.
-    @throws `LcovException` A parsing error occurred.
+    @throws LcovException A parsing error occurred.
   **/
   public static function fromCoverage(coverage: String): Report {
     final report = new Report();
 
     try {
       var record: Record;
-      for (line in coverage.split(~/\r?\n/g)) {
+      for (line in ~/\r?\n/g.split(coverage)) {
         line = line.trim();
         if (line.length == 0) continue;
 
@@ -143,8 +143,8 @@ class Report implements php.JsonSerializable {
     Converts this object to a map in JSON format.
     @return The map in JSON format corresponding to this object.
   **/
-  public function toJSON() return {
-    records: records.map(item -> item.toJSON()),
+  public function toJson() return {
+    records: records.map(item -> item.toJson()),
     testName: testName
   };
 
