@@ -4,7 +4,6 @@
 
 /build/
 /doc/api/
-/lib/js/
 /lib/php/
 /node_modules/
 /var/
@@ -17,4 +16,5 @@
 /composer.lock
 /npm-debug.log
 /package-lock.json
+/lib/js/browser.cjs
 /share/*.private.env.json

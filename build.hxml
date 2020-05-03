@@ -1,0 +1,21 @@
+--class-path src
+--dce no
+
+lcov.BranchCoverage
+lcov.BranchData
+lcov.FunctionCoverage
+lcov.FunctionData
+lcov.LineCoverage
+lcov.LineData
+lcov.Record
+# TODO lcov.Report
+lcov.Token
+
+--each
+--define js_es=6
+--js lib/js/browser.cjs
+
+--next
+--define php_lib=php
+--define php_prefix=cedx
+--php lib
