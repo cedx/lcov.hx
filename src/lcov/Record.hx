@@ -62,7 +62,7 @@ class Record implements php.JsonSerializable {
     if (functions != null) output.push(functions.toString());
     if (branches != null) output.push(branches.toString());
     if (lines != null) output.push(lines.toString());
-    output.push('${Token.endOfRecord}');
+    output.push(Token.endOfRecord);
     return output.join('\n');
   }
 

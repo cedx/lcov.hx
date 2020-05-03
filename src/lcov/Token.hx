@@ -1,7 +1,7 @@
 package lcov;
 
 /** Provides the list of tokens supported by the parser. **/
-enum abstract Token(String) {
+enum abstract Token(String) to String {
 
   /** The coverage data of a branch. **/
   var branchesFound = 'BRF';
