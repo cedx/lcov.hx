@@ -13,5 +13,5 @@ function Update-File {
 }
 
 Update-File "$root/package.json" '"version": "\d+(\.\d+){2}"' """version"": ""$($package.version)"""
-Update-File "$root/doc/index.md" 'release-v\d+(\.\d+){2}"' "release-v$($package.version)"
-Update-File "$root/README.md" 'release-v\d+(\.\d+){2}"' "release-v$($package.version)"
+Update-File "$root/README.md" 'release-v\d+(\.\d+){2}' "release-v$($package.version)"
+Update-File "$root/doc/index.md" 'release-v\d+(\.\d+){2}' "release-v$($package.version)"
