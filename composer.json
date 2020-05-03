@@ -10,6 +10,9 @@
   "autoload": {
     "psr-4": {"cedx\\": "lib/php/cedx/"}
   },
+  "autoload-dev": {
+    "psr-4": {"cedx\\lcov\\": "test/php/"}
+  },
   "config": {
     "optimize-autoloader": true
   },
@@ -24,7 +27,7 @@
     "test"
   ],
   "require": {
-    "php": ">=7.0.0",
+    "php": ">=7.4.0",
     "ext-json": "*",
     "ext-mbstring": "*",
     "ext-pcre": "*",

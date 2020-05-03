@@ -33,7 +33,7 @@ class Report implements php.JsonSerializable {
     final report = new Report();
 
     try {
-      var record = new Record('');
+      var record: Record = null;
       for (line in ~/\r?\n/g.split(coverage)) {
         line = line.trim();
         if (line.length == 0) continue;
@@ -48,25 +48,6 @@ class Report implements php.JsonSerializable {
           case Token.testName: report.testName = data[0];
           case Token.endOfRecord: report.records.push(record);
 
-          case Token.sourceFile: record = new Record(data[0], {
-            branches: new BranchCoverage(),
-            functions: new FunctionCoverage(),
-            lines: new LineCoverage()
-          });
-
-          case Token.functionName: {
-            if (data.length < 2) throw new LcovException('Invalid function name');
-            record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
-          }
-
-          case Token.functionData: {
-            if (data.length < 2) throw new LcovException('Invalid function data');
-            for (item in record.functions.data) if (item.functionName == data[1]) {
-              item.executionCount = Std.parseInt(data[0]);
-              break;
-            }
-          }
-
           case Token.branchData: {
             if (data.length < 4) throw new LcovException('Invalid branch data');
             record.branches.data.push(new BranchData(
@@ -77,6 +58,19 @@ class Report implements php.JsonSerializable {
             ));
           }
 
+          case Token.functionData: {
+            if (data.length < 2) throw new LcovException('Invalid function data');
+            for (item in record.functions.data) if (item.functionName == data[1]) {
+              item.executionCount = Std.parseInt(data[0]);
+              break;
+            }
+          }
+
+          case Token.functionName: {
+            if (data.length < 2) throw new LcovException('Invalid function name');
+            record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
+          }
+
           case Token.lineData: {
             if (data.length < 2) throw new LcovException('Invalid line data');
             record.lines.data.push(new LineData(
@@ -85,6 +79,12 @@ class Report implements php.JsonSerializable {
               data.length >= 3 ? data[2] : ''
             ));
           }
+
+          case Token.sourceFile: record = new Record(data[0], {
+            branches: new BranchCoverage(),
+            functions: new FunctionCoverage(),
+            lines: new LineCoverage()
+          });
 
           case Token.branchesFound: record.branches.found = Std.parseInt(data[0]);
           case Token.branchesHit: record.branches.hit = Std.parseInt(data[0]);

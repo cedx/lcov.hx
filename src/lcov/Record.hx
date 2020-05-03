@@ -25,9 +25,9 @@ class Record implements php.JsonSerializable {
     @param options An object specifying values used to initialize this instance.
   **/
   public function new(sourceFile: String, ?options: RecordOptions) {
-    this.branches = options != null && options.branches != null ? branches : null;
-    this.functions = options != null && options.functions != null ? functions : null;
-    this.lines = options != null && options.lines != null ? lines : null;
+    this.branches = options != null && options.branches != null ? options.branches : null;
+    this.functions = options != null && options.functions != null ? options.functions : null;
+    this.lines = options != null && options.lines != null ? options.lines : null;
     this.sourceFile = sourceFile;
   }
 
