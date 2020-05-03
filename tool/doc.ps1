@@ -1,4 +1,4 @@
 #!/usr/bin/env pwsh
-$root = Split-Path $PSScriptRoot
+Set-Location (Split-Path $PSScriptRoot)
 haxelib run dox
-mkdocs build --config-file="$root/etc/mkdocs.yaml"
+mkdocs build --config-file=etc/mkdocs.yaml

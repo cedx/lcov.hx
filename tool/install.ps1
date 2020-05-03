@@ -1,4 +1,5 @@
 #!/usr/bin/env pwsh
+Set-Location (Split-Path $PSScriptRoot)
 haxelib newrepo
 haxelib install checkstyle
 haxelib install dox

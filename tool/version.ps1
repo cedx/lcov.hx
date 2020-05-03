@@ -1,6 +1,5 @@
 #!/usr/bin/env pwsh
-$root = Split-Path $PSScriptRoot
-$package = Get-Content "$root/haxelib.json" | ConvertFrom-Json
+Set-Location (Split-Path $PSScriptRoot)
 
 function Update-File {
   param (
@@ -12,6 +11,7 @@ function Update-File {
   (Get-Content $file -Encoding UTF8) -replace $pattern, $replacement | Out-File $file -Encoding UTF8
 }
 
-Update-File "$root/package.json" '"version": "\d+(\.\d+){2}"' """version"": ""$($package.version)"""
-Update-File "$root/README.md" 'release-v\d+(\.\d+){2}' "release-v$($package.version)"
-Update-File "$root/doc/index.md" 'release-v\d+(\.\d+){2}' "release-v$($package.version)"
+$version = (Get-Content haxelib.json | ConvertFrom-Json).version
+Update-File package.json '"version": "\d+(\.\d+){2}"' """version"": ""$version"""
+Update-File README.md 'release-v\d+(\.\d+){2}' "release-v$version"
+Update-File doc/index.md 'release-v\d+(\.\d+){2}' "release-v$version"

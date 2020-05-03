@@ -1,4 +1,4 @@
 #!/usr/bin/env pwsh
-$root = Split-Path $PSScriptRoot
-& "$root/node_modules/.bin/mocha"
-& "$root/vendor/bin/phpunit" --configuration="$root/etc/phpunit.xml"
+Set-Location (Split-Path $PSScriptRoot)
+& node_modules/.bin/mocha.ps1 --recursive
+& vendor/bin/phpunit --configuration=etc/phpunit.xml
