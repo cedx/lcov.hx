@@ -12,10 +12,14 @@ lcov.Report
 lcov.Token
 
 --each
---define js_es=6
+--define doc-gen
+--xml var/api.xml
+
+--next
+--define js-es=6
 --js lib/js/lcov.cjs
 
 --next
---define php_lib=php
---define php_prefix=cedx
+--define php-lib=php
+--define php-prefix=cedx
 --php lib
