@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="../vendor/autoload.php" cacheResult="false" testdox="true">
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">../lib/php</directory>
+    </whitelist>
+  </filter>
+  <testsuites>
+    <testsuite name="all">
+      <directory suffix="Test.php">../test/php</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
