@@ -33,13 +33,15 @@ class Report implements php.JsonSerializable {
     final report = new Report();
 
     try {
+      var offset = 0;
       var record: Record = null;
       for (line in ~/\r?\n/g.split(coverage)) {
+        offset += line.length;
         line = line.trim();
         if (line.length == 0) continue;
 
         final parts = line.split(':');
-        if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new LcovException('Invalid token format');
+        if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new LcovException('Invalid token format.', coverage, offset);
 
         final token = parts.shift();
         final data = parts.join(':').split(',');
@@ -49,7 +51,7 @@ class Report implements php.JsonSerializable {
           case Token.endOfRecord: report.records.push(record);
 
           case Token.branchData: {
-            if (data.length < 4) throw new LcovException('Invalid branch data');
+            if (data.length < 4) throw new LcovException('Invalid branch data.', coverage, offset);
             record.branches.data.push(new BranchData(
               Std.parseInt(data[0]),
               Std.parseInt(data[1]),
@@ -59,7 +61,7 @@ class Report implements php.JsonSerializable {
           }
 
           case Token.functionData: {
-            if (data.length < 2) throw new LcovException('Invalid function data');
+            if (data.length < 2) throw new LcovException('Invalid function data.', coverage, offset);
             for (item in record.functions.data) if (item.functionName == data[1]) {
               item.executionCount = Std.parseInt(data[0]);
               break;
@@ -67,12 +69,12 @@ class Report implements php.JsonSerializable {
           }
 
           case Token.functionName: {
-            if (data.length < 2) throw new LcovException('Invalid function name');
+            if (data.length < 2) throw new LcovException('Invalid function name.', coverage, offset);
             record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
           }
 
           case Token.lineData: {
-            if (data.length < 2) throw new LcovException('Invalid line data');
+            if (data.length < 2) throw new LcovException('Invalid line data.', coverage, offset);
             record.lines.data.push(new LineData(
               Std.parseInt(data[0]),
               Std.parseInt(data[1]),
@@ -96,11 +98,9 @@ class Report implements php.JsonSerializable {
       }
     }
 
-    catch (e: Any) {
-      throw new LcovException('The coverage data has an invalid LCOV format', coverage);
-    }
-
-    if (report.records.length == 0) throw new LcovException('The coverage data is empty', coverage);
+    catch (e: LcovException) { throw e; }
+    catch (e: Any) { throw new LcovException('The coverage data has an invalid LCOV format.', coverage); }
+    if (report.records.length == 0) throw new LcovException('The coverage data is empty.', coverage);
     return report;
   }
 
