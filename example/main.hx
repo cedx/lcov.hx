@@ -1,3 +1,4 @@
+import haxe.Json;
 import lcov.*;
 import sys.io.File;
 
@@ -26,7 +27,7 @@ class Example {
       final coverage = File.getContent('/path/to/lcov.info');
       final report = Report.fromCoverage(coverage);
       trace('The coverage report contains ${report.records.length} records:');
-      trace(report.toJson());
+      trace(Json.stringify(report.toJson()));
     }
 
     catch (error: LcovException) {

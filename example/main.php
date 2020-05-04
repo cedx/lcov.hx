@@ -24,8 +24,8 @@ function parseReport(): void {
     $report = Report::fromCoverage($coverage);
 
     $count = count($report->records);
-    echo "The coverage report contains $count records:";
-    print_r($report->toJson());
+    echo "The coverage report contains $count records:", PHP_EOL;
+    echo json_encode($report->toJson());
   }
 
   catch (LcovException $e) {
