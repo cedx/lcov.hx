@@ -1,0 +1,24 @@
+name: build
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 0 1 * *'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.0.5
+      - name: Check environment
+        run: |
+          haxe --version
+          haxelib version
+      - name: Fetch sources
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: haxelib install all --always
+      - name: Run tests
+        run: haxe test.hxml
