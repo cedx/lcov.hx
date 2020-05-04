@@ -5,7 +5,7 @@ import {BranchData, FunctionData, LcovException, LineData, Record, Report} from 
 /** Tests the features of the `Report` class. */
 describe('Report', () => {
   describe('.fromCoverage()', () => {
-    const report = Report.fromCoverage(readFileSync('test/lcov.info', 'utf8'));
+    const report = Report.fromCoverage(readFileSync('test/fixtures/lcov.info', 'utf8'));
 
     it('should have a test name', () => {
       assert.equal(report.testName, 'Example');
