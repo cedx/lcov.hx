@@ -5,7 +5,7 @@ haxelib newrepo
 haxelib install checkstyle
 haxelib install dox
 haxelib install formatter
-haxelib --always install all
+haxelib install all --always
 
-composer install
+composer install --no-interaction
 npm install --ignore-scripts --production=false
