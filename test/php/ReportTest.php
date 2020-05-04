@@ -10,7 +10,7 @@ class ReportTest extends TestCase {
   /** @testdox ::fromCoverage() */
   function testFromCoverage(): void {
     // It should have a test name.
-    $coverage = new \SplFileObject('test/fixtures/lcov.info');
+    $coverage = new \SplFileObject('test/lcov.info');
     $report = Report::fromCoverage((string) $coverage->fread($coverage->getSize()));
     assertThat($report->getTestName(), equalTo('Example'));
 
