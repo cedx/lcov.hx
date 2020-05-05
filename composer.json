@@ -8,10 +8,7 @@
     {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
   ],
   "autoload": {
-    "psr-4": {"cedx\\": "lib/php/cedx/"}
-  },
-  "autoload-dev": {
-    "psr-4": {"cedx\\lcov\\": "test/php/"}
+    "psr-4": {"lcov\\": "lib/php/lcov/"}
   },
   "config": {
     "optimize-autoloader": true
@@ -28,13 +25,7 @@
   ],
   "require": {
     "php": ">=7.4.0",
-    "ext-json": "*",
-    "ext-mbstring": "*",
-    "ext-pcre": "*",
-    "ext-spl": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.1.4"
+    "cedx/haxe": "^0.1.0"
   },
   "support": {
     "docs": "https://api.belin.io/lcov.hx",
