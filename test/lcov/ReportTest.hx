@@ -57,7 +57,7 @@ class ReportTest extends Test {
   public function testFromJson() {
     // It should return an instance with default values for an empty map.
     final report = Report.fromJson({});
-    Assert.equals(0, report.records.length);
+    Assert.isTrue(report.records.empty());
     Assert.equals(0, report.testName.length);
 
     // It should return an initialized instance for a non-empty map.
@@ -77,7 +77,7 @@ class ReportTest extends Test {
     final map = new Report().toJson();
     Assert.equals(2, Reflect.fields(map).length);
     Assert.is(map.records, Array);
-    Assert.equals(0, map.records.length);
+    Assert.isTrue(map.records.empty());
     Assert.equals(0, map.testName.length);
 
     // It should return a non-empty map for an initialized instance.

@@ -7,7 +7,7 @@ class FunctionCoverageTest extends Test {
   public function testFromJson() {
     // It should return an instance with default values for an empty map.
     final coverage = FunctionCoverage.fromJson({});
-    Assert.equals(0, coverage.data.length);
+    Assert.isTrue(coverage.data.empty());
     Assert.equals(0, coverage.found);
     Assert.equals(0, coverage.hit);
 
@@ -32,7 +32,7 @@ class FunctionCoverageTest extends Test {
     Assert.equals(3, Reflect.fields(map).length);
 
     Assert.is(map.data, Array);
-    Assert.equals(0, map.data.length);
+    Assert.isTrue(map.data.empty());
     Assert.equals(0, map.found);
     Assert.equals(0, map.hit);
 
