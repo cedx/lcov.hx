@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-use cedx\lcov\{FunctionCoverage, LcovException, LineCoverage, LineData, Record, Report};
+use lcov\{FunctionCoverage, LcovException, LineCoverage, LineData, Record, Report};
 
 /** Formats coverage data as LCOV report. */
 function formatReport(): void {

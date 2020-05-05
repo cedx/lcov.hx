@@ -26,12 +26,12 @@ class Example {
     try {
       final coverage = File.getContent('/path/to/lcov.info');
       final report = Report.fromCoverage(coverage);
-      trace('The coverage report contains ${report.records.length} records:');
-      trace(Json.stringify(report.toJson()));
+      Sys.println('The coverage report contains ${report.records.length} records:');
+      Sys.println(Json.stringify(report.toJson()));
     }
 
     catch (error: LcovException) {
-      trace('An error occurred: "${error.message}" at offset ${error.offset}.');
+      Sys.println('An error occurred: "${error.message}" at offset ${error.offset}.');
     }
   }
 }
