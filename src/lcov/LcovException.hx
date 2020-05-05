@@ -1,13 +1,8 @@
 package lcov;
 
 /** An exception caused by a parsing error. **/
-#if js
-@:expose class LcovException extends js.lib.Error.SyntaxError {
-#elseif php
-class LcovException extends php.UnexpectedValueException {
-#else
-class LcovException {
-#end
+@:expose
+class LcovException #if js extends js.lib.Error.SyntaxError #elseif php extends php.UnexpectedValueException #end {
 
   #if (!js && !php)
   /** A message describing the error. **/

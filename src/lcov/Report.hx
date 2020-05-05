@@ -1,11 +1,8 @@
 package lcov;
 
 /** Represents a trace file, that is a coverage report. **/
-#if php
-class Report implements php.JsonSerializable {
-#else
-@:expose class Report {
-#end
+@:expose
+class Report #if php implements php.JsonSerializable #end {
   
   /** The record list. **/
   public var records: Array<Record>;
@@ -18,8 +15,8 @@ class Report implements php.JsonSerializable {
     @param testName The test name.
     @param records The record list.
   **/
-  public function new(testName: String = '', ?records: Array<Record>) {
-    this.records = records != null ? records : [];
+  public function new(testName: String = '', ?records: #if php php.NativeIndexedArray<Record> #else Array<Record> #end) {
+    this.records = records != null ? #if php cast php.Lib.toHaxeArray(records) #else records #end : [];
     this.testName = testName;
   }
 
@@ -119,7 +116,7 @@ class Report implements php.JsonSerializable {
     @return The map in JSON format corresponding to this object.
   **/
   public function toJson() return {
-    records: records.map(item -> item.toJson()),
+    records: #if php php.Lib.toPhpArray(records.map(item -> item.toJson())) #else records.map(item -> item.toJson()) #end,
     testName: testName
   };
 

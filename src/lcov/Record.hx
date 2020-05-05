@@ -1,20 +1,17 @@
 package lcov;
 
 /** Provides the coverage data of a source file. **/
-#if php
-class Record implements php.JsonSerializable {
-#else
-@:expose class Record {
-#end
+@:expose
+class Record #if php implements php.JsonSerializable #end {
   
   /** The branch coverage. **/
-  public var branches: Null<BranchCoverage>;
+  public var branches: Null<BranchCoverage> = null;
 
   /** The function coverage. **/
-  public var functions: Null<FunctionCoverage>;
+  public var functions: Null<FunctionCoverage> = null;
 
   /** The line coverage. **/
-  public var lines: Null<LineCoverage>;
+  public var lines: Null<LineCoverage> = null;
 
   /** The path to the source file. **/
   public var sourceFile: String;
@@ -25,11 +22,13 @@ class Record implements php.JsonSerializable {
     @param options An object specifying values used to initialize this instance.
   **/
   public function new(sourceFile: String, ?options: RecordOptions) {
-    this.branches = options != null && options.branches != null ? options.branches : null;
-    this.functions = options != null && options.functions != null ? options.functions : null;
-    this.lines = options != null && options.lines != null ? options.lines : null;
     this.sourceFile = sourceFile;
-  }
+    if (options != null) {
+      if (#if php php.Global.isset(options.branches) #else options.branches != null #end) this.branches = options.branches;
+      if (#if php php.Global.isset(options.functions) #else options.functions != null #end) this.functions = options.functions;
+      if (#if php php.Global.isset(options.lines) #else options.lines != null #end) this.lines = options.lines;
+    }
+=  }
 
   /**
     Creates a new record from the specified JSON object.

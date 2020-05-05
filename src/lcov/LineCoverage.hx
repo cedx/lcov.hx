@@ -1,11 +1,8 @@
 package lcov;
 
 /** Provides the coverage data of lines. **/
-#if php
-class LineCoverage implements php.JsonSerializable {
-#else
-@:expose class LineCoverage {
-#end
+@:expose
+class LineCoverage #if php implements php.JsonSerializable #end {
 
   /** The coverage data. **/
   public var data: Array<LineData>;
@@ -22,8 +19,8 @@ class LineCoverage implements php.JsonSerializable {
     @param hit The number of lines found.
     @param data The coverage data.
   **/
-  public function new(found: Int = 0, hit: Int = 0, ?data: Array<LineData>) {
-    this.data = data != null ? data : [];
+  public function new(found: Int = 0, hit: Int = 0, ?data: #if php php.NativeIndexedArray<LineData> #else Array<LineData> #end) {
+    this.data = data != null ? #if php cast php.Lib.toHaxeArray(data) #else data #end : [];
     this.found = found;
     this.hit = hit;
   }
@@ -44,7 +41,7 @@ class LineCoverage implements php.JsonSerializable {
     @return The map in JSON format corresponding to this object.
   **/
   public function toJson() return {
-    data: data.map(item -> item.toJson()),
+    data: #if php php.Lib.toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,
     found: found,
     hit: hit
   };

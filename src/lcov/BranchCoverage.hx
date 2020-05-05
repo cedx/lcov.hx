@@ -1,11 +1,8 @@
 package lcov;
 
 /** Provides the coverage data of branches. **/
-#if php
-class BranchCoverage implements php.JsonSerializable {
-#else
-@:expose class BranchCoverage {
-#end
+@:expose
+class BranchCoverage #if php implements php.JsonSerializable #end {
 
   /** The coverage data. **/
   public var data: Array<BranchData>;
@@ -22,8 +19,8 @@ class BranchCoverage implements php.JsonSerializable {
     @param hit The number of branches hit.
     @param data The coverage data.
   **/
-  public function new(found: Int = 0, hit: Int = 0, ?data: Array<BranchData>) {
-    this.data = data != null ? data : [];
+  public function new(found: Int = 0, hit: Int = 0, ?data: #if php php.NativeIndexedArray<BranchData> #else Array<BranchData> #end) {
+    this.data = data != null ? #if php cast php.Lib.toHaxeArray(data) #else data #end : [];
     this.found = found;
     this.hit = hit;
   }
@@ -44,7 +41,7 @@ class BranchCoverage implements php.JsonSerializable {
     @return The map in JSON format corresponding to this object.
   **/
   public function toJson() return {
-    data: data.map(item -> item.toJson()),
+    data: #if php php.Lib.toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,
     found: found,
     hit: hit
   };

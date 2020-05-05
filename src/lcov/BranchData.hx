@@ -1,11 +1,8 @@
 package lcov;
 
 /** Provides details for branch coverage. **/
-#if php
-class BranchData implements php.JsonSerializable {
-#else
-@:expose class BranchData {
-#end
+@:expose
+class BranchData #if php implements php.JsonSerializable #end {
   
   /** The block number. **/
   public var blockNumber: Int;

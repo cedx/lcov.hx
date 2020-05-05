@@ -1,11 +1,8 @@
 package lcov;
 
 /** Provides details for function coverage. **/
-#if php
-class FunctionData implements php.JsonSerializable {
-#else
-@:expose class FunctionData {
-#end
+@:expose
+class FunctionData #if php implements php.JsonSerializable #end {
   
   /** The execution count. **/
   public var executionCount: Int;

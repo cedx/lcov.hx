@@ -1,11 +1,8 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-#if php
-class LineData implements php.JsonSerializable {
-#else
-@:expose class LineData {
-#end
+@:expose
+class LineData #if php implements php.JsonSerializable #end {
   
   /** The data checksum. **/
   public var checksum: String;
