@@ -16,7 +16,7 @@ class Report #if php implements php.JsonSerializable #end {
     @param records The record list.
   **/
   public function new(testName: String = '', ?records: #if php php.NativeIndexedArray<Record> #else Array<Record> #end) {
-    this.records = records != null ? #if php cast php.Lib.toHaxeArray(records) #else records #end : [];
+    this.records = records != null ? #if php php.Lib.toHaxeArray(records) #else records #end : [];
     this.testName = testName;
   }
 

@@ -20,7 +20,7 @@ class BranchCoverage #if php implements php.JsonSerializable #end {
     @param data The coverage data.
   **/
   public function new(found: Int = 0, hit: Int = 0, ?data: #if php php.NativeIndexedArray<BranchData> #else Array<BranchData> #end) {
-    this.data = data != null ? #if php cast php.Lib.toHaxeArray(data) #else data #end : [];
+    this.data = data != null ? #if php php.Lib.toHaxeArray(data) #else data #end : [];
     this.found = found;
     this.hit = hit;
   }
