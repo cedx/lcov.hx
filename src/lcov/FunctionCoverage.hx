@@ -5,7 +5,7 @@ package lcov;
 class FunctionCoverage #if php implements JsonSerializable #end {
   
   /** The coverage data. **/
-  public var data(default, null): Array<FunctionData>;
+  public final data: Array<FunctionData>;
 
   /** The number of functions found. **/
   public var found: Int;

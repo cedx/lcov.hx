@@ -5,7 +5,7 @@ package lcov;
 class BranchCoverage #if php implements JsonSerializable #end {
 
   /** The coverage data. **/
-  public var data(default, null): Array<BranchData>;
+  public final data: Array<BranchData>;
 
   /** The number of branches found. **/
   public var found: Int;

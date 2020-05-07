@@ -10,14 +10,14 @@ class LcovException #if js extends SyntaxError #elseif php extends UnexpectedVal
 
   #if (!js && !php)
   /** A message describing the error. **/
-  public var message(default, null): String;
+  public final message: String;
   #end
 
   /** The offset in `source` where the error was detected. **/
-  public var offset(default, null): Int;
+  public final offset: Int;
 
   /** The actual source input which caused the error. **/
-  public var source(default, null): String;
+  public final source: String;
 
   /** Creates a new LCOV exception. **/
   public function new(message: String = '', source: String = '', offset: Int = 0) {

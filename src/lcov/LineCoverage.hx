@@ -5,7 +5,7 @@ package lcov;
 class LineCoverage #if php implements JsonSerializable #end {
 
   /** The coverage data. **/
-  public var data(default, null): Array<LineData>;
+  public final data: Array<LineData>;
 
   /** The number of lines found. **/
   public var found: Int;
