@@ -25,6 +25,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
+    "ext-json": "*",
     "cedx/haxe": "^0.1.2"
   },
   "support": {
