@@ -23,7 +23,7 @@ async function parseReport() {
     const coverage = await promises.readFile('/path/to/lcov.info', 'utf8');
     const report = Report.fromCoverage(coverage);
     console.log(`The coverage report contains ${report.records.length} records:`);
-    console.log(JSON.stringify(report));
+    console.log(JSON.stringify(report, null, 2));
   }
 
   catch (error) {
