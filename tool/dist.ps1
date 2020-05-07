@@ -2,6 +2,7 @@
 Set-Location (Split-Path $PSScriptRoot)
 
 tool/clean.ps1
+tool/version.ps1
 haxe build.hxml
 
 if (!(Test-Path build)) { New-Item build -ItemType Directory | Out-Null }
