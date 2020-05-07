@@ -2,7 +2,7 @@ package lcov;
 
 /** Represents a trace file, that is a coverage report. **/
 @:expose
-class Report #if php implements php.JsonSerializable #end {
+class Report #if php implements JsonSerializable #end {
   
   /** The record list. **/
   public var records: Array<Record>;
@@ -10,21 +10,15 @@ class Report #if php implements php.JsonSerializable #end {
   /** The test name. **/
   public var testName: String;
 
-  /**
-    Creates a new report.
-    @param testName The test name.
-    @param records The record list.
-  **/
-  public function new(testName: String = '', ?records: #if php php.NativeIndexedArray<Record> #else Array<Record> #end) {
-    this.records = records != null ? #if php cast php.Lib.toHaxeArray(records) #else records #end : [];
+  /** Creates a new report. **/
+  public function new(testName: String = '', ?records: #if php NativeIndexedArray<Record> #else Array<Record> #end) {
+    this.records = records != null ? #if php cast toHaxeArray(records) #else records #end : [];
     this.testName = testName;
   }
 
   /**
-    Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
-    @param coverage The coverage data.
-    @return The resulting coverage report.
-    @throws LcovException A parsing error occurred.
+    Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
+    Throws a `LcovException` if a parsing error occurred.
   **/
   public static function fromCoverage(coverage: String): Report {
     final report = new Report();
@@ -109,7 +103,7 @@ class Report #if php implements php.JsonSerializable #end {
 
   /** Converts this object to a map in JSON format. **/
   public function toJson() return {
-    records: #if php php.Lib.toPhpArray(records.map(item -> item.toJson())) #else records.map(item -> item.toJson()) #end,
+    records: #if php toPhpArray(records.map(item -> item.toJson())) #else records.map(item -> item.toJson()) #end,
     testName: testName
   };
 

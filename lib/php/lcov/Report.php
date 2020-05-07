@@ -26,10 +26,8 @@ class Report implements \JsonSerializable {
 	public $testName;
 
 	/**
-	 * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
-	 * @param coverage The coverage data.
-	 * @return The resulting coverage report.
-	 * @throws LcovException A parsing error occurred.
+	 * Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
+	 * Throws a `LcovException` if a parsing error occurred.
 	 * 
 	 * @param string $coverage
 	 * 
@@ -184,8 +182,6 @@ class Report implements \JsonSerializable {
 
 	/**
 	 * Creates a new report.
-	 * @param testName The test name.
-	 * @param records The record list.
 	 * 
 	 * @param string $testName
 	 * @param mixed $records

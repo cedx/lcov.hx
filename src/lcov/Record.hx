@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides the coverage data of a source file. **/
 @:expose
-class Record #if php implements php.JsonSerializable #end {
+class Record #if php implements JsonSerializable #end {
   
   /** The branch coverage. **/
   public var branches: Null<BranchCoverage> = null;
@@ -17,13 +17,13 @@ class Record #if php implements php.JsonSerializable #end {
   public var sourceFile: String;
 
   /** Creates a new record with the specified source file. **/
-  public function new(sourceFile: String, ?options: #if php php.NativeStructArray<RecordOptions> #else RecordOptions #end) {
+  public function new(sourceFile: String, ?options: #if php NativeStructArray<RecordOptions> #else RecordOptions #end) {
     this.sourceFile = sourceFile;
     if (options != null) {
       #if php
-      if (php.Global.isset(options['branches'])) this.branches = options['branches'];
-      if (php.Global.isset(options['functions'])) this.functions = options['functions'];
-      if (php.Global.isset(options['lines'])) this.lines = options['lines'];
+      if (isset(options['branches'])) this.branches = options['branches'];
+      if (isset(options['functions'])) this.functions = options['functions'];
+      if (isset(options['lines'])) this.lines = options['lines'];
       #else
       if (options.branches != null) this.branches = options.branches;
       if (options.functions != null) this.functions = options.functions;

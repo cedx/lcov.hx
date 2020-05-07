@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides the coverage data of functions. **/
 @:expose
-class FunctionCoverage #if php implements php.JsonSerializable #end {
+class FunctionCoverage #if php implements JsonSerializable #end {
   
   /** The coverage data. **/
   public var data(default, null): Array<FunctionData>;
@@ -14,8 +14,8 @@ class FunctionCoverage #if php implements php.JsonSerializable #end {
   public var hit: Int;
 
   /** Creates a new function coverage. **/
-  public function new(found: Int = 0, hit: Int = 0, ?data: #if php php.NativeIndexedArray<FunctionData> #else Array<FunctionData> #end) {
-    this.data = data != null ? #if php cast php.Lib.toHaxeArray(data) #else data #end : [];
+  public function new(found: Int = 0, hit: Int = 0, ?data: #if php NativeIndexedArray<FunctionData> #else Array<FunctionData> #end) {
+    this.data = data != null ? #if php cast toHaxeArray(data) #else data #end : [];
     this.found = found;
     this.hit = hit;
   }
@@ -29,7 +29,7 @@ class FunctionCoverage #if php implements php.JsonSerializable #end {
 
   /** Converts this object to a map in JSON format. **/
   public function toJson() return {
-    data: #if php php.Lib.toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,
+    data: #if php toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,
     found: found,
     hit: hit
   };
