@@ -15,5 +15,5 @@
 /composer.lock
 /npm-debug.log
 /package-lock.json
-/lib/lcov.*
+/lib/js/lcov.*
 /share/*.private.env.json
