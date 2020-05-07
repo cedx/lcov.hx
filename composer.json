@@ -24,8 +24,8 @@
     "test"
   ],
   "require": {
-    "php": ">=7.4.0",
-    "cedx/haxe": "^0.1.0"
+    "php": ">=7.0.0",
+    "cedx/haxe": "^0.1.2"
   },
   "support": {
     "docs": "https://api.belin.io/lcov.hx",
