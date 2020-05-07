@@ -123,11 +123,11 @@ class Report implements \JsonSerializable {
 					$data2 = ($data->arr[0] ?? null);
 					$record1 = new BranchCoverage();
 					$record2 = new FunctionCoverage();
-					$record = new Record($data2, new HxAnon([
+					$record = new Record($data2, [
 						"branches" => $record1,
 						"functions" => $record2,
 						"lines" => new LineCoverage(),
-					]));
+					]);
 				} else if ($token === "TN") {
 					$report->testName = ($data->arr[0] ?? null);
 				} else if ($token === "end_of_record") {
@@ -154,9 +154,7 @@ class Report implements \JsonSerializable {
 	}
 
 	/**
-	 * Creates a new report from the specified JSON object.
-	 * @param map A JSON object representing a report.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new report from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 

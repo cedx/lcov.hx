@@ -44,11 +44,11 @@ class Record implements \JsonSerializable {
 		$tmp = (Boot::is(\Reflect::field($map, "sourceFile"), Boot::getClass('String')) ? \Reflect::field($map, "sourceFile") : "");
 		$tmp1 = (\Reflect::isObject(\Reflect::field($map, "branches")) ? BranchCoverage::fromJson(\Reflect::field($map, "branches")) : null);
 		$tmp2 = (\Reflect::isObject(\Reflect::field($map, "functions")) ? FunctionCoverage::fromJson(\Reflect::field($map, "functions")) : null);
-		return new Record($tmp, new HxAnon([
+		return new Record($tmp, [
 			"branches" => $tmp1,
 			"functions" => $tmp2,
 			"lines" => (\Reflect::isObject(\Reflect::field($map, "lines")) ? LineCoverage::fromJson(\Reflect::field($map, "lines")) : null),
-		]));
+		]);
 	}
 
 	/**

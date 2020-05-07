@@ -101,11 +101,7 @@ class Report #if php implements php.JsonSerializable #end {
     return report;
   }
 
-  /**
-    Creates a new report from the specified JSON object.
-    @param map A JSON object representing a report.
-    @return The instance corresponding to the specified JSON object.
-  **/
+  /** Creates a new report from the specified `map` in JSON format. **/
   public static function fromJson(map: DynamicAccess<Any>) return new Report(
     Std.is(map['testName'], String) ? map['testName'] : '',
     Std.is(map['records'], Array) ? (map['records']: Array<Any>).map(item -> Record.fromJson(item)) : []

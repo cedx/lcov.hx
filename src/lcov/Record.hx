@@ -16,17 +16,19 @@ class Record #if php implements php.JsonSerializable #end {
   /** The path to the source file. **/
   public var sourceFile: String;
 
-  /**
-    Creates a new record.
-    @param sourceFile The path to the source file.
-    @param options An object specifying values used to initialize this instance.
-  **/
-  public function new(sourceFile: String, ?options: RecordOptions) {
+  /** Creates a new record with the specified source file. **/
+  public function new(sourceFile: String, ?options: #if php php.NativeStructArray<RecordOptions> #else RecordOptions #end) {
     this.sourceFile = sourceFile;
     if (options != null) {
-      if (#if php php.Global.isset(options.branches) #else options.branches != null #end) this.branches = options.branches;
-      if (#if php php.Global.isset(options.functions) #else options.functions != null #end) this.functions = options.functions;
-      if (#if php php.Global.isset(options.lines) #else options.lines != null #end) this.lines = options.lines;
+      #if php
+      if (php.Global.isset(options['branches'])) this.branches = options['branches'];
+      if (php.Global.isset(options['functions'])) this.functions = options['functions'];
+      if (php.Global.isset(options['lines'])) this.lines = options['lines'];
+      #else
+      if (options.branches != null) this.branches = options.branches;
+      if (options.functions != null) this.functions = options.functions;
+      if (options.lines != null) this.lines = options.lines;
+      #end
     }
   }
 

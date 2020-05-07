@@ -23,10 +23,7 @@ class LcovException extends \UnexpectedValueException {
 	public $source;
 
 	/**
-	 * Creates a new LCOV error.
-	 * @param message A message describing the error.
-	 * @param source The actual source input which caused the error.
-	 * @param offset The offset in `source` where the error was detected.
+	 * Creates a new LCOV exception.
 	 * 
 	 * @param string $message
 	 * @param string $source

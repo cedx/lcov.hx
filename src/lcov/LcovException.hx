@@ -15,12 +15,7 @@ class LcovException #if js extends js.lib.Error.SyntaxError #elseif php extends 
   /** The actual source input which caused the error. **/
   public var source(default, null): String;
 
-  /**
-    Creates a new LCOV error.
-    @param message A message describing the error.
-    @param source The actual source input which caused the error.
-    @param offset The offset in `source` where the error was detected.
-  **/
+  /** Creates a new LCOV exception. **/
   public function new(message: String = '', source: String = '', offset: Int = 0) {
     #if js
     super(message);
