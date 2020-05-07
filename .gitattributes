@@ -2,7 +2,6 @@
 .* text
 
 *.cjs text
-*.cmd text
 *.http text
 *.hx text
 *.hxml text
@@ -18,5 +17,6 @@
 
 *.ico binary
 *.jpg binary
+*.n binary
 *.pdf binary
 *.png binary
