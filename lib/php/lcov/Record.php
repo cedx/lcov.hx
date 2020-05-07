@@ -43,13 +43,9 @@ class Record implements \JsonSerializable {
 	 * @return Record
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/Record.hx:45: characters 78-136
 		$tmp = (Boot::is(\Reflect::field($map, "sourceFile"), Boot::getClass('String')) ? \Reflect::field($map, "sourceFile") : "");
-		#src/lcov/Record.hx:46: characters 15-98
 		$tmp1 = (\Reflect::isObject(\Reflect::field($map, "branches")) ? BranchCoverage::fromJson(\Reflect::field($map, "branches")) : null);
-		#src/lcov/Record.hx:47: characters 16-103
 		$tmp2 = (\Reflect::isObject(\Reflect::field($map, "functions")) ? FunctionCoverage::fromJson(\Reflect::field($map, "functions")) : null);
-		#src/lcov/Record.hx:45: lines 45-49
 		return new Record($tmp, new HxAnon([
 			"branches" => $tmp1,
 			"functions" => $tmp2,
@@ -68,14 +64,21 @@ class Record implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($sourceFile, $options = null) {
-		#src/lcov/Record.hx:29: characters 5-100
-		$this->branches = (($options !== null) && isset($options->branches) ? $options->branches : null);
-		#src/lcov/Record.hx:30: characters 5-103
-		$this->functions = (($options !== null) && isset($options->functions) ? $options->functions : null);
-		#src/lcov/Record.hx:31: characters 5-91
-		$this->lines = (($options !== null) && isset($options->lines) ? $options->lines : null);
-		#src/lcov/Record.hx:37: characters 5-33
+		$this->lines = null;
+		$this->functions = null;
+		$this->branches = null;
 		$this->sourceFile = $sourceFile;
+		if ($options !== null) {
+			if (isset($options->branches)) {
+				$this->branches = $options->branches;
+			}
+			if (isset($options->functions)) {
+				$this->functions = $options->functions;
+			}
+			if (isset($options->lines)) {
+				$this->lines = $options->lines;
+			}
+		}
 	}
 
 	/**
@@ -84,7 +87,6 @@ class Record implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/Record.hx:80: characters 34-49
 		return $this->toJson();
 	}
 
@@ -95,13 +97,9 @@ class Record implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/Record.hx:56: characters 15-58
 		$tmp = ($this->branches !== null ? $this->branches->toJson() : null);
-		#src/lcov/Record.hx:57: characters 16-61
 		$tmp1 = ($this->functions !== null ? $this->functions->toJson() : null);
-		#src/lcov/Record.hx:58: characters 12-49
 		$tmp2 = ($this->lines !== null ? $this->lines->toJson() : null);
-		#src/lcov/Record.hx:55: lines 55-60
 		return new HxAnon([
 			"branches" => $tmp,
 			"functions" => $tmp1,
@@ -117,34 +115,25 @@ class Record implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/Record.hx:67: characters 5-56
 		$output = \Array_hx::wrap(["" . ("SF"??'null') . ":" . ($this->sourceFile??'null')]);
-		#src/lcov/Record.hx:68: characters 5-61
 		if ($this->functions !== null) {
-			#src/lcov/Record.hx:68: characters 28-61
 			$x = $this->functions->toString();
 			$output->arr[$output->length] = $x;
 			++$output->length;
 		}
-		#src/lcov/Record.hx:69: characters 5-59
 		if ($this->branches !== null) {
-			#src/lcov/Record.hx:69: characters 27-59
 			$x1 = $this->branches->toString();
 			$output->arr[$output->length] = $x1;
 			++$output->length;
 		}
-		#src/lcov/Record.hx:70: characters 5-53
 		if ($this->lines !== null) {
-			#src/lcov/Record.hx:70: characters 24-53
 			$x2 = $this->lines->toString();
 			$output->arr[$output->length] = $x2;
 			++$output->length;
 		}
-		#src/lcov/Record.hx:71: characters 5-35
 		$output->arr[$output->length] = "end_of_record";
 		++$output->length;
 
-		#src/lcov/Record.hx:72: characters 5-29
 		return $output->join("\x0A");
 	}
 

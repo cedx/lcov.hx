@@ -38,14 +38,10 @@ class LineCoverage implements \JsonSerializable {
 	 * @return LineCoverage
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/LineCoverage.hx:42: characters 5-49
 		$tmp = (Boot::is(\Reflect::field($map, "found"), Boot::getClass('Int')) ? \Reflect::field($map, "found") : 0);
-		#src/lcov/LineCoverage.hx:43: characters 5-45
 		$tmp1 = (Boot::is(\Reflect::field($map, "hit"), Boot::getClass('Int')) ? \Reflect::field($map, "hit") : 0);
-		#src/lcov/LineCoverage.hx:44: characters 5-101
 		$tmp2 = null;
 		if ((\Reflect::field($map, "data") instanceof \Array_hx)) {
-			#src/lcov/LineCoverage.hx:44: characters 34-96
 			$_this = \Reflect::field($map, "data");
 			$result = [];
 			$data = $_this->arr;
@@ -57,12 +53,10 @@ class LineCoverage implements \JsonSerializable {
 				$result[] = LineData::fromJson($item);
 			}
 
-			#src/lcov/LineCoverage.hx:44: characters 5-101
 			$tmp2 = \Array_hx::wrap($result)->arr;
 		} else {
 			$tmp2 = (new \Array_hx())->arr;
 		}
-		#src/lcov/LineCoverage.hx:41: lines 41-45
 		return new LineCoverage($tmp, $tmp1, $tmp2);
 	}
 
@@ -79,18 +73,14 @@ class LineCoverage implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($found = 0, $hit = 0, $data = null) {
-		#src/lcov/LineCoverage.hx:26: lines 26-34
 		if ($found === null) {
 			$found = 0;
 		}
 		if ($hit === null) {
 			$hit = 0;
 		}
-		#src/lcov/LineCoverage.hx:27: characters 5-67
 		$this->data = ($data !== null ? \Array_hx::wrap($data) : new \Array_hx());
-		#src/lcov/LineCoverage.hx:32: characters 5-23
 		$this->found = $found;
-		#src/lcov/LineCoverage.hx:33: characters 5-19
 		$this->hit = $hit;
 	}
 
@@ -100,7 +90,6 @@ class LineCoverage implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/LineCoverage.hx:73: characters 34-49
 		return $this->toJson();
 	}
 
@@ -111,7 +100,6 @@ class LineCoverage implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/LineCoverage.hx:52: characters 11-42
 		$_this = $this->data;
 		$result = [];
 		$data = $_this->arr;
@@ -123,8 +111,7 @@ class LineCoverage implements \JsonSerializable {
 			$result[] = $item->toJson();
 		}
 
-		$tmp = \Array_hx::wrap($result);
-		#src/lcov/LineCoverage.hx:51: lines 51-55
+		$tmp = \Array_hx::wrap($result)->arr;
 		return new HxAnon([
 			"data" => $tmp,
 			"found" => $this->found,
@@ -139,7 +126,6 @@ class LineCoverage implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/LineCoverage.hx:62: characters 19-52
 		$_this = $this->data;
 		$result = [];
 		$data = $_this->arr;
@@ -151,17 +137,13 @@ class LineCoverage implements \JsonSerializable {
 			$result[] = $item->toString();
 		}
 
-		#src/lcov/LineCoverage.hx:62: characters 5-53
 		$lines = \Array_hx::wrap($result);
-		#src/lcov/LineCoverage.hx:63: characters 5-45
 		$lines->arr[$lines->length] = "" . ("LF"??'null') . ":" . ($this->found??'null');
 		++$lines->length;
 
-		#src/lcov/LineCoverage.hx:64: characters 5-41
 		$lines->arr[$lines->length] = "" . ("LH"??'null') . ":" . ($this->hit??'null');
 		++$lines->length;
 
-		#src/lcov/LineCoverage.hx:65: characters 5-28
 		return $lines->join("\x0A");
 	}
 

@@ -28,7 +28,7 @@ class Record #if php implements php.JsonSerializable #end {
       if (#if php php.Global.isset(options.functions) #else options.functions != null #end) this.functions = options.functions;
       if (#if php php.Global.isset(options.lines) #else options.lines != null #end) this.lines = options.lines;
     }
-=  }
+  }
 
   /**
     Creates a new record from the specified JSON object.

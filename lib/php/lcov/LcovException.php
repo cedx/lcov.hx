@@ -35,7 +35,6 @@ class LcovException extends \UnexpectedValueException {
 	 * @return void
 	 */
 	public function __construct ($message = "", $source = "", $offset = 0) {
-		#src/lcov/LcovException.hx:29: lines 29-41
 		if ($message === null) {
 			$message = "";
 		}
@@ -45,11 +44,8 @@ class LcovException extends \UnexpectedValueException {
 		if ($offset === null) {
 			$offset = 0;
 		}
-		#src/lcov/LcovException.hx:34: characters 5-19
 		parent::__construct($message);
-		#src/lcov/LcovException.hx:39: characters 5-25
 		$this->offset = $offset;
-		#src/lcov/LcovException.hx:40: characters 5-25
 		$this->source = $source;
 	}
 }

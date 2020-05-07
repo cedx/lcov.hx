@@ -38,11 +38,8 @@ class FunctionData implements \JsonSerializable {
 	 * @return FunctionData
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/FunctionData.hx:37: characters 5-67
 		$tmp = (Boot::is(\Reflect::field($map, "functionName"), Boot::getClass('String')) ? \Reflect::field($map, "functionName") : "");
-		#src/lcov/FunctionData.hx:38: characters 5-59
 		$tmp1 = (Boot::is(\Reflect::field($map, "lineNumber"), Boot::getClass('Int')) ? \Reflect::field($map, "lineNumber") : 0);
-		#src/lcov/FunctionData.hx:36: lines 36-40
 		return new FunctionData($tmp, $tmp1, (Boot::is(\Reflect::field($map, "executionCount"), Boot::getClass('Int')) ? \Reflect::field($map, "executionCount") : 0));
 	}
 
@@ -59,15 +56,11 @@ class FunctionData implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($functionName, $lineNumber, $executionCount = 0) {
-		#src/lcov/FunctionData.hx:25: lines 25-29
 		if ($executionCount === null) {
 			$executionCount = 0;
 		}
-		#src/lcov/FunctionData.hx:26: characters 5-41
 		$this->executionCount = $executionCount;
-		#src/lcov/FunctionData.hx:27: characters 5-37
 		$this->functionName = $functionName;
-		#src/lcov/FunctionData.hx:28: characters 5-33
 		$this->lineNumber = $lineNumber;
 	}
 
@@ -77,7 +70,6 @@ class FunctionData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/FunctionData.hx:68: characters 34-49
 		return $this->toJson();
 	}
 
@@ -88,7 +80,6 @@ class FunctionData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/FunctionData.hx:46: lines 46-50
 		return new HxAnon([
 			"executionCount" => $this->executionCount,
 			"functionName" => $this->functionName,
@@ -106,15 +97,11 @@ class FunctionData implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString ($asDefinition = false) {
-		#src/lcov/FunctionData.hx:57: lines 57-61
 		if ($asDefinition === null) {
 			$asDefinition = false;
 		}
-		#src/lcov/FunctionData.hx:58: characters 5-74
 		$token = ($asDefinition ? "FN" : "FNDA");
-		#src/lcov/FunctionData.hx:59: characters 5-62
 		$count = ($asDefinition ? $this->lineNumber : $this->executionCount);
-		#src/lcov/FunctionData.hx:60: characters 5-41
 		return "" . ($token??'null') . ":" . ($count??'null') . "," . ($this->functionName??'null');
 	}
 

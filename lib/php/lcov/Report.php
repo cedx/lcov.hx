@@ -36,156 +36,101 @@ class Report implements \JsonSerializable {
 	 * @return Report
 	 */
 	public static function fromCoverage ($coverage) {
-		#src/lcov/Report.hx:38: characters 5-33
 		$report = new Report();
-		#src/lcov/Report.hx:40: lines 40-107
 		try {
-			#src/lcov/Report.hx:41: characters 7-22
 			$offset = 0;
-			#src/lcov/Report.hx:42: characters 7-33
 			$record = null;
-			#src/lcov/Report.hx:43: lines 43-103
 			$_g = 0;
 			$_g1 = (new \EReg("\x0D?\x0A", "g"))->split($coverage);
 			while ($_g < $_g1->length) {
-				#src/lcov/Report.hx:43: characters 12-16
 				$line = ($_g1->arr[$_g] ?? null);
-				#src/lcov/Report.hx:43: lines 43-103
 				++$_g;
-				#src/lcov/Report.hx:44: characters 9-30
 				$offset += mb_strlen($line);
-				#src/lcov/Report.hx:45: characters 9-27
 				$line = trim($line);
-				#src/lcov/Report.hx:46: characters 9-39
 				if (mb_strlen($line) === 0) {
-					#src/lcov/Report.hx:46: characters 31-39
 					continue;
 				}
-				#src/lcov/Report.hx:48: characters 9-39
 				$parts = HxString::split($line, ":");
-				#src/lcov/Report.hx:49: characters 9-69
 				if (($parts->length < 2) && (($parts->arr[0] ?? null) !== "end_of_record")) {
-					#src/lcov/Report.hx:49: characters 64-69
 					throw new LcovException("Invalid token format.", $coverage, $offset);
 				}
-				#src/lcov/Report.hx:51: characters 23-36
 				if ($parts->length > 0) {
 					$parts->length--;
 				}
-				#src/lcov/Report.hx:51: characters 9-37
 				$token = array_shift($parts->arr);
-				#src/lcov/Report.hx:52: characters 9-49
 				$data = HxString::split($parts->join(":"), ",");
-				#src/lcov/Report.hx:54: lines 54-102
 				if ($token === "BRDA") {
-					#src/lcov/Report.hx:59: characters 13-39
 					if ($data->length < 4) {
-						#src/lcov/Report.hx:59: characters 34-39
 						throw new LcovException("Invalid branch data.", $coverage, $offset);
 					}
-					#src/lcov/Report.hx:60: lines 60-65
 					$_this = $record->branches->data;
-					#src/lcov/Report.hx:61: characters 15-36
 					$x = \Std::parseInt(($data->arr[0] ?? null));
-					#src/lcov/Report.hx:62: characters 15-36
 					$x1 = \Std::parseInt(($data->arr[1] ?? null));
-					#src/lcov/Report.hx:63: characters 15-36
 					$x2 = \Std::parseInt(($data->arr[2] ?? null));
-					#src/lcov/Report.hx:60: lines 60-65
 					$x3 = new BranchData($x, $x1, $x2, (($data->arr[3] ?? null) === "-" ? 0 : \Std::parseInt(($data->arr[3] ?? null))));
 					$_this->arr[$_this->length] = $x3;
 					++$_this->length;
 
 				} else if ($token === "BRF") {
-					#src/lcov/Report.hx:96: characters 37-82
 					$record->branches->found = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "BRH") {
-					#src/lcov/Report.hx:97: characters 35-78
 					$record->branches->hit = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "DA") {
-					#src/lcov/Report.hx:82: characters 13-39
 					if ($data->length < 2) {
-						#src/lcov/Report.hx:82: characters 34-39
 						throw new LcovException("Invalid line data.", $coverage, $offset);
 					}
-					#src/lcov/Report.hx:83: lines 83-87
 					$_this1 = $record->lines->data;
-					#src/lcov/Report.hx:84: characters 15-36
 					$x4 = \Std::parseInt(($data->arr[0] ?? null));
-					#src/lcov/Report.hx:85: characters 15-36
 					$x5 = \Std::parseInt(($data->arr[1] ?? null));
-					#src/lcov/Report.hx:83: lines 83-87
 					$x6 = new LineData($x4, $x5, ($data->length >= 3 ? ($data->arr[2] ?? null) : ""));
 					$_this1->arr[$_this1->length] = $x6;
 					++$_this1->length;
 
 				} else if ($token === "FN") {
-					#src/lcov/Report.hx:77: characters 13-39
 					if ($data->length < 2) {
-						#src/lcov/Report.hx:77: characters 34-39
 						throw new LcovException("Invalid function name.", $coverage, $offset);
 					}
-					#src/lcov/Report.hx:78: characters 13-89
 					$_this2 = $record->functions->data;
-					#src/lcov/Report.hx:78: characters 57-64
 					$data1 = ($data->arr[1] ?? null);
-					#src/lcov/Report.hx:78: characters 13-89
 					$x7 = new FunctionData($data1, \Std::parseInt(($data->arr[0] ?? null)));
 					$_this2->arr[$_this2->length] = $x7;
 					++$_this2->length;
 
 				} else if ($token === "FNDA") {
-					#src/lcov/Report.hx:69: characters 13-39
 					if ($data->length < 2) {
-						#src/lcov/Report.hx:69: characters 34-39
 						throw new LcovException("Invalid function data.", $coverage, $offset);
 					}
-					#src/lcov/Report.hx:70: lines 70-73
 					$_g2 = 0;
 					$_g11 = $record->functions->data;
 					while ($_g2 < $_g11->length) {
-						#src/lcov/Report.hx:70: characters 18-22
 						$item = ($_g11->arr[$_g2] ?? null);
-						#src/lcov/Report.hx:70: lines 70-73
 						++$_g2;
 						if ($item->functionName === ($data->arr[1] ?? null)) {
-							#src/lcov/Report.hx:71: characters 15-58
 							$item->executionCount = \Std::parseInt(($data->arr[0] ?? null));
-							#src/lcov/Report.hx:72: characters 15-20
 							break;
 						}
 					}
 
 				} else if ($token === "FNF") {
-					#src/lcov/Report.hx:98: characters 38-84
 					$record->functions->found = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "FNH") {
-					#src/lcov/Report.hx:99: characters 36-80
 					$record->functions->hit = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "LF") {
-					#src/lcov/Report.hx:100: characters 34-76
 					$record->lines->found = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "LH") {
-					#src/lcov/Report.hx:101: characters 32-72
 					$record->lines->hit = \Std::parseInt(($data->arr[0] ?? null));
 				} else if ($token === "SF") {
-					#src/lcov/Report.hx:90: characters 54-61
 					$data2 = ($data->arr[0] ?? null);
-					#src/lcov/Report.hx:91: characters 23-43
 					$record1 = new BranchCoverage();
-					#src/lcov/Report.hx:92: characters 24-46
 					$record2 = new FunctionCoverage();
-					#src/lcov/Report.hx:90: lines 90-94
 					$record = new Record($data2, new HxAnon([
 						"branches" => $record1,
 						"functions" => $record2,
 						"lines" => new LineCoverage(),
 					]));
 				} else if ($token === "TN") {
-					#src/lcov/Report.hx:55: characters 32-57
 					$report->testName = ($data->arr[0] ?? null);
 				} else if ($token === "end_of_record") {
-					#src/lcov/Report.hx:56: characters 35-62
 					$_this3 = $report->records;
 					$_this3->arr[$_this3->length] = $record;
 					++$_this3->length;
@@ -196,20 +141,15 @@ class Report implements \JsonSerializable {
 			$__hx__real_e = ($__hx__caught_e instanceof HxException ? $__hx__caught_e->e : $__hx__caught_e);
 			if ($__hx__real_e instanceof LcovException) {
 				$e = $__hx__real_e;
-				#src/lcov/Report.hx:106: characters 32-37
 				throw $e;
 			} else {
 				$e1 = $__hx__real_e;
-				#src/lcov/Report.hx:107: characters 22-27
 				throw new LcovException("The coverage data has an invalid LCOV format.", $coverage);
 			}
 		}
-		#src/lcov/Report.hx:108: characters 5-42
 		if ($report->records->length === 0) {
-			#src/lcov/Report.hx:108: characters 37-42
 			throw new LcovException("The coverage data is empty.", $coverage);
 		}
-		#src/lcov/Report.hx:109: characters 5-18
 		return $report;
 	}
 
@@ -223,12 +163,9 @@ class Report implements \JsonSerializable {
 	 * @return Report
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/Report.hx:118: characters 5-59
 		$tmp = (Boot::is(\Reflect::field($map, "testName"), Boot::getClass('String')) ? \Reflect::field($map, "testName") : "");
-		#src/lcov/Report.hx:119: characters 5-105
 		$tmp1 = null;
 		if ((\Reflect::field($map, "records") instanceof \Array_hx)) {
-			#src/lcov/Report.hx:119: characters 37-100
 			$_this = \Reflect::field($map, "records");
 			$result = [];
 			$data = $_this->arr;
@@ -240,12 +177,10 @@ class Report implements \JsonSerializable {
 				$result[] = Record::fromJson($item);
 			}
 
-			#src/lcov/Report.hx:119: characters 5-105
 			$tmp1 = \Array_hx::wrap($result)->arr;
 		} else {
 			$tmp1 = (new \Array_hx())->arr;
 		}
-		#src/lcov/Report.hx:117: lines 117-120
 		return new Report($tmp, $tmp1);
 	}
 
@@ -260,13 +195,10 @@ class Report implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($testName = "", $records = null) {
-		#src/lcov/Report.hx:22: lines 22-29
 		if ($testName === null) {
 			$testName = "";
 		}
-		#src/lcov/Report.hx:23: characters 5-76
 		$this->records = ($records !== null ? \Array_hx::wrap($records) : new \Array_hx());
-		#src/lcov/Report.hx:28: characters 5-29
 		$this->testName = $testName;
 	}
 
@@ -276,7 +208,6 @@ class Report implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/Report.hx:146: characters 34-49
 		return $this->toJson();
 	}
 
@@ -287,7 +218,6 @@ class Report implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/Report.hx:127: characters 14-48
 		$_this = $this->records;
 		$result = [];
 		$data = $_this->arr;
@@ -299,8 +229,7 @@ class Report implements \JsonSerializable {
 			$result[] = $item->toJson();
 		}
 
-		$tmp = \Array_hx::wrap($result);
-		#src/lcov/Report.hx:126: lines 126-129
+		$tmp = \Array_hx::wrap($result)->arr;
 		return new HxAnon([
 			"records" => $tmp,
 			"testName" => $this->testName,
@@ -314,11 +243,8 @@ class Report implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/Report.hx:136: characters 5-78
 		$lines = (mb_strlen($this->testName) > 0 ? \Array_hx::wrap(["" . ("TN"??'null') . ":" . ($this->testName??'null')]) : new \Array_hx());
-		#src/lcov/Report.hx:137: characters 5-76
 		$_g = 0;
-		#src/lcov/Report.hx:137: characters 20-56
 		$_this = $this->records;
 		$result = [];
 		$data = $_this->arr;
@@ -330,20 +256,15 @@ class Report implements \JsonSerializable {
 			$result[] = $item->toString();
 		}
 
-		#src/lcov/Report.hx:137: characters 5-76
 		$_g1 = \Array_hx::wrap($result);
 		while ($_g < $_g1->length) {
-			#src/lcov/Report.hx:137: characters 10-16
 			$record = ($_g1->arr[$_g] ?? null);
-			#src/lcov/Report.hx:137: characters 5-76
 			++$_g;
-			#src/lcov/Report.hx:137: characters 58-76
 			$lines->arr[$lines->length] = $record;
 			++$lines->length;
 
 		}
 
-		#src/lcov/Report.hx:138: characters 5-28
 		return $lines->join("\x0A");
 	}
 

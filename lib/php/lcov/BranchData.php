@@ -43,13 +43,9 @@ class BranchData implements \JsonSerializable {
 	 * @return BranchData
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/BranchData.hx:42: characters 5-59
 		$tmp = (Boot::is(\Reflect::field($map, "lineNumber"), Boot::getClass('Int')) ? \Reflect::field($map, "lineNumber") : 0);
-		#src/lcov/BranchData.hx:43: characters 5-61
 		$tmp1 = (Boot::is(\Reflect::field($map, "blockNumber"), Boot::getClass('Int')) ? \Reflect::field($map, "blockNumber") : 0);
-		#src/lcov/BranchData.hx:44: characters 5-63
 		$tmp2 = (Boot::is(\Reflect::field($map, "branchNumber"), Boot::getClass('Int')) ? \Reflect::field($map, "branchNumber") : 0);
-		#src/lcov/BranchData.hx:41: lines 41-46
 		return new BranchData($tmp, $tmp1, $tmp2, (Boot::is(\Reflect::field($map, "taken"), Boot::getClass('Int')) ? \Reflect::field($map, "taken") : 0));
 	}
 
@@ -68,17 +64,12 @@ class BranchData implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($lineNumber, $blockNumber, $branchNumber, $taken = 0) {
-		#src/lcov/BranchData.hx:29: lines 29-34
 		if ($taken === null) {
 			$taken = 0;
 		}
-		#src/lcov/BranchData.hx:30: characters 5-35
 		$this->blockNumber = $blockNumber;
-		#src/lcov/BranchData.hx:31: characters 5-37
 		$this->branchNumber = $branchNumber;
-		#src/lcov/BranchData.hx:32: characters 5-33
 		$this->lineNumber = $lineNumber;
-		#src/lcov/BranchData.hx:33: characters 5-23
 		$this->taken = $taken;
 	}
 
@@ -88,7 +79,6 @@ class BranchData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/BranchData.hx:73: characters 34-49
 		return $this->toJson();
 	}
 
@@ -99,7 +89,6 @@ class BranchData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/BranchData.hx:52: lines 52-57
 		return new HxAnon([
 			"blockNumber" => $this->blockNumber,
 			"branchNumber" => $this->branchNumber,
@@ -115,14 +104,10 @@ class BranchData implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/BranchData.hx:64: characters 5-80
 		$value = "" . ("BRDA"??'null') . ":" . ($this->lineNumber??'null') . "," . ($this->blockNumber??'null') . "," . ($this->branchNumber??'null');
-		#src/lcov/BranchData.hx:65: characters 12-52
 		if ($this->taken > 0) {
-			#src/lcov/BranchData.hx:65: characters 25-38
 			return "" . ($value??'null') . "," . ($this->taken??'null');
 		} else {
-			#src/lcov/BranchData.hx:65: characters 43-51
 			return "" . ($value??'null') . ",-";
 		}
 	}

@@ -38,14 +38,10 @@ class FunctionCoverage implements \JsonSerializable {
 	 * @return FunctionCoverage
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/FunctionCoverage.hx:42: characters 5-49
 		$tmp = (Boot::is(\Reflect::field($map, "found"), Boot::getClass('Int')) ? \Reflect::field($map, "found") : 0);
-		#src/lcov/FunctionCoverage.hx:43: characters 5-45
 		$tmp1 = (Boot::is(\Reflect::field($map, "hit"), Boot::getClass('Int')) ? \Reflect::field($map, "hit") : 0);
-		#src/lcov/FunctionCoverage.hx:44: characters 5-105
 		$tmp2 = null;
 		if ((\Reflect::field($map, "data") instanceof \Array_hx)) {
-			#src/lcov/FunctionCoverage.hx:44: characters 34-100
 			$_this = \Reflect::field($map, "data");
 			$result = [];
 			$data = $_this->arr;
@@ -57,12 +53,10 @@ class FunctionCoverage implements \JsonSerializable {
 				$result[] = FunctionData::fromJson($item);
 			}
 
-			#src/lcov/FunctionCoverage.hx:44: characters 5-105
 			$tmp2 = \Array_hx::wrap($result)->arr;
 		} else {
 			$tmp2 = (new \Array_hx())->arr;
 		}
-		#src/lcov/FunctionCoverage.hx:41: lines 41-45
 		return new FunctionCoverage($tmp, $tmp1, $tmp2);
 	}
 
@@ -79,18 +73,14 @@ class FunctionCoverage implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($found = 0, $hit = 0, $data = null) {
-		#src/lcov/FunctionCoverage.hx:26: lines 26-34
 		if ($found === null) {
 			$found = 0;
 		}
 		if ($hit === null) {
 			$hit = 0;
 		}
-		#src/lcov/FunctionCoverage.hx:27: characters 5-67
 		$this->data = ($data !== null ? \Array_hx::wrap($data) : new \Array_hx());
-		#src/lcov/FunctionCoverage.hx:32: characters 5-23
 		$this->found = $found;
-		#src/lcov/FunctionCoverage.hx:33: characters 5-19
 		$this->hit = $hit;
 	}
 
@@ -100,7 +90,6 @@ class FunctionCoverage implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/FunctionCoverage.hx:74: characters 34-49
 		return $this->toJson();
 	}
 
@@ -111,7 +100,6 @@ class FunctionCoverage implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/FunctionCoverage.hx:52: characters 11-42
 		$_this = $this->data;
 		$result = [];
 		$data = $_this->arr;
@@ -123,8 +111,7 @@ class FunctionCoverage implements \JsonSerializable {
 			$result[] = $item->toJson();
 		}
 
-		$tmp = \Array_hx::wrap($result);
-		#src/lcov/FunctionCoverage.hx:51: lines 51-55
+		$tmp = \Array_hx::wrap($result)->arr;
 		return new HxAnon([
 			"data" => $tmp,
 			"found" => $this->found,
@@ -139,7 +126,6 @@ class FunctionCoverage implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/FunctionCoverage.hx:62: characters 19-56
 		$_this = $this->data;
 		$result = [];
 		$data = $_this->arr;
@@ -151,11 +137,8 @@ class FunctionCoverage implements \JsonSerializable {
 			$result[] = $item->toString(true);
 		}
 
-		#src/lcov/FunctionCoverage.hx:62: characters 5-57
 		$lines = \Array_hx::wrap($result);
-		#src/lcov/FunctionCoverage.hx:63: characters 5-74
 		$_g = 0;
-		#src/lcov/FunctionCoverage.hx:63: characters 18-56
 		$_this1 = $this->data;
 		$result1 = [];
 		$data1 = $_this1->arr;
@@ -167,28 +150,21 @@ class FunctionCoverage implements \JsonSerializable {
 			$result1[] = $item1->toString(false);
 		}
 
-		#src/lcov/FunctionCoverage.hx:63: characters 5-74
 		$_g1 = \Array_hx::wrap($result1);
 		while ($_g < $_g1->length) {
-			#src/lcov/FunctionCoverage.hx:63: characters 10-14
 			$line = ($_g1->arr[$_g] ?? null);
-			#src/lcov/FunctionCoverage.hx:63: characters 5-74
 			++$_g;
-			#src/lcov/FunctionCoverage.hx:63: characters 58-74
 			$lines->arr[$lines->length] = $line;
 			++$lines->length;
 
 		}
 
-		#src/lcov/FunctionCoverage.hx:64: characters 5-49
 		$lines->arr[$lines->length] = "" . ("FNF"??'null') . ":" . ($this->found??'null');
 		++$lines->length;
 
-		#src/lcov/FunctionCoverage.hx:65: characters 5-45
 		$lines->arr[$lines->length] = "" . ("FNH"??'null') . ":" . ($this->hit??'null');
 		++$lines->length;
 
-		#src/lcov/FunctionCoverage.hx:66: characters 5-28
 		return $lines->join("\x0A");
 	}
 

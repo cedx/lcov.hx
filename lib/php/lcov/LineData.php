@@ -38,11 +38,8 @@ class LineData implements \JsonSerializable {
 	 * @return LineData
 	 */
 	public static function fromJson ($map) {
-		#src/lcov/LineData.hx:37: characters 5-59
 		$tmp = (Boot::is(\Reflect::field($map, "lineNumber"), Boot::getClass('Int')) ? \Reflect::field($map, "lineNumber") : 0);
-		#src/lcov/LineData.hx:38: characters 5-67
 		$tmp1 = (Boot::is(\Reflect::field($map, "executionCount"), Boot::getClass('Int')) ? \Reflect::field($map, "executionCount") : 0);
-		#src/lcov/LineData.hx:36: lines 36-40
 		return new LineData($tmp, $tmp1, (Boot::is(\Reflect::field($map, "checksum"), Boot::getClass('String')) ? \Reflect::field($map, "checksum") : ""));
 	}
 
@@ -59,18 +56,14 @@ class LineData implements \JsonSerializable {
 	 * @return void
 	 */
 	public function __construct ($lineNumber, $executionCount = 0, $checksum = "") {
-		#src/lcov/LineData.hx:25: lines 25-29
 		if ($executionCount === null) {
 			$executionCount = 0;
 		}
 		if ($checksum === null) {
 			$checksum = "";
 		}
-		#src/lcov/LineData.hx:26: characters 5-29
 		$this->checksum = $checksum;
-		#src/lcov/LineData.hx:27: characters 5-41
 		$this->executionCount = $executionCount;
-		#src/lcov/LineData.hx:28: characters 5-33
 		$this->lineNumber = $lineNumber;
 	}
 
@@ -80,7 +73,6 @@ class LineData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function jsonSerialize () {
-		#src/lcov/LineData.hx:66: characters 34-49
 		return $this->toJson();
 	}
 
@@ -91,7 +83,6 @@ class LineData implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		#src/lcov/LineData.hx:46: lines 46-50
 		return new HxAnon([
 			"checksum" => $this->checksum,
 			"executionCount" => $this->executionCount,
@@ -106,14 +97,10 @@ class LineData implements \JsonSerializable {
 	 * @return string
 	 */
 	public function toString () {
-		#src/lcov/LineData.hx:57: characters 5-67
 		$value = "" . ("DA"??'null') . ":" . ($this->lineNumber??'null') . "," . ($this->executionCount??'null');
-		#src/lcov/LineData.hx:58: characters 12-60
 		if (mb_strlen($this->checksum) > 0) {
-			#src/lcov/LineData.hx:58: characters 35-51
 			return "" . ($value??'null') . "," . ($this->checksum??'null');
 		} else {
-			#src/lcov/LineData.hx:58: characters 55-60
 			return $value;
 		}
 	}
