@@ -213,7 +213,6 @@ class Report implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -238,7 +237,6 @@ class Report implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */

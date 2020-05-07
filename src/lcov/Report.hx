@@ -16,7 +16,7 @@ class Report #if php implements php.JsonSerializable #end {
     @param records The record list.
   **/
   public function new(testName: String = '', ?records: #if php php.NativeIndexedArray<Record> #else Array<Record> #end) {
-    this.records = records != null ? #if php php.Lib.toHaxeArray(records) #else records #end : [];
+    this.records = records != null ? #if php cast php.Lib.toHaxeArray(records) #else records #end : [];
     this.testName = testName;
   }
 
@@ -111,19 +111,13 @@ class Report #if php implements php.JsonSerializable #end {
     Std.is(map['records'], Array) ? (map['records']: Array<Any>).map(item -> Record.fromJson(item)) : []
   );
 
-  /**
-    Converts this object to a map in JSON format.
-    @return The map in JSON format corresponding to this object.
-  **/
+  /** Converts this object to a map in JSON format. **/
   public function toJson() return {
     records: #if php php.Lib.toPhpArray(records.map(item -> item.toJson())) #else records.map(item -> item.toJson()) #end,
     testName: testName
   };
 
-  /**
-    Returns a string representation of this object.
-    @return The string representation of this object.
-  **/
+  /** Returns a string representation of this object. **/
   public function toString(): String {
     final lines = testName.length > 0 ? ['${Token.testName}:$testName'] : [];
     for (record in records.map(item -> item.toString())) lines.push(record);

@@ -34,9 +34,7 @@ class Record implements \JsonSerializable {
 	public $sourceFile;
 
 	/**
-	 * Creates a new record from the specified JSON object.
-	 * @param map A JSON object representing a record.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new record from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -54,12 +52,10 @@ class Record implements \JsonSerializable {
 	}
 
 	/**
-	 * Creates a new record.
-	 * @param sourceFile The path to the source file.
-	 * @param options An object specifying values used to initialize this instance.
+	 * Creates a new record with the specified source file.
 	 * 
 	 * @param string $sourceFile
-	 * @param object $options
+	 * @param mixed $options
 	 * 
 	 * @return void
 	 */
@@ -69,14 +65,14 @@ class Record implements \JsonSerializable {
 		$this->branches = null;
 		$this->sourceFile = $sourceFile;
 		if ($options !== null) {
-			if (isset($options->branches)) {
-				$this->branches = $options->branches;
+			if (isset($options["branches"])) {
+				$this->branches = $options["branches"];
 			}
-			if (isset($options->functions)) {
-				$this->functions = $options->functions;
+			if (isset($options["functions"])) {
+				$this->functions = $options["functions"];
 			}
-			if (isset($options->lines)) {
-				$this->lines = $options->lines;
+			if (isset($options["lines"])) {
+				$this->lines = $options["lines"];
 			}
 		}
 	}
@@ -92,7 +88,6 @@ class Record implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -110,7 +105,6 @@ class Record implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */

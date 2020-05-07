@@ -29,9 +29,7 @@ class LineCoverage implements \JsonSerializable {
 	public $hit;
 
 	/**
-	 * Creates a new line coverage from the specified JSON object.
-	 * @param map A JSON object representing a line coverage.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new line coverage from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -62,9 +60,6 @@ class LineCoverage implements \JsonSerializable {
 
 	/**
 	 * Creates a new line coverage.
-	 * @param found The number of lines found.
-	 * @param hit The number of lines found.
-	 * @param data The coverage data.
 	 * 
 	 * @param int $found
 	 * @param int $hit
@@ -95,7 +90,6 @@ class LineCoverage implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -121,7 +115,6 @@ class LineCoverage implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */

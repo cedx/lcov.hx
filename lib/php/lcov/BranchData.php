@@ -34,9 +34,7 @@ class BranchData implements \JsonSerializable {
 	public $taken;
 
 	/**
-	 * Creates a new branch data from the specified JSON object.
-	 * @param map A JSON object representing a branch data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new branch data from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -51,10 +49,6 @@ class BranchData implements \JsonSerializable {
 
 	/**
 	 * Creates a new branch data.
-	 * @param lineNumber The line number.
-	 * @param blockNumber The block number.
-	 * @param branchNumber The branch number.
-	 * @param taken A number indicating how often this branch was taken.
 	 * 
 	 * @param int $lineNumber
 	 * @param int $blockNumber
@@ -84,7 +78,6 @@ class BranchData implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -99,7 +92,6 @@ class BranchData implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */

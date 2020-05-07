@@ -29,9 +29,7 @@ class BranchCoverage implements \JsonSerializable {
 	public $hit;
 
 	/**
-	 * Creates a new branch data from the specified JSON object.
-	 * @param map A JSON object representing a branch data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new branch coverage from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -62,9 +60,6 @@ class BranchCoverage implements \JsonSerializable {
 
 	/**
 	 * Creates a new branch coverage.
-	 * @param found The number of branches found.
-	 * @param hit The number of branches hit.
-	 * @param data The coverage data.
 	 * 
 	 * @param int $found
 	 * @param int $hit
@@ -95,7 +90,6 @@ class BranchCoverage implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -121,7 +115,6 @@ class BranchCoverage implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */

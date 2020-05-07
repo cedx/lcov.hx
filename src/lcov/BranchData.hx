@@ -16,13 +16,7 @@ class BranchData #if php implements php.JsonSerializable #end {
   /** A number indicating how often this branch was taken. **/
   public var taken: Int;
 
-  /**
-    Creates a new branch data.
-    @param lineNumber The line number.
-    @param blockNumber The block number.
-    @param branchNumber The branch number.
-    @param taken A number indicating how often this branch was taken.
-  **/
+  /** Creates a new branch data. **/
   public function new(lineNumber: Int, blockNumber: Int, branchNumber: Int, taken: Int = 0) {
     this.blockNumber = blockNumber;
     this.branchNumber = branchNumber;
@@ -30,11 +24,7 @@ class BranchData #if php implements php.JsonSerializable #end {
     this.taken = taken;
   }
 
-  /**
-    Creates a new branch data from the specified JSON object.
-    @param map A JSON object representing a branch data.
-    @return The instance corresponding to the specified JSON object.
-  **/
+  /** Creates a new branch data from the specified `map` in JSON format. **/
   public static function fromJson(map: DynamicAccess<Any>) return new BranchData(
     Std.is(map['lineNumber'], Int) ? map['lineNumber'] : 0,
     Std.is(map['blockNumber'], Int) ? map['blockNumber'] : 0,
@@ -42,10 +32,7 @@ class BranchData #if php implements php.JsonSerializable #end {
     Std.is(map['taken'], Int) ? map['taken'] : 0
   );
 
-  /**
-    Converts this object to a map in JSON format.
-    @return The map in JSON format corresponding to this object.
-  **/
+  /** Converts this object to a map in JSON format. **/
   public function toJson() return {
     blockNumber: blockNumber,
     branchNumber: branchNumber,
@@ -53,10 +40,7 @@ class BranchData #if php implements php.JsonSerializable #end {
     taken: taken
   };
 
-  /**
-    Returns a string representation of this object.
-    @return The string representation of this object.
-  **/
+  /** Returns a string representation of this object. **/
   public function toString(): String {
     final value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
     return taken > 0 ? '$value,$taken' : '$value,-';

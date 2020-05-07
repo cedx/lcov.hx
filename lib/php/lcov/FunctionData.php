@@ -29,9 +29,7 @@ class FunctionData implements \JsonSerializable {
 	public $lineNumber;
 
 	/**
-	 * Creates a new function data from the specified JSON object.
-	 * @param map A JSON object representing a function data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new function data from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -45,9 +43,6 @@ class FunctionData implements \JsonSerializable {
 
 	/**
 	 * Creates a new function data.
-	 * @param functionName The function name.
-	 * @param lineNumber The line number of the function start.
-	 * @param executionCount The execution count.
 	 * 
 	 * @param string $functionName
 	 * @param int $lineNumber
@@ -75,7 +70,6 @@ class FunctionData implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -89,8 +83,6 @@ class FunctionData implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @param asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
-	 * @return The string representation of this object.
 	 * 
 	 * @param bool $asDefinition
 	 * 

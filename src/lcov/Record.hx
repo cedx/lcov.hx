@@ -30,21 +30,14 @@ class Record #if php implements php.JsonSerializable #end {
     }
   }
 
-  /**
-    Creates a new record from the specified JSON object.
-    @param map A JSON object representing a record.
-    @return The instance corresponding to the specified JSON object.
-  **/
+  /** Creates a new record from the specified `map` in JSON format. **/
   public static function fromJson(map: DynamicAccess<Any>) return new Record(Std.is(map['sourceFile'], String) ? map['sourceFile'] : '', {
     branches: Reflect.isObject(map['branches']) ? BranchCoverage.fromJson(map['branches']) : null,
     functions: Reflect.isObject(map['functions']) ? FunctionCoverage.fromJson(map['functions']) : null,
     lines: Reflect.isObject(map['lines']) ? LineCoverage.fromJson(map['lines']) : null
   });
 
-  /**
-    Converts this object to a map in JSON format.
-    @return The map in JSON format corresponding to this object.
-  **/
+  /** Converts this object to a map in JSON format. **/
   public function toJson() return {
     branches: branches != null ? branches.toJson() : null,
     functions: functions != null ? functions.toJson() : null,
@@ -52,10 +45,7 @@ class Record #if php implements php.JsonSerializable #end {
     sourceFile: sourceFile
   };
 
-  /**
-    Returns a string representation of this object.
-    @return The string representation of this object.
-  **/
+  /** Returns a string representation of this object. **/
   public function toString(): String {
     final output = ['${Token.sourceFile}:$sourceFile'];
     if (functions != null) output.push(functions.toString());

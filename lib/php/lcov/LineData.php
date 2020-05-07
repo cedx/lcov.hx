@@ -29,9 +29,7 @@ class LineData implements \JsonSerializable {
 	public $lineNumber;
 
 	/**
-	 * Creates a new line data from the specified JSON object.
-	 * @param map A JSON object representing a line data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * Creates a new line data from the specified `map` in JSON format.
 	 * 
 	 * @param mixed $map
 	 * 
@@ -45,9 +43,6 @@ class LineData implements \JsonSerializable {
 
 	/**
 	 * Creates a new line data.
-	 * @param lineNumber The line number.
-	 * @param executionCount The execution count.
-	 * @param checksum The data checksum.
 	 * 
 	 * @param int $lineNumber
 	 * @param int $executionCount
@@ -78,7 +73,6 @@ class LineData implements \JsonSerializable {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
 	 * 
 	 * @return object
 	 */
@@ -92,7 +86,6 @@ class LineData implements \JsonSerializable {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
 	 * 
 	 * @return string
 	 */
