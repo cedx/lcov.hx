@@ -1,35 +1,35 @@
 {
-  "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
-  "homepage": "https://docs.belin.io/lcov.hx",
-  "license": "MIT",
-  "name": "cedx/lcov.hx",
-  "type": "library",
-  "authors": [
-    {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
-  ],
-  "autoload": {
-    "psr-4": {"lcov\\": "lib/php/lcov/"}
-  },
-  "config": {
-    "optimize-autoloader": true
-  },
-  "funding": [
-    {"type": "patreon", "url": "https://www.patreon.com/cedx"}
-  ],
-  "keywords": [
-    "coverage",
-    "formatter",
-    "lcov",
-    "parser",
-    "test"
-  ],
-  "require": {
-    "php": ">=7.0.0",
-    "ext-json": "*",
-    "cedx/haxe": "^0.1.2"
-  },
-  "support": {
-    "docs": "https://api.belin.io/lcov.hx",
-    "issues": "https://git.belin.io/cedx/lcov.hx/issues"
-  }
+	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
+	"homepage": "https://docs.belin.io/lcov.hx",
+	"license": "MIT",
+	"name": "cedx/lcov.hx",
+	"type": "library",
+	"authors": [
+		{"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
+	],
+	"autoload": {
+		"psr-4": {"lcov\\": "lib/php/lcov/"}
+	},
+	"config": {
+		"optimize-autoloader": true
+	},
+	"funding": [
+		{"type": "patreon", "url": "https://www.patreon.com/cedx"}
+	],
+	"keywords": [
+		"coverage",
+		"formatter",
+		"lcov",
+		"parser",
+		"test"
+	],
+	"require": {
+		"php": ">=7.0.0",
+		"ext-json": "*",
+		"cedx/haxe": "^0.1.2"
+	},
+	"support": {
+		"docs": "https://api.belin.io/lcov.hx",
+		"issues": "https://git.belin.io/cedx/lcov.hx/issues"
+	}
 }

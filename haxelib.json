@@ -1,11 +1,11 @@
 {
-  "classPath": "src/",
-  "contributors": ["cedx"],
-  "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
-  "license": "MIT",
-  "name": "lcov",
-  "releasenote": "Initial release.",
-  "tags": ["coverage", "formatter", "lcov", "parser", "test"],
-  "url": "https://docs.belin.io/lcov.hx",
-  "version": "0.1.0"
+	"classPath": "src/",
+	"contributors": ["cedx"],
+	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
+	"license": "MIT",
+	"name": "lcov",
+	"releasenote": "Initial release.",
+	"tags": ["coverage", "formatter", "lcov", "parser", "test"],
+	"url": "https://docs.belin.io/lcov.hx",
+	"version": "0.1.0"
 }

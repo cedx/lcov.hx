@@ -2,7 +2,7 @@
 Set-StrictMode -Version Latest
 Set-Location (Split-Path $PSScriptRoot)
 
-foreach ($item in @('build', 'doc/api', 'lib/js/lcov.*', 'lib/php', 'www')) {
+foreach ($item in "build", "doc/api", "lib/js/lcov.*", "lib/neko", "lib/php", "www") {
   if (Test-Path $item) { Remove-Item $item -Recurse }
 }
 
