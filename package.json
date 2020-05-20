@@ -3,25 +3,26 @@
 	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
 	"homepage": "https://docs.belin.io/lcov.hx",
 	"license": "MIT",
-	"main": "lib/js/lcov.cjs",
+	"main": "lib/js/index.js",
 	"name": "@cedx/lcov.hx",
-	"type": "module",
-	"types": "lib/js/lcov.d.ts",
-	"version": "0.1.0",
+	"type": "commonjs",
+	"types": "lib/js/index.d.ts",
+	"version": "1.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
+		"@cedx/coveralls": "^10.0.0",
 		"terser": "^4.6.13"
 	},
 	"engines": {
 		"node": ">=14.0.0"
 	},
 	"exports": {
-		"import": "lib/js/lcov.mjs",
-		"require": "lib/js/lcov.cjs"
+		"import": "lib/js/index.mjs",
+		"require": "lib/js/index.js"
 	},
 	"files": [
 		"build/",
@@ -41,5 +42,8 @@
 	"repository": {
 		"type": "git",
 		"url": "https://git.belin.io/cedx/lcov.hx.git"
+	},
+	"scripts": {
+		"prepack": "pwsh tool/dist.ps1"
 	}
 }

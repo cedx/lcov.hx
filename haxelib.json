@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"name": "lcov",
 	"releasenote": "Initial release.",
-	"tags": ["coverage", "formatter", "lcov", "parser", "test"],
+	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
 	"url": "https://docs.belin.io/lcov.hx",
-	"version": "0.1.0"
+	"version": "1.0.0"
 }
