@@ -1,4 +1,5 @@
 --class-path src
+--define analyzer-optimize
 
 lcov.BranchCoverage
 lcov.BranchData
@@ -12,12 +13,8 @@ lcov.Report
 lcov.Token
 
 --each
---define doc-gen
---xml var/api.xml
-
---next
 --define js-es=6
---js lib/js/lcov.cjs
+--js lib/js/lcov.js
 
 --next
 --define php-lib=php

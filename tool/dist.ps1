@@ -4,10 +4,10 @@ Set-Location (Split-Path $PSScriptRoot)
 
 tool/clean.ps1
 tool/version.ps1
-haxe build.hxml
+haxe --no-traces build.hxml
 
 if (-not (Test-Path build)) { New-Item build -ItemType Directory | Out-Null }
-Copy-Item lib/js/lcov.cjs build/lcov.js
+Copy-Item lib/js/lcov.js build/lcov.js
 node_modules/.bin/terser.ps1 --config-file=etc/terser.json --output=build/lcov.min.js build/lcov.js
 
 foreach ($item in Get-ChildItem lib/php) {
