@@ -41,11 +41,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
+          haxelib install hxnodejs
           haxelib install all --always
           npm install --ignore-scripts
       - name: Run tests
         run: |
-          haxe --define js-es=6 --js var/tests.js test.hxml
+          haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml
           node var/tests.js
   neko:
     runs-on: ubuntu-latest
