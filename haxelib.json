@@ -7,5 +7,5 @@
 	"releasenote": "Initial release.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
 	"url": "https://docs.belin.io/lcov.hx",
-	"version": "1.0.0"
+	"version": "1.0.1"
 }
