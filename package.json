@@ -44,6 +44,7 @@
 		"url": "https://git.belin.io/cedx/lcov.hx.git"
 	},
 	"scripts": {
+		"coverage": "coveralls var/lcov.info",
 		"prepack": "pwsh tool/dist.ps1"
 	}
 }
