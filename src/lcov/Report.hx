@@ -1,5 +1,6 @@
 package lcov;
 
+import haxe.Exception;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
@@ -22,10 +23,10 @@ using StringTools;
 		Throws a `LcovException` if a parsing error occurred.
 	**/
 	public static function fromCoverage(coverage: String): Report {
+		var offset = 0;
 		final report = new Report();
 
 		try {
-			var offset = 0;
 			var record: Record = null;
 			for (line in ~/\r?\n/g.split(coverage)) {
 				offset += line.length;
@@ -91,7 +92,7 @@ using StringTools;
 		}
 
 		catch (e: LcovException) { throw e; }
-		catch (e: Any) { throw new LcovException("The coverage data has an invalid LCOV format.", coverage); }
+		catch (e: Exception) { throw new LcovException("The coverage data has an invalid LCOV format.", coverage, offset, e); }
 		if (report.records.length == 0) throw new LcovException("The coverage data is empty.", coverage);
 		return report;
 	}
