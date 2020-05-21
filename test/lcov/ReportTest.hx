@@ -59,7 +59,7 @@ class ReportTest extends Test {
 		final map = new Report().toJson();
 		Assert.equals(2, Reflect.fields(map).length);
 		Assert.is(map.records, Array);
-		Assert.isTrue(map.records.empty());
+		Assert.equals(0, map.records.length);
 		Assert.equals(0, map.testName.length);
 
 		// It should return a non-empty map for an initialized instance.
