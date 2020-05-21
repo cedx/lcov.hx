@@ -7,7 +7,7 @@ using StringTools;
 @:expose class Report {
 	
 	/** The record list. **/
-	public var records: Array<Record>;
+	public final records: Array<Record>;
 
 	/** The test name. **/
 	public var testName: String;
