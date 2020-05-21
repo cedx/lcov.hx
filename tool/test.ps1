@@ -6,7 +6,7 @@ Write-Host "> Testing Eval target..."
 haxe --interp test.hxml
 
 Write-Host "> Testing JavaScript target..."
-haxe --define js-es=6 --js var/tests.js test.hxml
+haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml
 node var/tests.js
 
 Write-Host "> Testing NekoVM target..."

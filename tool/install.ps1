@@ -6,6 +6,7 @@ haxelib newrepo
 haxelib install checkstyle
 haxelib install dox
 haxelib install formatter
+haxelib install hxnodejs
 haxelib install all --always
 
 composer install --no-interaction
