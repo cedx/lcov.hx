@@ -1,6 +1,5 @@
 --class-path src
 --class-path test
---interp
 --library mcover
 --library utest
 --macro mcover.MCover.coverage([''], ['src'])
