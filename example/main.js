@@ -14,7 +14,7 @@ function formatReport() {
 	});
 
 	const report = new Report("Example", [record]);
-	console.log(report);
+	console.log(report.toString());
 }
 
 /** Parses a LCOV report to coverage data. */

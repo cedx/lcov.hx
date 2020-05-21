@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>LCOV for JS</title>
-		<script src="https://cdn.jsdelivr.net/npm/@cedx/lcov.hx/build/lcov.min.js"></script>
+		<script src="../build/lcov.min.js"></script>
 	</head>
 
 	<body>
@@ -25,7 +25,7 @@
 			});
 
 			const report = new Report("Example", [record]);
-			console.log(report);
+			console.log(report.toString());
 
 			// Parse a LCOV report to coverage data.
 			const coverage = `

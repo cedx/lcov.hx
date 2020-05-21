@@ -18,7 +18,7 @@ class Example {
 		});
 
 		final report = new Report("Example", [record]);
-		Sys.println(report);
+		Sys.println(report.toString());
 	}
 
 	/** Parses a LCOV report to coverage data. **/

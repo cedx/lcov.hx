@@ -133,7 +133,7 @@ All you have to do is to create the adequate structure using these different cla
 				});
 
 				final report = new Report("Example", [record]);
-				Sys.println(report);
+				Sys.println(report.toString());
 			}
 		}
 
@@ -153,7 +153,7 @@ All you have to do is to create the adequate structure using these different cla
 			});
 
 			const report = new Report("Example", [record]);
-			console.log(report);
+			console.log(report.toString());
 		}
 
 === "PHP"
