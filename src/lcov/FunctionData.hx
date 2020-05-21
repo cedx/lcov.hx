@@ -1,8 +1,7 @@
 package lcov;
 
 /** Provides details for function coverage. **/
-@:expose
-class FunctionData #if php implements JsonSerializable<Dynamic> #end {
+@:expose class FunctionData {
 	
 	/** The execution count. **/
 	public var executionCount: Int;
@@ -20,25 +19,10 @@ class FunctionData #if php implements JsonSerializable<Dynamic> #end {
 		this.lineNumber = lineNumber;
 	}
 
-	/** Converts this object to a map in JSON format. **/
-	public function toJson() return {
-		executionCount: executionCount,
-		functionName: functionName,
-		lineNumber: lineNumber
-	};
-
 	/** Returns a string representation of this object. **/
 	public function toString(asDefinition: Bool = false): String {
 		final token = asDefinition ? Token.functionName : Token.functionData;
 		final count = asDefinition ? lineNumber : executionCount;
 		return '$token:$count,$functionName';
 	}
-
-	#if js
-	/** An alias for the `toJson()` method. **/
-	public function toJSON() return toJson();
-	#elseif php
-	/** An alias for the `toJson()` method. **/
-	public function jsonSerialize() return toJson();
-	#end
 }

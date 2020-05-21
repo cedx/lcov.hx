@@ -39,9 +39,9 @@ class Record #if php implements JsonSerializable<Dynamic> #end {
 
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
-		branches: branches != null ? branches.toJson() : null,
-		functions: functions != null ? functions.toJson() : null,
-		lines: lines != null ? lines.toJson() : null,
+		branches: branches != null ? branches : null,
+		functions: functions != null ? functions : null,
+		lines: lines != null ? lines : null,
 		sourceFile: sourceFile
 	};
 
@@ -68,11 +68,11 @@ class Record #if php implements JsonSerializable<Dynamic> #end {
 typedef RecordOptions = {
 
 	/** The branch coverage. */
-	@:optional var branches: BranchCoverage;
+	var ?branches: BranchCoverage;
 
 	/** The function coverage. */
-	@:optional var functions: FunctionCoverage;
+	var ?functions: FunctionCoverage;
 
 	/** The line coverage. */
-	@:optional var lines: LineCoverage;
+	var ?lines: LineCoverage;
 }

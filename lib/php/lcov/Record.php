@@ -74,13 +74,10 @@ class Record implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		$tmp = ($this->branches !== null ? $this->branches->toJson() : null);
-		$tmp1 = ($this->functions !== null ? $this->functions->toJson() : null);
-		$tmp2 = ($this->lines !== null ? $this->lines->toJson() : null);
 		return new HxAnon([
-			"branches" => $tmp,
-			"functions" => $tmp1,
-			"lines" => $tmp2,
+			"branches" => ($this->branches !== null ? $this->branches : null),
+			"functions" => ($this->functions !== null ? $this->functions : null),
+			"lines" => ($this->lines !== null ? $this->lines : null),
 			"sourceFile" => $this->sourceFile,
 		]);
 	}

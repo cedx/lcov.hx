@@ -99,7 +99,7 @@ class Report #if php implements JsonSerializable<Dynamic> #end {
 
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
-		records: #if php toPhpArray(records.map(item -> item.toJson())) #else records.map(item -> item.toJson()) #end,
+		records: records,
 		testName: testName
 	};
 

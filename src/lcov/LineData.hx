@@ -1,8 +1,7 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-@:expose
-class LineData #if php implements JsonSerializable<Dynamic> #end {
+@:expose class LineData {
 	
 	/** The data checksum. **/
 	public var checksum: String;
@@ -20,24 +19,9 @@ class LineData #if php implements JsonSerializable<Dynamic> #end {
 		this.lineNumber = lineNumber;
 	}
 
-	/** Converts this object to a map in JSON format. **/
-	public function toJson() return {
-		checksum: checksum,
-		executionCount: executionCount,
-		lineNumber: lineNumber
-	};
-
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
 		final value = '${Token.lineData}:$lineNumber,$executionCount';
 		return checksum.length > 0 ? '$value,$checksum' : value;
 	}
-
-	#if js
-	/** An alias for the `toJson()` method. **/
-	public function toJSON() return toJson();
-	#elseif php
-	/** An alias for the `toJson()` method. **/
-	public function jsonSerialize() return toJson();
-	#end
 }

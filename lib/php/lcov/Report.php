@@ -169,17 +169,8 @@ class Report implements \JsonSerializable {
 	 * @return object
 	 */
 	public function toJson () {
-		$_this = $this->records;
-		$result = [];
-		$data = $_this->arr;
-		$_g_current = 0;
-		$_g_length = count($data);
-		while ($_g_current < $_g_length) {
-			$result[] = $data[$_g_current++]->toJson();
-		}
-		$tmp = \Array_hx::wrap($result)->arr;
 		return new HxAnon([
-			"records" => $tmp,
+			"records" => $this->records,
 			"testName" => $this->testName,
 		]);
 	}

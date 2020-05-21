@@ -5,13 +5,12 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 
 /**
  * Provides details for branch coverage.
  */
-class BranchData implements \JsonSerializable {
+class BranchData {
 	/**
 	 * @var int
 	 * The block number.
@@ -51,29 +50,6 @@ class BranchData implements \JsonSerializable {
 		$this->branchNumber = $branchNumber;
 		$this->lineNumber = $lineNumber;
 		$this->taken = $taken;
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		return new HxAnon([
-			"blockNumber" => $this->blockNumber,
-			"branchNumber" => $this->branchNumber,
-			"lineNumber" => $this->lineNumber,
-			"taken" => $this->taken,
-		]);
 	}
 
 	/**

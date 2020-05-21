@@ -5,13 +5,12 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 
 /**
  * Provides details for line coverage.
  */
-class LineData implements \JsonSerializable {
+class LineData {
 	/**
 	 * @var string
 	 * The data checksum.
@@ -47,28 +46,6 @@ class LineData implements \JsonSerializable {
 		$this->checksum = $checksum;
 		$this->executionCount = $executionCount;
 		$this->lineNumber = $lineNumber;
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		return new HxAnon([
-			"checksum" => $this->checksum,
-			"executionCount" => $this->executionCount,
-			"lineNumber" => $this->lineNumber,
-		]);
 	}
 
 	/**

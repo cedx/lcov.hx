@@ -5,13 +5,12 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 
 /**
  * Provides the coverage data of functions.
  */
-class FunctionCoverage implements \JsonSerializable {
+class FunctionCoverage {
 	/**
 	 * @var \Array_hx
 	 * The coverage data.
@@ -47,37 +46,6 @@ class FunctionCoverage implements \JsonSerializable {
 		$this->data = ($data !== null ? \Array_hx::wrap($data) : new \Array_hx());
 		$this->found = $found;
 		$this->hit = $hit;
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		$_this = $this->data;
-		$result = [];
-		$data = $_this->arr;
-		$_g_current = 0;
-		$_g_length = count($data);
-		while ($_g_current < $_g_length) {
-			$result[] = $data[$_g_current++]->toJson();
-		}
-		$tmp = \Array_hx::wrap($result)->arr;
-		return new HxAnon([
-			"data" => $tmp,
-			"found" => $this->found,
-			"hit" => $this->hit,
-		]);
 	}
 
 	/**

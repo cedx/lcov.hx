@@ -5,13 +5,12 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 
 /**
  * Provides details for function coverage.
  */
-class FunctionData implements \JsonSerializable {
+class FunctionData {
 	/**
 	 * @var int
 	 * The execution count.
@@ -44,28 +43,6 @@ class FunctionData implements \JsonSerializable {
 		$this->executionCount = $executionCount;
 		$this->functionName = $functionName;
 		$this->lineNumber = $lineNumber;
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		return new HxAnon([
-			"executionCount" => $this->executionCount,
-			"functionName" => $this->functionName,
-			"lineNumber" => $this->lineNumber,
-		]);
 	}
 
 	/**

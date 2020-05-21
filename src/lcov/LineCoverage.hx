@@ -1,8 +1,7 @@
 package lcov;
 
 /** Provides the coverage data of lines. **/
-@:expose
-class LineCoverage #if php implements JsonSerializable<Dynamic> #end {
+@:expose class LineCoverage {
 
 	/** The coverage data. **/
 	public final data: Array<LineData>;
@@ -20,13 +19,6 @@ class LineCoverage #if php implements JsonSerializable<Dynamic> #end {
 		this.hit = hit;
 	}
 
-	/** Converts this object to a map in JSON format. **/
-	public function toJson() return {
-		data: #if php toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,
-		found: found,
-		hit: hit
-	};
-
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
 		final lines = data.map(item -> item.toString());
@@ -34,12 +26,4 @@ class LineCoverage #if php implements JsonSerializable<Dynamic> #end {
 		lines.push('${Token.linesHit}:$hit');
 		return lines.join("\n");
 	}
-
-	#if js
-	/** An alias for the `toJson()` method. **/
-	public function toJSON() return toJson();
-	#elseif php
-	/** An alias for the `toJson()` method. **/
-	public function jsonSerialize() return toJson();
-	#end
 }
