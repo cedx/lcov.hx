@@ -3,8 +3,7 @@ package lcov;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
-@:expose
-class Report #if php implements JsonSerializable<Dynamic> #end {
+@:expose class Report {
 	
 	/** The record list. **/
 	public var records: Array<Record>;
@@ -97,24 +96,10 @@ class Report #if php implements JsonSerializable<Dynamic> #end {
 		return report;
 	}
 
-	/** Converts this object to a map in JSON format. **/
-	public function toJson() return {
-		records: records,
-		testName: testName
-	};
-
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
 		final lines = testName.length > 0 ? ['${Token.testName}:$testName'] : [];
 		for (record in records.map(item -> item.toString())) lines.push(record);
 		return lines.join("\n");
 	}
-
-	#if js
-	/** An alias for the `toJson()` method. **/
-	public function toJSON() return toJson();
-	#elseif php
-	/** An alias for the `toJson()` method. **/
-	public function jsonSerialize() return toJson();
-	#end
 }

@@ -5,14 +5,13 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 use \php\_Boot\HxString;
 
 /**
  * Represents a trace file, that is a coverage report.
  */
-class Report implements \JsonSerializable {
+class Report {
 	/**
 	 * @var \Array_hx
 	 * The record list.
@@ -152,27 +151,6 @@ class Report implements \JsonSerializable {
 		}
 		$this->records = ($records !== null ? \Array_hx::wrap($records) : new \Array_hx());
 		$this->testName = $testName;
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		return new HxAnon([
-			"records" => $this->records,
-			"testName" => $this->testName,
-		]);
 	}
 
 	/**
