@@ -1,5 +1,7 @@
 package lcov;
 
+using StringTools;
+
 /** Represents a trace file, that is a coverage report. **/
 @:expose
 class Report #if php implements JsonSerializable<Dynamic> #end {
