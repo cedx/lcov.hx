@@ -6,8 +6,7 @@ import php.NativeStructArray;
 #end
 
 /** Provides the coverage data of a source file. **/
-@:expose
-class Record #if php implements JsonSerializable<Dynamic> #end {
+@:expose class Record {
 	
 	/** The branch coverage. **/
 	public var branches: Null<BranchCoverage> = null;
@@ -37,14 +36,6 @@ class Record #if php implements JsonSerializable<Dynamic> #end {
 		}
 	}
 
-	/** Converts this object to a map in JSON format. **/
-	public function toJson() return {
-		branches: branches != null ? branches : null,
-		functions: functions != null ? functions : null,
-		lines: lines != null ? lines : null,
-		sourceFile: sourceFile
-	};
-
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
 		final output = ['${Token.sourceFile}:$sourceFile'];
@@ -54,14 +45,6 @@ class Record #if php implements JsonSerializable<Dynamic> #end {
 		output.push(Token.endOfRecord);
 		return output.join("\n");
 	}
-
-	#if js
-	/** An alias for the `toJson()` method. **/
-	public function toJSON() return toJson();
-	#elseif php
-	/** An alias for the `toJson()` method. **/
-	public function jsonSerialize() return toJson();
-	#end
 }
 
 /** Defines the options of a `Record` instance. */

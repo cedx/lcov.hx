@@ -5,13 +5,12 @@
 
 namespace lcov;
 
-use \php\_Boot\HxAnon;
 use \php\Boot;
 
 /**
  * Provides the coverage data of a source file.
  */
-class Record implements \JsonSerializable {
+class Record {
 	/**
 	 * @var BranchCoverage
 	 * The branch coverage.
@@ -57,29 +56,6 @@ class Record implements \JsonSerializable {
 				$this->lines = $options["lines"];
 			}
 		}
-	}
-
-	/**
-	 * An alias for the `toJson()` method.
-	 * 
-	 * @return object
-	 */
-	public function jsonSerialize () {
-		return $this->toJson();
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * 
-	 * @return object
-	 */
-	public function toJson () {
-		return new HxAnon([
-			"branches" => ($this->branches !== null ? $this->branches : null),
-			"functions" => ($this->functions !== null ? $this->functions : null),
-			"lines" => ($this->lines !== null ? $this->lines : null),
-			"sourceFile" => $this->sourceFile,
-		]);
 	}
 
 	/**
