@@ -74,9 +74,8 @@ class ReportTest extends Test {
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "TN:<testName>".
-		Assert.equals(0, Std.string(new Report()).length);
-
 		final record = new Record("");
-		Assert.equals('TN:LcovTest\n$record', Std.string(new Report("LcovTest", [record])));
+		Assert.equals(0, new Report().toString().length);
+		Assert.equals('TN:LcovTest\n$record', new Report("LcovTest", [record]).toString());
 	}
 }

@@ -18,7 +18,6 @@ class LineCoverageTest extends Test {
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.is(map.data, Array);
 		Assert.equals(1, map.data.length);
-
 		Assert.isTrue(Reflect.isObject(map.data[0]));
 		Assert.is(map.data[0].lineNumber, Int);
 		Assert.equals(23, map.found);
@@ -28,9 +27,8 @@ class LineCoverageTest extends Test {
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "LF:<found>\nLH:<hit>".
-		Assert.equals("LF:0\nLH:0", Std.string(new LineCoverage()));
-
 		final data = new LineData(127, 3);
-		Assert.equals('$data\nLF:23\nLH:11', Std.string(new LineCoverage(23, 11, [data])));
+		Assert.equals("LF:0\nLH:0", new LineCoverage().toString());
+		Assert.equals('$data\nLF:23\nLH:11', new LineCoverage(23, 11, [data]).toString());
 	}
 }

@@ -18,7 +18,6 @@ class BranchCoverageTest extends Test {
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.is(map.data, Array);
 		Assert.equals(1, map.data.length);
-
 		Assert.isTrue(Reflect.isObject(map.data[0]));
 		Assert.is(map.data[0].lineNumber, Int);
 		Assert.equals(23, map.found);
@@ -28,9 +27,9 @@ class BranchCoverageTest extends Test {
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "BRF:<found>\nBRH:<hit>".
-		Assert.equals("BRF:0\nBRH:0", Std.string(new BranchCoverage()));
+		Assert.equals("BRF:0\nBRH:0", new BranchCoverage().toString());
 
 		final data = new BranchData(127, 3, 2, 1);
-		Assert.equals('$data\nBRF:23\nBRH:11', Std.string(new BranchCoverage(23, 11, [data])));
+		Assert.equals('$data\nBRF:23\nBRH:11', new BranchCoverage(23, 11, [data]).toString());
 	}
 }

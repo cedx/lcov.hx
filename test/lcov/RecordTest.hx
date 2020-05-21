@@ -31,14 +31,13 @@ class RecordTest extends Test {
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "SF:<sourceFile>\nend_of_record".
-		Assert.equals("SF:\nend_of_record", Std.string(new Record("")));
-
 		final record = new Record("/home/cedx/lcov.hx", {
 			branches: new BranchCoverage(),
 			functions: new FunctionCoverage(),
 			lines: new LineCoverage()
 		});
 
-		Assert.equals('SF:/home/cedx/lcov.hx\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record', Std.string(record));
+		Assert.equals("SF:\nend_of_record", new Record("").toString());
+		Assert.equals('SF:/home/cedx/lcov.hx\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record', record.toString());
 	}
 }

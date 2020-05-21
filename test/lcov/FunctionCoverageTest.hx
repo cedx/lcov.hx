@@ -18,7 +18,6 @@ class FunctionCoverageTest extends Test {
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.is(map.data, Array);
 		Assert.equals(1, map.data.length);
-
 		Assert.isTrue(Reflect.isObject(map.data[0]));
 		Assert.is(map.data[0].lineNumber, Int);
 		Assert.equals(23, map.found);
@@ -28,9 +27,8 @@ class FunctionCoverageTest extends Test {
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "FNF:<found>\nFNH:<hit>".
-		Assert.equals("FNF:0\nFNH:0", Std.string(new FunctionCoverage()));
-
 		final coverage = new FunctionCoverage(23, 11, [new FunctionData("main", 127, 3)]);
-		Assert.equals("FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11", Std.string(coverage));
+		Assert.equals("FNF:0\nFNH:0", new FunctionCoverage().toString());
+		Assert.equals("FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11", coverage.toString());
 	}
 }
