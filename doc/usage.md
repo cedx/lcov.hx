@@ -24,7 +24,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 
 					final count = report.records.length;
 					Sys.println('The coverage report contains $count records:');
-					Sys.println(Json.stringify(report.toJson(), null, "  "));
+					Sys.println(Json.stringify(report, null, "  "));
 				}
 
 				catch (LcovException exception) {
@@ -133,7 +133,7 @@ All you have to do is to create the adequate structure using these different cla
 				});
 
 				final report = new Report("Example", [record]);
-				Sys.println(report.toString());
+				Sys.println(report);
 			}
 		}
 
@@ -153,7 +153,7 @@ All you have to do is to create the adequate structure using these different cla
 			});
 
 			const report = new Report("Example", [record]);
-			console.log(report.toString());
+			console.log(report);
 		}
 
 === "PHP"

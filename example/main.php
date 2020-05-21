@@ -8,7 +8,7 @@ function formatReport(): void {
 		new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
 	]);
 
-	$record = new Record("/home/cedx/lcov.hx/fixture.php", (object) [
+	$record = new Record("/home/cedx/lcov.hx/fixture.php", [
 		"functions" => new FunctionCoverage(1, 1),
 		"lines" => $lineCoverage
 	]);

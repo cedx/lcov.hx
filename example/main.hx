@@ -18,7 +18,7 @@ class Example {
 		});
 
 		final report = new Report("Example", [record]);
-		trace(report.toString());
+		Sys.println(report);
 	}
 
 	/** Parses a LCOV report to coverage data. **/
@@ -27,7 +27,7 @@ class Example {
 			final coverage = File.getContent("/path/to/lcov.info");
 			final report = Report.fromCoverage(coverage);
 			Sys.println('The coverage report contains ${report.records.length} records:');
-			Sys.println(Json.stringify(report.toJson(), null, "  "));
+			Sys.println(Json.stringify(report, null, "  "));
 		}
 
 		catch (error: LcovException) {
