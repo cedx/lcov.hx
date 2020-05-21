@@ -3,29 +3,6 @@ package lcov;
 /** Tests the features of the `BranchData` class. **/
 class BranchDataTest extends Test {
 
-	/** Tests the `fromJson()` method. **/
-	public function testFromJson() {
-		// It should return an instance with default values for an empty map.
-		final data = BranchData.fromJson({});
-		Assert.equals(0, data.blockNumber);
-		Assert.equals(0, data.branchNumber);
-		Assert.equals(0, data.lineNumber);
-		Assert.equals(0, data.taken);
-
-		// It should return an initialized instance for a non-empty map.
-		final data = BranchData.fromJson({
-			blockNumber: 3,
-			branchNumber: 2,
-			lineNumber: 127,
-			taken: 1
-		});
-
-		Assert.equals(3, data.blockNumber);
-		Assert.equals(2, data.branchNumber);
-		Assert.equals(127, data.lineNumber);
-		Assert.equals(1, data.taken);
-	}
-
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.

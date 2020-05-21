@@ -20,13 +20,6 @@ class LineData #if php implements JsonSerializable #end {
 		this.lineNumber = lineNumber;
 	}
 
-	/** Creates a new line data from the specified `map` in JSON format. **/
-	public static function fromJson(map: DynamicAccess<Any>) return new LineData(
-		Std.is(map["lineNumber"], Int) ? map["lineNumber"] : 0,
-		Std.is(map["executionCount"], Int) ? map["executionCount"] : 0,
-		Std.is(map["checksum"], String) ? map["checksum"] : ""
-	);
-
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
 		checksum: checksum,

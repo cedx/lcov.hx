@@ -53,24 +53,6 @@ class ReportTest extends Test {
 		Assert.raises(() -> Report.fromCoverage("TN:Example"), LcovException);
 	}
 
-	/** Tests the `fromJson()` method. **/
-	public function testFromJson() {
-		// It should return an instance with default values for an empty map.
-		final report = Report.fromJson({});
-		Assert.isTrue(report.records.empty());
-		Assert.equals(0, report.testName.length);
-
-		// It should return an initialized instance for a non-empty map.
-		final report = Report.fromJson({
-			records: [{}],
-			testName: "LcovTest"
-		});
-
-		Assert.equals(1, report.records.length);
-		Assert.is(report.records[0], Record);
-		Assert.equals("LcovTest", report.testName);
-	}
-
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.

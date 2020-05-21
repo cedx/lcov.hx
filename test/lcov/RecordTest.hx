@@ -3,29 +3,6 @@ package lcov;
 /** Tests the features of the `Record` class. **/
 class RecordTest extends Test {
 
-	/** Tests the `fromJson()` method. **/
-	public function testFromJson() {
-		// It should return an instance with default values for an empty map.
-		final record = Record.fromJson({});
-		Assert.isNull(record.branches);
-		Assert.isNull(record.functions);
-		Assert.isNull(record.lines);
-		Assert.equals(0, record.sourceFile.length);
-
-		// It should return an initialized instance for a non-empty map.
-		final record = Record.fromJson({
-			branches: {},
-			functions: {},
-			lines: {},
-			sourceFile: "/home/cedx/lcov.hx"
-		});
-
-		Assert.is(record.branches, BranchCoverage);
-		Assert.is(record.functions, FunctionCoverage);
-		Assert.is(record.lines, LineCoverage);
-		Assert.equals("/home/cedx/lcov.hx", record.sourceFile);
-	}
-
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.

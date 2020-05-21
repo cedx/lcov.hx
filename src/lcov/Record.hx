@@ -34,13 +34,6 @@ class Record #if php implements JsonSerializable #end {
 		}
 	}
 
-	/** Creates a new record from the specified `map` in JSON format. **/
-	public static function fromJson(map: DynamicAccess<Any>) return new Record(Std.is(map["sourceFile"], String) ? map["sourceFile"] : "", {
-		branches: Reflect.isObject(map["branches"]) ? BranchCoverage.fromJson(map["branches"]) : null,
-		functions: Reflect.isObject(map["functions"]) ? FunctionCoverage.fromJson(map["functions"]) : null,
-		lines: Reflect.isObject(map["lines"]) ? LineCoverage.fromJson(map["lines"]) : null
-	});
-
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
 		branches: branches != null ? branches.toJson() : null,

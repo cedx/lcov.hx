@@ -20,13 +20,6 @@ class FunctionData #if php implements JsonSerializable #end {
 		this.lineNumber = lineNumber;
 	}
 
-	/** Creates a new function data from the specified `map` in JSON format. **/
-	public static function fromJson(map: DynamicAccess<Any>) return new FunctionData(
-		Std.is(map["functionName"], String) ? map["functionName"] : "",
-		Std.is(map["lineNumber"], Int) ? map["lineNumber"] : 0,
-		Std.is(map["executionCount"], Int) ? map["executionCount"] : 0
-	);
-
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
 		executionCount: executionCount,

@@ -20,13 +20,6 @@ class LineCoverage #if php implements JsonSerializable #end {
 		this.hit = hit;
 	}
 
-	/** Creates a new line coverage from the specified `map` in JSON format. **/
-	public static function fromJson(map: DynamicAccess<Any>) return new LineCoverage(
-		Std.is(map["found"], Int) ? map["found"] : 0,
-		Std.is(map["hit"], Int) ? map["hit"] : 0,
-		Std.is(map["data"], Array) ? (map["data"]: Array<Any>).map(item -> LineData.fromJson(item)) : []
-	);
-
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
 		data: #if php toPhpArray(data.map(item -> item.toJson())) #else data.map(item -> item.toJson()) #end,

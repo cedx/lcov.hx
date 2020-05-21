@@ -3,26 +3,6 @@ package lcov;
 /** Tests the features of the `FunctionData` class. **/
 class FunctionDataTest extends Test {
 
-	/** Tests the `fromJson()` method. **/
-	public function testFromJson() {
-		// It should return an instance with default values for an empty map.
-		final data = FunctionData.fromJson({});
-		Assert.equals(0, data.executionCount);
-		Assert.equals(0, data.functionName.length);
-		Assert.equals(0, data.lineNumber);
-
-		// It should return an initialized instance for a non-empty map.
-		final data = FunctionData.fromJson({
-			executionCount: 3,
-			functionName: "main",
-			lineNumber: 127
-		});
-
-		Assert.equals(3, data.executionCount);
-		Assert.equals("main", data.functionName);
-		Assert.equals(127, data.lineNumber);
-	}
-
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.

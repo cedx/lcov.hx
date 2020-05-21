@@ -24,14 +24,6 @@ class BranchData #if php implements JsonSerializable #end {
 		this.taken = taken;
 	}
 
-	/** Creates a new branch data from the specified `map` in JSON format. **/
-	public static function fromJson(map: DynamicAccess<Any>) return new BranchData(
-		Std.is(map["lineNumber"], Int) ? map["lineNumber"] : 0,
-		Std.is(map["blockNumber"], Int) ? map["blockNumber"] : 0,
-		Std.is(map["branchNumber"], Int) ? map["branchNumber"] : 0,
-		Std.is(map["taken"], Int) ? map["taken"] : 0
-	);
-
 	/** Converts this object to a map in JSON format. **/
 	public function toJson() return {
 		blockNumber: blockNumber,

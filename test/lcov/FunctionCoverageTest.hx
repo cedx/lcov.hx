@@ -3,36 +3,13 @@ package lcov;
 /** Tests the features of the `FunctionCoverage` class. **/
 class FunctionCoverageTest extends Test {
 
-	/** Tests the `fromJson()` method. **/
-	public function testFromJson() {
-		// It should return an instance with default values for an empty map.
-		final coverage = FunctionCoverage.fromJson({});
-		Assert.isTrue(coverage.data.empty());
-		Assert.equals(0, coverage.found);
-		Assert.equals(0, coverage.hit);
-
-		// It should return an initialized instance for a non-empty map.
-		final coverage = FunctionCoverage.fromJson({
-			data: [{lineNumber: 127}],
-			found: 23,
-			hit: 11
-		});
-
-		Assert.equals(1, coverage.data.length);
-		Assert.is(coverage.data[0], FunctionData);
-		Assert.equals(127, coverage.data[0].lineNumber);
-		Assert.equals(23, coverage.found);
-		Assert.equals(11, coverage.hit);
-	}
-
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.
 		final map = new FunctionCoverage().toJson();
 		Assert.equals(3, Reflect.fields(map).length);
-
 		Assert.is(map.data, Array);
-		Assert.isTrue(map.data.empty());
+		Assert.equals(0, map.data.length);
 		Assert.equals(0, map.found);
 		Assert.equals(0, map.hit);
 
