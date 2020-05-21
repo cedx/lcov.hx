@@ -14,7 +14,6 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@cedx/coveralls": "^10.0.0",
 		"terser": "^4.6.13"
 	},
 	"engines": {
@@ -44,7 +43,6 @@
 		"url": "https://git.belin.io/cedx/lcov.hx.git"
 	},
 	"scripts": {
-		"coverage": "coveralls var/lcov.info",
 		"prepack": "pwsh tool/dist.ps1"
 	}
 }
