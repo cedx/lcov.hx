@@ -3,10 +3,10 @@
 	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
 	"homepage": "https://docs.belin.io/lcov.hx",
 	"license": "MIT",
-	"main": "lib/js/index.js",
+	"main": "./lib/js/index.js",
 	"name": "@cedx/lcov.hx",
 	"type": "commonjs",
-	"types": "lib/js/index.d.ts",
+	"types": "./lib/js/index.d.ts",
 	"version": "1.0.1",
 	"author": {
 		"email": "cedric@belin.io",
@@ -20,8 +20,8 @@
 		"node": ">=14.0.0"
 	},
 	"exports": {
-		"import": "lib/js/index.mjs",
-		"require": "lib/js/index.js"
+		"import": "./lib/js/index.mjs",
+		"require": "./lib/js/index.js"
 	},
 	"files": [
 		"build/",
