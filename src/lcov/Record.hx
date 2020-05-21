@@ -1,10 +1,13 @@
 package lcov;
 
-// TODO @:structInit ??????
+#if php
+import php.Global.isset;
+import php.NativeStructArray;
+#end
 
 /** Provides the coverage data of a source file. **/
 @:expose
-class Record #if php implements JsonSerializable #end {
+class Record #if php implements JsonSerializable<Dynamic> #end {
 	
 	/** The branch coverage. **/
 	public var branches: Null<BranchCoverage> = null;

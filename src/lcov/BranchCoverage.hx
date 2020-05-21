@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides the coverage data of branches. **/
 @:expose
-class BranchCoverage #if php implements JsonSerializable #end {
+class BranchCoverage #if php implements JsonSerializable<Dynamic> #end {
 
 	/** The coverage data. **/
 	public final data: Array<BranchData>;

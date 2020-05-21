@@ -2,7 +2,7 @@ package lcov;
 
 /** Represents a trace file, that is a coverage report. **/
 @:expose
-class Report #if php implements JsonSerializable #end {
+class Report #if php implements JsonSerializable<Dynamic> #end {
 	
 	/** The record list. **/
 	public var records: Array<Record>;
@@ -38,7 +38,7 @@ class Report #if php implements JsonSerializable #end {
 				final data = parts.join(":").split(",");
 
 				switch (token) {
-					case Token.testName: report.testName = data[0];
+					case Token.testName: if (report.testName.length == 0) report.testName = data[0];
 					case Token.endOfRecord: report.records.push(record);
 
 					case Token.branchData: {

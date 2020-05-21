@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides details for line coverage. **/
 @:expose
-class LineData #if php implements JsonSerializable #end {
+class LineData #if php implements JsonSerializable<Dynamic> #end {
 	
 	/** The data checksum. **/
 	public var checksum: String;
