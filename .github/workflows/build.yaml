@@ -41,8 +41,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-          haxelib install hxnodejs
           haxelib install all --always
+          haxelib install hxnodejs
           npm install --ignore-scripts
       - name: Run tests
         run: |
