@@ -6,7 +6,7 @@ class RecordTest extends Test {
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.
-		final map = new Record("").toJson();
+		var map = new Record("").toJson();
 		Assert.equals(4, Reflect.fields(map).length);
 		Assert.isNull(map.branches);
 		Assert.isNull(map.functions);
@@ -20,7 +20,7 @@ class RecordTest extends Test {
 			lines: new LineCoverage()
 		});
 
-		final map = record.toJson();
+		map = record.toJson();
 		Assert.equals(4, Reflect.fields(map).length);
 		Assert.isTrue(Reflect.isObject(map.branches));
 		Assert.isTrue(Reflect.isObject(map.functions));

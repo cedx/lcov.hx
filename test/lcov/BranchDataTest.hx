@@ -6,7 +6,7 @@ class BranchDataTest extends Test {
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.
-		final map = new BranchData(0, 0, 0).toJson();
+		var map = new BranchData(0, 0, 0).toJson();
 		Assert.equals(4, Reflect.fields(map).length);
 		Assert.equals(0, map.blockNumber);
 		Assert.equals(0, map.branchNumber);
@@ -14,7 +14,7 @@ class BranchDataTest extends Test {
 		Assert.equals(0, map.taken);
 
 		// It should return a non-empty map for an initialized instance.
-		final map = new BranchData(127, 3, 2, 1).toJson();
+		map = new BranchData(127, 3, 2, 1).toJson();
 		Assert.equals(4, Reflect.fields(map).length);
 		Assert.equals(3, map.blockNumber);
 		Assert.equals(2, map.branchNumber);

@@ -6,7 +6,7 @@ class LineCoverageTest extends Test {
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.
-		final map = new LineCoverage().toJson();
+		var map = new LineCoverage().toJson();
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.is(map.data, Array);
 		Assert.equals(0, map.data.length);
@@ -14,7 +14,7 @@ class LineCoverageTest extends Test {
 		Assert.equals(0, map.hit);
 
 		// It should return a non-empty map for an initialized instance.
-		final map = new LineCoverage(23, 11, [new LineData(0)]).toJson();
+		map = new LineCoverage(23, 11, [new LineData(0)]).toJson();
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.is(map.data, Array);
 		Assert.equals(1, map.data.length);

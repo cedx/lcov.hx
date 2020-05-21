@@ -6,14 +6,14 @@ class LineDataTest extends Test {
 	/** Tests the `toJson()` method. **/
 	public function testToJson() {
 		// It should return a map with default values for a newly created instance.
-		final map = new LineData(0).toJson();
+		var map = new LineData(0).toJson();
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.equals(0, map.checksum.length);
 		Assert.equals(0, map.executionCount);
 		Assert.equals(0, map.lineNumber);
 
 		// It should return a non-empty map for an initialized instance.
-		final map = new LineData(127, 3, "ed076287532e86365e841e92bfc50d8c").toJson();
+		map = new LineData(127, 3, "ed076287532e86365e841e92bfc50d8c").toJson();
 		Assert.equals(3, Reflect.fields(map).length);
 		Assert.equals("ed076287532e86365e841e92bfc50d8c", map.checksum);
 		Assert.equals(3, map.executionCount);
