@@ -6,6 +6,7 @@
 namespace lcov;
 
 use \php\Boot;
+use \haxe\Exception;
 use \php\_Boot\HxString;
 
 /**
@@ -32,9 +33,9 @@ class Report {
 	 * @return Report
 	 */
 	public static function fromCoverage ($coverage) {
+		$offset = 0;
 		$report = new Report();
 		try {
-			$offset = 0;
 			$record = null;
 			$_g = 0;
 			$_g1 = (new \EReg("\x0D?\x0A", "g"))->split($coverage);
@@ -129,7 +130,7 @@ class Report {
 		} catch(LcovException $e) {
 			throw $e;
 		} catch(\Throwable $_g) {
-			throw new LcovException("The coverage data has an invalid LCOV format.", $coverage);
+			throw new LcovException("The coverage data has an invalid LCOV format.", $coverage, $offset, Exception::caught($_g));
 		}
 		if ($report->records->length === 0) {
 			throw new LcovException("The coverage data is empty.", $coverage);

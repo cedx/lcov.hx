@@ -15,11 +15,12 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 		import haxe.Json;
 		import lcov.LcovException;
 		import lcov.Report;
+		import sys.io.File;
 
 		class Main {
 			static function main(): Void {
 				try {
-					final coverage = await readFile("/path/to/lcov.info", "utf8");
+					final coverage = File.getContent("/path/to/lcov.info");
 					final report = Report.fromCoverage(coverage);
 
 					final count = report.records.length;
@@ -63,7 +64,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 				$coverage = file_get_contents("/path/to/lcov.info");
 				$report = Report::fromCoverage($coverage);
 				
-				$count = count($report->getRecords());
+				$count = count($report->records);
 				echo "The coverage report contains $count records:", PHP_EOL;
 				echo json_encode($report, JSON_PRETTY_PRINT);
 			}
@@ -76,7 +77,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 !!! info
 	A `LcovException` is thrown if any error occurred while parsing the coverage report.
 
-The `Report.toJson()` instance method will return a [JSON](https://www.json.org) map like this:
+Converting the `Report` instance to [JSON](https://www.json.org) format will return a map like this:
 
 ``` json
 {
@@ -113,7 +114,7 @@ The `Report.toJson()` instance method will return a [JSON](https://www.json.org)
 	See the [API reference](https://api.belin.io/lcov.hx) of this library for more information on the `Report` class.
 
 ## Format coverage data to the LCOV format
-Each class provided by this library has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
+Each class provided by this library has a dedicated `toString()` method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
 === "Haxe"
@@ -139,7 +140,10 @@ All you have to do is to create the adequate structure using these different cla
 
 === "JavaScript"
 		:::js
-		import {FunctionCoverage, LineCoverage, LineData, Record, Report} from "@cedx/lcov.hx";
+		import {
+			FunctionCoverage, LineCoverage, LineData,
+			Record, Report
+		} from "@cedx/lcov.hx";
 
 		function main() {
 			const lineCoverage = new LineCoverage(2, 2, [
@@ -167,9 +171,10 @@ All you have to do is to create the adequate structure using these different cla
 				new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
 			]);
 
-			$record = (new Record("/home/cedx/lcov.hx/fixture.php"))
-				->setFunctions(new FunctionCoverage(1, 1))
-				->setLines($lineCoverage);
+			$record = new Record("/home/cedx/lcov.hx/fixture.php", [
+				'functions' => new FunctionCoverage(1, 1),
+				'lines' => $lineCoverage
+			]);
 
 			$report = new Report("Example", [$record]);
 			echo $report;
