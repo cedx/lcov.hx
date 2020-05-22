@@ -25,13 +25,13 @@ import php.NativeStructArray;
 		this.sourceFile = sourceFile;
 		if (options != null) {
 			#if php
-			if (isset(options["branches"])) this.branches = options["branches"];
-			if (isset(options["functions"])) this.functions = options["functions"];
-			if (isset(options["lines"])) this.lines = options["lines"];
+			if (isset(options["branches"])) branches = options["branches"];
+			if (isset(options["functions"])) functions = options["functions"];
+			if (isset(options["lines"])) lines = options["lines"];
 			#else
-			if (options.branches != null) this.branches = options.branches;
-			if (options.functions != null) this.functions = options.functions;
-			if (options.lines != null) this.lines = options.lines;
+			if (options.branches != null) branches = options.branches;
+			if (options.functions != null) functions = options.functions;
+			if (options.lines != null) lines = options.lines;
 			#end
 		}
 	}
