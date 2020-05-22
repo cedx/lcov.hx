@@ -43,6 +43,7 @@
 		"url": "https://git.belin.io/cedx/lcov.hx.git"
 	},
 	"scripts": {
-		"prepack": "pwsh tool/dist.ps1"
+		"prepack": "pwsh tool/dist.ps1",
+		"test": "haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml && node var/tests.js"
 	}
 }

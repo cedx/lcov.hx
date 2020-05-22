@@ -29,6 +29,9 @@
 		"ext-json": "*",
 		"cedx/haxe": "^0.3.0"
 	},
+	"scripts": {
+		"test": "haxe --define php-lib=php --php lib test.hxml && php lib/index.php"
+	},
 	"support": {
 		"docs": "https://api.belin.io/lcov.hx",
 		"issues": "https://git.belin.io/cedx/lcov.hx/issues"

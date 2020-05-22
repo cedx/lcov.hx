@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "0 0 1 * *"
 jobs:
-  Eval:
+  eval:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Haxe
@@ -22,7 +22,7 @@ jobs:
         run: haxelib install all --always
       - name: Run tests
         run: haxe --interp test.hxml
-  JavaScript:
+  js:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Haxe
@@ -45,10 +45,8 @@ jobs:
           haxelib install hxnodejs
           npm install --ignore-scripts
       - name: Run tests
-        run: |
-          haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml
-          node var/tests.js
-  NekoVM:
+        run: npm test
+  neko:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Haxe
@@ -65,7 +63,7 @@ jobs:
         run: |
           haxe --neko var/tests.n test.hxml
           neko var/tests.n
-  PHP:
+  php:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Haxe
@@ -88,6 +86,4 @@ jobs:
           haxelib install all --always
           composer install --no-interaction
       - name: Run tests
-        run: |
-          haxe --define php-lib=php --php lib test.hxml
-          php lib/index.php
+        run: composer run-script test
