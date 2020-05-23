@@ -5,7 +5,7 @@ import tink.testrunner.Runner;
 import tink.unit.TestBatch;
 
 /** Runs the test suites. **/
-class TestAll {
+class RunTests {
 
 	/** Application entry point. **/
 	static function main(): Void {
