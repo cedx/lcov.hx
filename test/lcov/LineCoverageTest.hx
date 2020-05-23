@@ -1,13 +1,19 @@
 package lcov;
 
+import tink.unit.Assert;
+
 /** Tests the features of the `LineCoverage` class. **/
-class LineCoverageTest extends Test {
+@:asserts class LineCoverageTest {
+
+	/** Creates a new test suite. **/
+	public function new() {}
 
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		// It should return a format like "LF:<found>\nLH:<hit>".
 		final data = new LineData(127, 3);
-		Assert.equals("LF:0\nLH:0", new LineCoverage().toString());
-		Assert.equals('$data\nLF:23\nLH:11', new LineCoverage(23, 11, [data]).toString());
+		asserts.assert(new LineCoverage().toString() == "LF:0\nLH:0");
+		asserts.assert(new LineCoverage(23, 11, [data]).toString() == '$data\nLF:23\nLH:11');
+		return asserts.done();
 	}
 }

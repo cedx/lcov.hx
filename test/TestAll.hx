@@ -1,14 +1,15 @@
 import lcov.*;
 import mcover.coverage.MCoverage;
 import mcover.coverage.client.LcovPrintClient;
-import utest.UTest;
+import tink.testrunner.Runner;
+import tink.unit.TestBatch;
 
 /** Runs the test suites. **/
 class TestAll {
 
 	/** Application entry point. **/
 	static function main(): Void {
-		UTest.run([
+		final tests = TestBatch.make([
 			new BranchCoverageTest(),
 			new BranchDataTest(),
 			new FunctionCoverageTest(),
@@ -19,8 +20,11 @@ class TestAll {
 			new ReportTest()
 		]);
 
-		final logger = MCoverage.getLogger();
-		logger.addClient(new LcovPrintClient("lcov", "var/lcov.info"));
-		logger.report();
+		Runner.run(tests).handle(result -> {
+			final logger = MCoverage.getLogger();
+			logger.addClient(new LcovPrintClient("lcov", "var/lcov.info"));
+			logger.report();
+			Runner.exit(result);
+		});
 	}
 }
