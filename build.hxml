@@ -20,3 +20,7 @@ lcov.Token
 --define php-lib=php
 --define real-position
 --php lib
+
+--next
+--define doc-gen
+--xml var/api.xml
