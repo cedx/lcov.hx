@@ -14,6 +14,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
+		"@cedx/coveralls": "^10.1.0",
 		"terser": "^4.7.0"
 	},
 	"engines": {
@@ -43,6 +44,7 @@
 		"url": "https://git.belin.io/cedx/lcov.hx.git"
 	},
 	"scripts": {
+		"coverage": "coveralls var/lcov.info",
 		"prepack": "pwsh tool/dist.ps1",
 		"test": "haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml && node var/tests.js"
 	}

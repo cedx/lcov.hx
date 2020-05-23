@@ -46,6 +46,11 @@ jobs:
           npm install --ignore-scripts
       - name: Run tests
         run: npm test
+      - name: Collect code coverage
+        env:
+          COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        if: success()
+        run: npm run-script coverage
   neko:
     runs-on: ubuntu-latest
     steps:
@@ -74,6 +79,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
+          coverage: none
           extensions: mbstring
       - name: Check environment
         run: |
