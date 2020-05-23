@@ -5,9 +5,9 @@
 - [Submit an issue](https://git.belin.io/cedx/lcov.hx/issues)
 
 ## Packages
-- Haxe: [Haxelib](https://lib.haxe.org/p/lcov)
-- JavaScript/Node.js: [npm](https://www.npmjs.com/package/@cedx/lcov.hx)
-- PHP: [Composer/Packagist](https://packagist.org/packages/cedx/lcov.hx)
+- Haxe: `lcov` on [Haxelib](https://lib.haxe.org/p/lcov)
+- JavaScript: `@cedx/lcov.hx` on [npm](https://www.npmjs.com/package/@cedx/lcov.hx)
+- PHP: `cedx/lcov.hx` on [Packagist](https://packagist.org/packages/cedx/lcov.hx)
 
 ## Testing
 - [Continuous integration](https://github.com/cedx/lcov.hx/actions)
