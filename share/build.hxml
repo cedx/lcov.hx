@@ -11,16 +11,3 @@ lcov.LineData
 lcov.Record
 lcov.Report
 lcov.Token
-
---each
---define js-es=6
---js lib/js/lcov.js
-
---next
---define php-lib=php
---define real-position
---php lib
-
---next
---define doc-gen
---xml var/api.xml

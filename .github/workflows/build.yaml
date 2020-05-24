@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: haxelib install all --always
       - name: Run tests
-        run: haxe --interp test.hxml
+        run: haxe test_eval.hxml
   js:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +45,7 @@ jobs:
           haxelib install hxnodejs
           npm install --ignore-scripts
       - name: Run tests
-        run: npm test
+        run: haxe test_js.hxml
       - name: Collect code coverage
         env:
           COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -65,9 +65,7 @@ jobs:
       - name: Install dependencies
         run: haxelib install all --always
       - name: Run tests
-        run: |
-          haxe --neko var/tests.n test.hxml
-          neko var/tests.n
+        run: haxe test_neko.hxml
   php:
     runs-on: ubuntu-latest
     steps:
@@ -92,4 +90,4 @@ jobs:
           haxelib install all --always
           composer install --no-interaction
       - name: Run tests
-        run: composer run-script test
+        run: haxe test_php.hxml

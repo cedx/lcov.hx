@@ -45,7 +45,6 @@
 	},
 	"scripts": {
 		"coverage": "coveralls var/lcov.info",
-		"prepack": "pwsh tool/dist.ps1",
-		"test": "haxe --define js-es=6 --js var/tests.js --library hxnodejs test.hxml && node var/tests.js"
+		"prepack": "pwsh tool/dist.ps1"
 	}
 }
