@@ -42,7 +42,6 @@ jobs:
       - name: Install dependencies
         run: |
           haxelib install all --always
-          haxelib install hxnodejs
           npm install --ignore-scripts
       - name: Run tests
         run: haxe test_js.hxml
