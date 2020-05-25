@@ -53,7 +53,7 @@ import sys.io.File;
 		// It should throw an error if the input is invalid.
 		try {
 			Report.fromCoverage("ZZ");
-			asserts.fail("Exception not thrown.");
+			asserts.fail("Exception not thrown");
 		}
 
 		catch (e: Exception) {
@@ -63,7 +63,7 @@ import sys.io.File;
 		// It should throw an error if the report is empty.
 		try {
 			Report.fromCoverage("TN:Example");
-			asserts.fail("Exception not thrown.");
+			asserts.fail("Exception not thrown");
 		}
 
 		catch (e: Exception) {
