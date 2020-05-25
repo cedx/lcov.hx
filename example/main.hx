@@ -30,8 +30,8 @@ class Example {
 			Sys.println(Json.stringify(report, null, "  "));
 		}
 
-		catch (error: LcovException) {
-			Sys.println('An error occurred: "${error.message}" at offset ${error.offset}.');
+		catch (e: LcovException) {
+			Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
 		}
 	}
 }

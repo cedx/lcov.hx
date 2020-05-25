@@ -28,8 +28,8 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 					Sys.println(Json.stringify(report, null, "  "));
 				}
 
-				catch (LcovException exception) {
-					Sys.println('An error occurred: ${exception.message}');
+				catch (e: LcovException) {
+					Sys.println('An error occurred: ${e.message}');
 				}
 			}
 		}
@@ -49,8 +49,8 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 				console.log(JSON.stringify(report, null, 2));
 			}
 
-			catch (error) {
-				console.log(`An error occurred: ${error.message}`);
+			catch (err) {
+				console.log(`An error occurred: ${err.message}`);
 			}
 		}
 
@@ -69,8 +69,8 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 				echo json_encode($report, JSON_PRETTY_PRINT);
 			}
 
-			catch (LcovException $exception) {
-				echo "An error occurred: ", $exception->getMessage();
+			catch (LcovException $e) {
+				echo "An error occurred: ", $e->getMessage();
 			}
 		}
 
