@@ -92,7 +92,7 @@ using StringTools;
 		}
 
 		catch (e: LcovException) { throw e; }
-		catch (e: Exception) { throw new LcovException("The coverage data has an invalid LCOV format.", coverage, offset, e); }
+		catch (e) { throw new LcovException("The coverage data has an invalid LCOV format.", coverage, offset, e); }
 		if (report.records.length == 0) throw new LcovException("The coverage data is empty.", coverage);
 		return report;
 	}

@@ -56,7 +56,7 @@ import sys.io.File;
 			asserts.fail("Exception not thrown");
 		}
 
-		catch (e: Exception) {
+		catch (e) {
 			asserts.assert(Std.isOfType(e, LcovException));
 		}
 
@@ -66,7 +66,7 @@ import sys.io.File;
 			asserts.fail("Exception not thrown");
 		}
 
-		catch (e: Exception) {
+		catch (e) {
 			asserts.assert(Std.isOfType(e, LcovException));
 		}
 
