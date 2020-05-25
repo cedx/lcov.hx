@@ -37,26 +37,22 @@ You can verify if you're already good to go with the following commands:
 ## Installing with a package manager
 
 === "Haxe"
-	### 1. Install it
 	From a command prompt, run:
 
 		:::shell
 		haxelib install lcov
 
-	### 2. Import it
 	Now in your [Haxe](https://haxe.org) code, you can use:
 
 		:::haxe
 		import lcov.*;
 
 === "JavaScript"
-	### 1. Install it
 	From a command prompt, run:
 
 		:::shell
 		npm install @cedx/lcov.hx
 
-	### 2. Import it
 	Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code, you can use:
 
 		:::js
@@ -67,13 +63,11 @@ You can verify if you're already good to go with the following commands:
 		import * as lcov from "@cedx/lcov.hx";
 
 === "PHP"
-	### 1. Install it
 	From a command prompt, run:
 
 		:::shell
 		composer require cedx/lcov.hx
 
-	### 2. Import it
 	Now in your [PHP](https://www.php.net) code, you can use:
 
 		:::php
