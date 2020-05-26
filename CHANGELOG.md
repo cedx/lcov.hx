@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [1.0.3](https://git.belin.io/cedx/lcov.hx/compare/v1.0.2...v1.0.3)
+- Updated the [PHP](https://www.php.net) dependencies.
+
 ## Version [1.0.2](https://git.belin.io/cedx/lcov.hx/compare/v1.0.1...v1.0.2)
 - Fixed the [npm](https://www.npmjs.com) packaging.
 
