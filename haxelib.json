@@ -4,8 +4,8 @@
 	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
 	"license": "MIT",
 	"name": "lcov",
-	"releasenote": "Fixed the npm packaging.",
+	"releasenote": "Updated the PHP dependencies.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
 	"url": "https://docs.belin.io/lcov.hx",
-	"version": "1.0.2"
+	"version": "1.0.3"
 }
