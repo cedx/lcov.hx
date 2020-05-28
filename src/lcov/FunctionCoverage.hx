@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides the coverage data of functions. **/
 @:expose class FunctionCoverage {
-	
+
 	/** The coverage data. **/
 	public final data: Array<FunctionData>;
 

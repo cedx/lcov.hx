@@ -1,6 +1,5 @@
 package lcov;
 
-import haxe.Exception;
 import sys.io.File;
 
 /** Tests the features of the `Report` class. **/

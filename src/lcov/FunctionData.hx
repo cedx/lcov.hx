@@ -2,7 +2,7 @@ package lcov;
 
 /** Provides details for function coverage. **/
 @:expose class FunctionData {
-	
+
 	/** The execution count. **/
 	public var executionCount: Int;
 

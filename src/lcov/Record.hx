@@ -7,7 +7,7 @@ import php.NativeStructArray;
 
 /** Provides the coverage data of a source file. **/
 @:expose class Record {
-	
+
 	/** The branch coverage. **/
 	public var branches: Null<BranchCoverage> = null;
 
@@ -47,15 +47,15 @@ import php.NativeStructArray;
 	}
 }
 
-/** Defines the options of a `Record` instance. */
+/** Defines the options of a `Record` instance. **/
 typedef RecordOptions = {
 
-	/** The branch coverage. */
+	/** The branch coverage. **/
 	var ?branches: BranchCoverage;
 
-	/** The function coverage. */
+	/** The function coverage. **/
 	var ?functions: FunctionCoverage;
 
-	/** The line coverage. */
+	/** The line coverage. **/
 	var ?lines: LineCoverage;
 }

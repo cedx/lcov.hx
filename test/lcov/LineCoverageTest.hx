@@ -1,7 +1,5 @@
 package lcov;
 
-import tink.unit.Assert;
-
 /** Tests the features of the `LineCoverage` class. **/
 @:asserts class LineCoverageTest {
 

@@ -1,11 +1,10 @@
 package lcov;
 
-import haxe.Exception;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
 @:expose class Report {
-	
+
 	/** The record list. **/
 	public final records: Array<Record>;
 
@@ -43,7 +42,7 @@ using StringTools;
 					case Token.testName: if (report.testName.length == 0) report.testName = data[0];
 					case Token.endOfRecord: report.records.push(record);
 
-					case Token.branchData: {
+					case Token.branchData:
 						if (data.length < 4) throw new LcovException("Invalid branch data.", coverage, offset);
 						record.branches.data.push(new BranchData(
 							Std.parseInt(data[0]),
@@ -51,29 +50,25 @@ using StringTools;
 							Std.parseInt(data[2]),
 							data[3] == "-" ? 0 : Std.parseInt(data[3])
 						));
-					}
 
-					case Token.functionData: {
+					case Token.functionData:
 						if (data.length < 2) throw new LcovException("Invalid function data.", coverage, offset);
 						for (item in record.functions.data) if (item.functionName == data[1]) {
 							item.executionCount = Std.parseInt(data[0]);
 							break;
 						}
-					}
 
-					case Token.functionName: {
+					case Token.functionName:
 						if (data.length < 2) throw new LcovException("Invalid function name.", coverage, offset);
 						record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
-					}
 
-					case Token.lineData: {
+					case Token.lineData:
 						if (data.length < 2) throw new LcovException("Invalid line data.", coverage, offset);
 						record.lines.data.push(new LineData(
 							Std.parseInt(data[0]),
 							Std.parseInt(data[1]),
 							data.length >= 3 ? data[2] : ""
 						));
-					}
 
 					case Token.sourceFile: record = new Record(data[0], {
 						branches: new BranchCoverage(),
