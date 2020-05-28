@@ -36,7 +36,6 @@
 		{"type": "UnusedImport"},
 
 		{"type": "ArrayLiteral"},
-		{"type": "ERegLiteral"},
 		{"type": "HexadecimalLiteral"},
 		{"type": "StringLiteral"},
 
