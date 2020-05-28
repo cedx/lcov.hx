@@ -1,6 +1,7 @@
 package lcov;
 
 import sys.io.File;
+using AssertionTools;
 
 /** Tests the features of the `Report` class. **/
 @:asserts class ReportTest {
@@ -50,25 +51,10 @@ import sys.io.File;
 		asserts.assert(lines.data[0].checksum == "5kX7OTfHFcjnS98fjeVqNA");
 
 		// It should throw an error if the input is invalid.
-		try {
-			Report.fromCoverage("ZZ");
-			asserts.fail("Exception not thrown");
-		}
-
-		catch (e) {
-			asserts.assert(Std.isOfType(e, LcovException));
-		}
+		asserts.throws(() -> Report.fromCoverage("ZZ"), LcovException);
 
 		// It should throw an error if the report is empty.
-		try {
-			Report.fromCoverage("TN:Example");
-			asserts.fail("Exception not thrown");
-		}
-
-		catch (e) {
-			asserts.assert(Std.isOfType(e, LcovException));
-		}
-
+		asserts.throws(() -> Report.fromCoverage("TN:Example"), LcovException);
 		return asserts.done();
 	}
 
