@@ -82,6 +82,8 @@ using StringTools;
 					case Token.functionsHit: record.functions.hit = Std.parseInt(data[0]);
 					case Token.linesFound: record.lines.found = Std.parseInt(data[0]);
 					case Token.linesHit: record.lines.hit = Std.parseInt(data[0]);
+
+					default: throw new LcovException("Unknown token.", coverage, offset);
 				}
 			}
 		}
