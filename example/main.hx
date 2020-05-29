@@ -27,7 +27,7 @@ class Example {
 			final coverage = File.getContent("/path/to/lcov.info");
 			final report = Report.fromCoverage(coverage);
 			Sys.println('The coverage report contains ${report.records.length} records:');
-			Sys.println(Json.stringify(report, null, "  "));
+			Sys.println(Json.stringify(report, null, "\t"));
 		}
 
 		catch (e: LcovException) {
