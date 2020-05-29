@@ -84,7 +84,7 @@ Converting the `Report` instance to [JSON](https://www.json.org) format will ret
 	"testName": "Example",
 	"records": [
 		{
-			"sourceFile": "/home/cedx/lcov.hx/fixture.js",
+			"sourceFile": "/home/cedx/lcov.hx/fixture.hx",
 			"branches": {
 				"found": 0,
 				"hit": 0,
@@ -184,7 +184,7 @@ The `Report.toString()` method will return a [LCOV](http://ltp.sourceforge.net/c
 
 ```
 TN:Example
-SF:/home/cedx/lcov.hx/fixture.js
+SF:/home/cedx/lcov.hx/fixture.hx
 FNF:1
 FNH:1
 DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
