@@ -11,5 +11,5 @@ Copy-Item lib/js/lcov.js build/lcov.js
 node_modules/.bin/terser --config-file=etc/terser.json --output=build/lcov.min.js build/lcov.js
 
 foreach ($item in Get-ChildItem lib/php) {
-	if ($item.BaseName -ne "lcov") { Remove-Item $item -Recurse }
+	if ($item.Name -ne "lcov") { Remove-Item $item -Recurse }
 }
