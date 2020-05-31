@@ -28,8 +28,8 @@ class TestAll {
 			logger.report();
 		});
 
-    Report.create(runner);
+		Report.create(runner);
 		for (test in tests) runner.addCase(test);
-    runner.run();
+		runner.run();
 	}
 }
