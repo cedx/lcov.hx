@@ -6,7 +6,7 @@ import sys.io.File;
 class ReportTest extends Test {
 
 	/** Tests the `fromCoverage()` method. **/
-	function testFromCoverage() {
+	function testFromCoverage(): Void {
 		final report = Report.fromCoverage(File.getContent("test/fixtures/lcov.info"));
 
 		// It should have a test name.
