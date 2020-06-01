@@ -31,12 +31,10 @@ export declare class FunctionData {
 	toString(asDefinition?: boolean): string;
 }
 
-export declare class LcovError extends Error {
+export declare class LcovException extends Error {
 	readonly offset: number;
-	readonly previous?: Error;
 	readonly source: string;
-	constructor(message?: string, source?: string, offset?: number, previous?: Error);
-	details(): string;
+	constructor(message?: string, source?: string, offset?: number);
 }
 
 export declare class LineCoverage {
