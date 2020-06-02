@@ -1,5 +1,9 @@
 package lcov;
 
+#if php
+import php.NativeIndexedArray;
+#end
+
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
@@ -13,7 +17,7 @@ using StringTools;
 
 	/** Creates a new report. **/
 	public function new(testName: String = "", ?records: #if php NativeIndexedArray<Record> #else Array<Record> #end) {
-		this.records = records != null ? #if php cast toHaxeArray(records) #else records #end : [];
+		this.records = records != null ? records : [];
 		this.testName = testName;
 	}
 

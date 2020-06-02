@@ -1,5 +1,9 @@
 package lcov;
 
+#if php
+import php.NativeIndexedArray;
+#end
+
 /** Provides the coverage data of functions. **/
 @:expose class FunctionCoverage {
 
@@ -14,7 +18,7 @@ package lcov;
 
 	/** Creates a new function coverage. **/
 	public function new(found: Int = 0, hit: Int = 0, ?data: #if php NativeIndexedArray<FunctionData> #else Array<FunctionData> #end) {
-		this.data = data != null ? #if php cast toHaxeArray(data) #else data #end : [];
+		this.data = data != null ? data : [];
 		this.found = found;
 		this.hit = hit;
 	}

@@ -1,5 +1,9 @@
 package lcov;
 
+#if php
+import php.NativeIndexedArray;
+#end
+
 /** Provides the coverage data of branches. **/
 @:expose class BranchCoverage {
 
@@ -14,7 +18,7 @@ package lcov;
 
 	/** Creates a new branch coverage. **/
 	public function new(found: Int = 0, hit: Int = 0, ?data: #if php NativeIndexedArray<BranchData> #else Array<BranchData> #end) {
-		this.data = data != null ? #if php cast toHaxeArray(data) #else data #end : [];
+		this.data = data != null ? data : [];
 		this.found = found;
 		this.hit = hit;
 	}
