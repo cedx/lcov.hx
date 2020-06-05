@@ -4,7 +4,8 @@
 ![PHP](https://badgen.net/packagist/php/cedx/lcov.hx) ![Packagist](https://badgen.net/packagist/v/cedx/lcov.hx) ![Downloads](https://badgen.net/packagist/dt/cedx/lcov.hx)  
 ![License](https://badgen.net/badge/license/MIT/blue) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.hx) ![Build](https://badgen.net/github/checks/cedx/lcov.hx)
 
-Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Haxe](https://haxe.org), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [PHP](https://www.php.net).
+Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
+in [Haxe](https://haxe.org), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [PHP](https://www.php.net).
 
 ## Documentation
 - [User guide](https://docs.belin.io/lcov.hx)
