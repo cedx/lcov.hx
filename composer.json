@@ -26,8 +26,7 @@
 	],
 	"require": {
 		"php": ">=7.0.0",
-		"ext-json": "*",
-		"cedx/haxe": "^1.0.0"
+		"cedx/haxe": "^1.1.0"
 	},
 	"support": {
 		"docs": "https://api.belin.io/lcov.hx",
