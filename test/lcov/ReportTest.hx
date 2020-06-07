@@ -6,7 +6,7 @@ import sys.io.File;
 class ReportTest extends Test {
 
 	/** Tests the `fromCoverage()` method. **/
-	function testFromCoverage(): Void {
+	function testFromCoverage() {
 		final report = Report.fromCoverage(File.getContent("test/fixtures/lcov.info"));
 
 		// It should have a test name.
@@ -54,7 +54,7 @@ class ReportTest extends Test {
 	}
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "TN:<testName>".
 		final record = new Record("");
 		Assert.equals(0, new Report().toString().length);

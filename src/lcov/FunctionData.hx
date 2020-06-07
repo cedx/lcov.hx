@@ -13,7 +13,7 @@ package lcov;
 	public var lineNumber: Int;
 
 	/** Creates a new function data. **/
-	public function new(functionName: String, lineNumber: Int, executionCount: Int = 0) {
+	public function new(functionName: String, lineNumber: Int, executionCount = 0) {
 		this.executionCount = executionCount;
 		this.functionName = functionName;
 		this.lineNumber = lineNumber;

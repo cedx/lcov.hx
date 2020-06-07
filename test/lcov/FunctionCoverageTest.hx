@@ -4,7 +4,7 @@ package lcov;
 class FunctionCoverageTest extends Test {
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "FNF:<found>\nFNH:<hit>".
 		final coverage = new FunctionCoverage(23, 11, [new FunctionData("main", 127, 3)]);
 		Assert.equals("FNF:0\nFNH:0", new FunctionCoverage().toString());

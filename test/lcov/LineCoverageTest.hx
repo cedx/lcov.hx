@@ -4,7 +4,7 @@ package lcov;
 class LineCoverageTest extends Test {
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "LF:<found>\nLH:<hit>".
 		final data = new LineData(127, 3);
 		Assert.equals("LF:0\nLH:0", new LineCoverage().toString());

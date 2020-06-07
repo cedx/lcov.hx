@@ -16,7 +16,7 @@ using StringTools;
 	public var testName: String;
 
 	/** Creates a new report. **/
-	public function new(testName: String = "", ?records: #if php NativeIndexedArray<Record> #else Array<Record> #end) {
+	public function new(testName = "", ?records: #if php NativeIndexedArray<Record> #else Array<Record> #end) {
 		this.records = records != null ? records : [];
 		this.testName = testName;
 	}

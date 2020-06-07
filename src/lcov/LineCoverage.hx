@@ -17,7 +17,7 @@ import php.NativeIndexedArray;
 	public var hit: Int;
 
 	/** Creates a new line coverage. **/
-	public function new(found: Int = 0, hit: Int = 0, ?data: #if php NativeIndexedArray<LineData> #else Array<LineData> #end) {
+	public function new(found = 0, hit = 0, ?data: #if php NativeIndexedArray<LineData> #else Array<LineData> #end) {
 		this.data = data != null ? data : [];
 		this.found = found;
 		this.hit = hit;

@@ -17,7 +17,7 @@ import php.NativeIndexedArray;
 	public var hit: Int;
 
 	/** Creates a new branch coverage. **/
-	public function new(found: Int = 0, hit: Int = 0, ?data: #if php NativeIndexedArray<BranchData> #else Array<BranchData> #end) {
+	public function new(found = 0, hit = 0, ?data: #if php NativeIndexedArray<BranchData> #else Array<BranchData> #end) {
 		this.data = data != null ? data : [];
 		this.found = found;
 		this.hit = hit;

@@ -4,7 +4,7 @@ package lcov;
 class BranchCoverageTest extends Test {
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "BRF:<found>\nBRH:<hit>".
 		final data = new BranchData(127, 3, 2, 1);
 		Assert.equals("BRF:0\nBRH:0", new BranchCoverage().toString());

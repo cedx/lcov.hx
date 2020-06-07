@@ -4,7 +4,7 @@ package lcov;
 class FunctionDataTest extends Test {
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "FN:<lineNumber>,<functionName>" when used as definition.
 		Assert.equals("FN:0,", new FunctionData("", 0).toString(true));
 		Assert.equals("FN:127,main", new FunctionData("main", 127, 3).toString(true));

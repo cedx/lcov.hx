@@ -4,7 +4,7 @@ package lcov;
 class RecordTest extends Test {
 
 	/** Tests the `toString()` method. **/
-	function testToString(): Void {
+	function testToString() {
 		// It should return a format like "SF:<sourceFile>\nend_of_record".
 		final record = new Record("/home/cedx/lcov.hx", {
 			branches: new BranchCoverage(),

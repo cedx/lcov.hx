@@ -12,7 +12,7 @@ import haxe.Exception;
 	public final source: String;
 
 	/** Creates a new LCOV exception. **/
-	public function new(message: String = "", source: String = "", offset: Int = 0, ?previous: Exception) {
+	public function new(message = "", source = "", offset = 0, ?previous: Exception) {
 		super(message, previous);
 		this.offset = offset;
 		this.source = source;

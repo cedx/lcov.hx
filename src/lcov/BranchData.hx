@@ -16,7 +16,7 @@ package lcov;
 	public var taken: Int;
 
 	/** Creates a new branch data. **/
-	public function new(lineNumber: Int, blockNumber: Int, branchNumber: Int, taken: Int = 0) {
+	public function new(lineNumber: Int, blockNumber: Int, branchNumber: Int, taken = 0) {
 		this.blockNumber = blockNumber;
 		this.branchNumber = branchNumber;
 		this.lineNumber = lineNumber;
