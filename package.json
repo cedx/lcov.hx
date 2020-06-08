@@ -45,6 +45,7 @@
 	},
 	"scripts": {
 		"coverage": "coveralls var/lcov.info",
+		"dist": "terser --config-file=etc/terser.json --output=build/lcov.min.js build/lcov.js",
 		"prepack": "pwsh tool/dist.ps1"
 	}
 }
