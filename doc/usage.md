@@ -65,12 +65,12 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 				$report = Report::fromCoverage($coverage);
 				
 				$count = count($report->records);
-				echo "The coverage report contains $count records:", PHP_EOL;
-				echo json_encode($report, JSON_PRETTY_PRINT);
+				print "The coverage report contains $count records:" . PHP_EOL;
+				print json_encode($report, JSON_PRETTY_PRINT);
 			}
 
 			catch (LcovException $e) {
-				echo "An error occurred: ", $e->getMessage();
+				print "An error occurred: {$e->getMessage()}";
 			}
 		}
 
@@ -177,7 +177,7 @@ All you have to do is to create the adequate structure using these different cla
 			]);
 
 			$report = new Report("Example", [$record]);
-			echo $report;
+			print $report;
 		}
 
 The `Report.toString()` method will return a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) report formatted like this:

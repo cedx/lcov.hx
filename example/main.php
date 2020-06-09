@@ -14,7 +14,7 @@ function formatReport(): void {
 	]);
 
 	$report = new Report("Example", [$record]);
-	echo $report;
+	print $report;
 }
 
 /** Parses a LCOV report to coverage data. */
@@ -24,11 +24,11 @@ function parseReport(): void {
 		$report = Report::fromCoverage($coverage);
 
 		$count = count($report->records);
-		echo "The coverage report contains $count records:", PHP_EOL;
-		echo json_encode($report, JSON_PRETTY_PRINT);
+		print "The coverage report contains $count records:" . PHP_EOL;
+		print json_encode($report, JSON_PRETTY_PRINT);
 	}
 
 	catch (LcovException $e) {
-		echo "An error occurred: '", $e->getMessage(), "' at offset ", $e->offset, ".";
+		print "An error occurred: '{$e->getMessage()}' at offset {$e->offset}.";
 	}
 }
