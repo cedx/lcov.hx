@@ -18,7 +18,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 		import sys.io.File;
 
 		class Main {
-			static function main(): Void {
+			static function main() {
 				try {
 					final coverage = File.getContent("/path/to/lcov.info");
 					final report = Report.fromCoverage(coverage);
@@ -122,7 +122,7 @@ All you have to do is to create the adequate structure using these different cla
 		import lcov.*;
 
 		class Main {
-			static function main(): Void {
+			static function main() {
 				final lineCoverage = new LineCoverage(2, 2, [
 					new LineData(6, 2, "PF4Rz2r7RTliO9u6bZ7h6g"),
 					new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
