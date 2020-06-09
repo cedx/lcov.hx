@@ -1,7 +1,7 @@
 # Installation
 
 ## Requirements
-Before installing **WebStorage.hx**, you need to make sure you have either
+Before installing **LCOV Reports**, you need to make sure you have either
 [Haxe](https://haxe.org), [Node.js](https://nodejs.org) or [PHP](https://www.php.net) up and running.
 		
 You can verify if you're already good to go with the following commands:
