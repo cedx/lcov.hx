@@ -26,7 +26,7 @@ async function parseReport() {
 		console.log(JSON.stringify(report, null, "\t"));
 	}
 
-	catch (err) {
-		console.log(`An error occurred: "${err.message}" at offset ${err.offset}.`);
+	catch (error) {
+		console.log(`An error occurred: "${error.message}" at offset ${error.offset}.`);
 	}
 }
