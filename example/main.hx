@@ -3,7 +3,7 @@ import lcov.*;
 import sys.io.File;
 
 /** A sample class. **/
-class Example {
+class Main {
 
 	/** Formats coverage data as LCOV report. **/
 	public function formatReport() {
