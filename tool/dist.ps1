@@ -10,4 +10,4 @@ if (-not (Test-Path build)) { New-Item build -ItemType Directory | Out-Null }
 Copy-Item lib/js/lcov.js build/lcov.js
 npm run dist
 
-Remove-Item lib/php/* -Exclude lcov -Force -Recurse
+Get-ChildItem lib/php -Exclude lcov | Remove-Item -Force -Recurse
