@@ -4,3 +4,4 @@
 --library utest
 --macro mcover.MCover.coverage([''], ['src'])
 --main TestAll
+--resource test/fixtures/lcov.info@report

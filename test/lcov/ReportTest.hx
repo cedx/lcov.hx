@@ -1,13 +1,13 @@
 package lcov;
 
-import sys.io.File;
+import haxe.Resource;
 
 /** Tests the features of the `Report` class. **/
 class ReportTest extends Test {
 
 	/** Tests the `fromCoverage()` method. **/
 	function testFromCoverage() {
-		final report = Report.fromCoverage(File.getContent("test/fixtures/lcov.info"));
+		final report = Report.fromCoverage(Resource.getString("report"));
 
 		// It should have a test name.
 		Assert.equals("Example", report.testName);
