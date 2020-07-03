@@ -14,7 +14,7 @@ class ReportTest extends Test {
 
 		// It should contain three records.
 		Assert.equals(3, report.records.length);
-		Assert.is(report.records[0], Record);
+		Assert.isOfType(report.records[0], Record);
 		Assert.equals("/home/cedx/lcov.hx/fixture.hx", report.records[0].sourceFile);
 		Assert.equals("/home/cedx/lcov.hx/func1.hx", report.records[1].sourceFile);
 		Assert.equals("/home/cedx/lcov.hx/func2.hx", report.records[2].sourceFile);
@@ -25,7 +25,7 @@ class ReportTest extends Test {
 		Assert.equals(4, branches.hit);
 
 		Assert.equals(4, branches.data.length);
-		Assert.is(branches.data[0], BranchData);
+		Assert.isOfType(branches.data[0], BranchData);
 		Assert.equals(8, branches.data[0].lineNumber);
 
 		// It should have detailed function coverage.
@@ -34,7 +34,7 @@ class ReportTest extends Test {
 		Assert.equals(1, functions.hit);
 
 		Assert.equals(1, functions.data.length);
-		Assert.is(functions.data[0], FunctionData);
+		Assert.isOfType(functions.data[0], FunctionData);
 		Assert.equals("func1", functions.data[0].functionName);
 
 		// It should have detailed line coverage.
@@ -43,7 +43,7 @@ class ReportTest extends Test {
 		Assert.equals(9, lines.hit);
 
 		Assert.equals(9, lines.data.length);
-		Assert.is(lines.data[0], LineData);
+		Assert.isOfType(lines.data[0], LineData);
 		Assert.equals("5kX7OTfHFcjnS98fjeVqNA", lines.data[0].checksum);
 
 		// It should throw an error if the input is invalid.
