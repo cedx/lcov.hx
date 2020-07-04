@@ -38,11 +38,11 @@ import php.NativeStructArray;
 
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
-		final output = ['${Token.sourceFile}:$sourceFile'];
+		final output = ['${Token.SourceFile}:$sourceFile'];
 		if (functions != null) output.push(functions.toString());
 		if (branches != null) output.push(branches.toString());
 		if (lines != null) output.push(lines.toString());
-		output.push(Token.endOfRecord);
+		output.push(Token.EndOfRecord);
 		return output.join("\n");
 	}
 }

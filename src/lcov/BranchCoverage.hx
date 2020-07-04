@@ -26,8 +26,8 @@ import php.NativeIndexedArray;
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
 		final lines = data.map(item -> item.toString());
-		lines.push('${Token.branchesFound}:$found');
-		lines.push('${Token.branchesHit}:$hit');
+		lines.push('${Token.BranchesFound}:$found');
+		lines.push('${Token.BranchesHit}:$hit');
 		return lines.join("\n");
 	}
 }

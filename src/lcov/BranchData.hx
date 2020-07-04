@@ -25,7 +25,7 @@ package lcov;
 
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
-		final value = '${Token.branchData}:$lineNumber,$blockNumber,$branchNumber';
+		final value = '${Token.BranchData}:$lineNumber,$blockNumber,$branchNumber';
 		return taken > 0 ? '$value,$taken' : '$value,-';
 	}
 }

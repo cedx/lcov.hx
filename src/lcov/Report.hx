@@ -36,16 +36,16 @@ using StringTools;
 			if (line.length == 0) continue;
 
 			final parts = line.split(":");
-			if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new LcovException("Invalid token format.", coverage, offset);
+			if (parts.length < 2 && parts[0] != Token.EndOfRecord) throw new LcovException("Invalid token format.", coverage, offset);
 
-			final token = parts.shift();
+			final token: Token = parts.shift();
 			final data = parts.join(":").split(",");
 
 			switch (token) {
-				case Token.testName: if (report.testName.length == 0) report.testName = data[0];
-				case Token.endOfRecord: report.records.push(record);
+				case TestName: if (report.testName.length == 0) report.testName = data[0];
+				case EndOfRecord: report.records.push(record);
 
-				case Token.branchData:
+				case BranchData:
 					if (data.length < 4) throw new LcovException("Invalid branch data.", coverage, offset);
 					record.branches.data.push(new BranchData(
 						Std.parseInt(data[0]),
@@ -54,18 +54,18 @@ using StringTools;
 						data[3] == "-" ? 0 : Std.parseInt(data[3])
 					));
 
-				case Token.functionData:
+				case FunctionData:
 					if (data.length < 2) throw new LcovException("Invalid function data.", coverage, offset);
 					for (item in record.functions.data) if (item.functionName == data[1]) {
 						item.executionCount = Std.parseInt(data[0]);
 						break;
 					}
 
-				case Token.functionName:
+				case FunctionName:
 					if (data.length < 2) throw new LcovException("Invalid function name.", coverage, offset);
 					record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
 
-				case Token.lineData:
+				case LineData:
 					if (data.length < 2) throw new LcovException("Invalid line data.", coverage, offset);
 					record.lines.data.push(new LineData(
 						Std.parseInt(data[0]),
@@ -73,18 +73,18 @@ using StringTools;
 						data.length >= 3 ? data[2] : ""
 					));
 
-				case Token.sourceFile: record = new Record(data[0], {
+				case SourceFile: record = new Record(data[0], {
 					branches: new BranchCoverage(),
 					functions: new FunctionCoverage(),
 					lines: new LineCoverage()
 				});
 
-				case Token.branchesFound: record.branches.found = Std.parseInt(data[0]);
-				case Token.branchesHit: record.branches.hit = Std.parseInt(data[0]);
-				case Token.functionsFound: record.functions.found = Std.parseInt(data[0]);
-				case Token.functionsHit: record.functions.hit = Std.parseInt(data[0]);
-				case Token.linesFound: record.lines.found = Std.parseInt(data[0]);
-				case Token.linesHit: record.lines.hit = Std.parseInt(data[0]);
+				case BranchesFound: record.branches.found = Std.parseInt(data[0]);
+				case BranchesHit: record.branches.hit = Std.parseInt(data[0]);
+				case FunctionsFound: record.functions.found = Std.parseInt(data[0]);
+				case FunctionsHit: record.functions.hit = Std.parseInt(data[0]);
+				case LinesFound: record.lines.found = Std.parseInt(data[0]);
+				case LinesHit: record.lines.hit = Std.parseInt(data[0]);
 
 				default: throw new LcovException("Unknown token.", coverage, offset);
 			}
@@ -96,7 +96,7 @@ using StringTools;
 
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
-		final lines = testName.length > 0 ? ['${Token.testName}:$testName'] : [];
+		final lines = testName.length > 0 ? ['${Token.TestName}:$testName'] : [];
 		for (record in records.map(item -> item.toString())) lines.push(record);
 		return lines.join("\n");
 	}

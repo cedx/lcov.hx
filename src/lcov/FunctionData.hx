@@ -21,7 +21,7 @@ package lcov;
 
 	/** Returns a string representation of this object. **/
 	public function toString(asDefinition: Bool = false): String {
-		final token = asDefinition ? Token.functionName : Token.functionData;
+		final token: Token = asDefinition ? FunctionName : FunctionData;
 		final number = asDefinition ? lineNumber : executionCount;
 		return '$token:$number,$functionName';
 	}

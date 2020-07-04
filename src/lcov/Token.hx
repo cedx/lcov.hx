@@ -4,41 +4,41 @@ package lcov;
 enum abstract Token(String) from String to String {
 
 	/** The coverage data of a branch. **/
-	var branchesFound = "BRF";
+	var BranchesFound = "BRF";
 
 	/** The number of branches found. **/
-	var branchesHit = "BRH";
+	var BranchesHit = "BRH";
 
 	/** The number of branches hit. **/
-	var branchData = "BRDA";
+	var BranchData = "BRDA";
 
 	/** The end of a section. **/
-	var endOfRecord = "end_of_record";
+	var EndOfRecord = "end_of_record";
 
 	/** The coverage data of a function. **/
-	var functionData = "FNDA";
+	var FunctionData = "FNDA";
 
 	/** A function name. **/
-	var functionName = "FN";
+	var FunctionName = "FN";
 
 	/** The number of functions found. **/
-	var functionsFound = "FNF";
+	var FunctionsFound = "FNF";
 
 	/** The number of functions hit. **/
-	var functionsHit = "FNH";
+	var FunctionsHit = "FNH";
 
 	/** The coverage data of a line. **/
-	var lineData = "DA";
+	var LineData = "DA";
 
 	/** The number of lines found. **/
-	var linesFound = "LF";
+	var LinesFound = "LF";
 
 	/** The number of lines hit. **/
-	var linesHit = "LH";
+	var LinesHit = "LH";
 
 	/** The path to a source file. **/
-	var sourceFile = "SF";
+	var SourceFile = "SF";
 
 	/** A test name. **/
-	var testName = "TN";
+	var TestName = "TN";
 }

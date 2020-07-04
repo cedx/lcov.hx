@@ -27,8 +27,8 @@ import php.NativeIndexedArray;
 	public function toString(): String {
 		final lines = data.map(item -> item.toString(true));
 		for (line in data.map(item -> item.toString(false))) lines.push(line);
-		lines.push('${Token.functionsFound}:$found');
-		lines.push('${Token.functionsHit}:$hit');
+		lines.push('${Token.FunctionsFound}:$found');
+		lines.push('${Token.FunctionsHit}:$hit');
 		return lines.join("\n");
 	}
 }

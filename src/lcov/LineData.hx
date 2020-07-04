@@ -21,7 +21,7 @@ package lcov;
 
 	/** Returns a string representation of this object. **/
 	public function toString(): String {
-		final value = '${Token.lineData}:$lineNumber,$executionCount';
+		final value = '${Token.LineData}:$lineNumber,$executionCount';
 		return checksum.length > 0 ? '$value,$checksum' : value;
 	}
 }
