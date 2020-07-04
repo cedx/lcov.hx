@@ -1,7 +1,9 @@
 package lcov;
 
 /** Provides details for branch coverage. **/
-@:expose class BranchData {
+@:expose
+@:structInit
+class BranchData {
 
 	/** The block number. **/
 	public var blockNumber: Int;

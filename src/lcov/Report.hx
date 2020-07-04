@@ -47,12 +47,12 @@ using StringTools;
 
 				case BranchData:
 					if (data.length < 4) throw new LcovException("Invalid branch data.", coverage, offset);
-					record.branches.data.push(new BranchData(
-						Std.parseInt(data[0]),
-						Std.parseInt(data[1]),
-						Std.parseInt(data[2]),
-						data[3] == "-" ? 0 : Std.parseInt(data[3])
-					));
+					record.branches.data.push({
+						lineNumber: Std.parseInt(data[0]),
+						blockNumber: Std.parseInt(data[1]),
+						branchNumber: Std.parseInt(data[2]),
+						taken: data[3] == "-" ? 0 : Std.parseInt(data[3])
+					});
 
 				case FunctionData:
 					if (data.length < 2) throw new LcovException("Invalid function data.", coverage, offset);
@@ -63,15 +63,15 @@ using StringTools;
 
 				case FunctionName:
 					if (data.length < 2) throw new LcovException("Invalid function name.", coverage, offset);
-					record.functions.data.push(new FunctionData(data[1], Std.parseInt(data[0])));
+					record.functions.data.push({functionName: data[1], lineNumber: Std.parseInt(data[0])});
 
 				case LineData:
 					if (data.length < 2) throw new LcovException("Invalid line data.", coverage, offset);
-					record.lines.data.push(new LineData(
-						Std.parseInt(data[0]),
-						Std.parseInt(data[1]),
-						data.length >= 3 ? data[2] : ""
-					));
+					record.lines.data.push({
+						lineNumber: Std.parseInt(data[0]),
+						executionCount: Std.parseInt(data[1]),
+						checksum: data.length >= 3 ? data[2] : ""
+					});
 
 				case SourceFile: record = new Record(data[0], {
 					branches: new BranchCoverage(),

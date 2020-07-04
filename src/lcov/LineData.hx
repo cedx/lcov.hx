@@ -1,7 +1,9 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-@:expose class LineData {
+@:expose
+@:structInit
+class LineData {
 
 	/** The data checksum. **/
 	public var checksum: String;
