@@ -54,81 +54,77 @@ class Report {
 			}
 			$token = array_shift($parts->arr);
 			$data = HxString::split($parts->join(":"), ",");
-			if ($token === null) {
-				throw new LcovException("Unknown token.", $coverage, $offset);
-			} else {
-				if ($token === "BRDA") {
-					if ($data->length < 4) {
-						throw new LcovException("Invalid branch data.", $coverage, $offset);
-					}
-					$_this = $record->branches->data;
-					$x = \Std::parseInt(($data->arr[0] ?? null));
-					$x1 = \Std::parseInt(($data->arr[1] ?? null));
-					$x2 = \Std::parseInt(($data->arr[2] ?? null));
-					$x3 = new BranchData($x, $x1, $x2, (($data->arr[3] ?? null) === "-" ? 0 : \Std::parseInt(($data->arr[3] ?? null))));
-					$_this->arr[$_this->length++] = $x3;
-				} else if ($token === "BRF") {
-					$record->branches->found = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "BRH") {
-					$record->branches->hit = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "DA") {
-					if ($data->length < 2) {
-						throw new LcovException("Invalid line data.", $coverage, $offset);
-					}
-					$_this1 = $record->lines->data;
-					$x4 = \Std::parseInt(($data->arr[0] ?? null));
-					$x5 = \Std::parseInt(($data->arr[1] ?? null));
-					$x6 = new LineData($x4, $x5, ($data->length >= 3 ? ($data->arr[2] ?? null) : ""));
-					$_this1->arr[$_this1->length++] = $x6;
-				} else if ($token === "FN") {
-					if ($data->length < 2) {
-						throw new LcovException("Invalid function name.", $coverage, $offset);
-					}
-					$_this2 = $record->functions->data;
-					$data1 = ($data->arr[1] ?? null);
-					$x7 = new FunctionData($data1, \Std::parseInt(($data->arr[0] ?? null)));
-					$_this2->arr[$_this2->length++] = $x7;
-				} else if ($token === "FNDA") {
-					if ($data->length < 2) {
-						throw new LcovException("Invalid function data.", $coverage, $offset);
-					}
-					$_g2 = 0;
-					$_g3 = $record->functions->data;
-					while ($_g2 < $_g3->length) {
-						$item = ($_g3->arr[$_g2] ?? null);
-						++$_g2;
-						if ($item->functionName === ($data->arr[1] ?? null)) {
-							$item->executionCount = \Std::parseInt(($data->arr[0] ?? null));
-							break;
-						}
-					}
-				} else if ($token === "FNF") {
-					$record->functions->found = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "FNH") {
-					$record->functions->hit = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "LF") {
-					$record->lines->found = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "LH") {
-					$record->lines->hit = \Std::parseInt(($data->arr[0] ?? null));
-				} else if ($token === "SF") {
-					$data2 = ($data->arr[0] ?? null);
-					$record1 = new BranchCoverage();
-					$record2 = new FunctionCoverage();
-					$record = new Record($data2, [
-						"branches" => $record1,
-						"functions" => $record2,
-						"lines" => new LineCoverage(),
-					]);
-				} else if ($token === "TN") {
-					if (mb_strlen($report->testName) === 0) {
-						$report->testName = ($data->arr[0] ?? null);
-					}
-				} else if ($token === "end_of_record") {
-					$_this3 = $report->records;
-					$_this3->arr[$_this3->length++] = $record;
-				} else {
-					throw new LcovException("Unknown token.", $coverage, $offset);
+			if ($token === "BRDA") {
+				if ($data->length < 4) {
+					throw new LcovException("Invalid branch data.", $coverage, $offset);
 				}
+				$_this = $record->branches->data;
+				$_g2 = \Std::parseInt(($data->arr[0] ?? null));
+				$_g3 = \Std::parseInt(($data->arr[1] ?? null));
+				$_g4 = \Std::parseInt(($data->arr[2] ?? null));
+				$x = new BranchData($_g2, $_g3, $_g4, (($data->arr[3] ?? null) === "-" ? 0 : \Std::parseInt(($data->arr[3] ?? null))));
+				$_this->arr[$_this->length++] = $x;
+			} else if ($token === "BRF") {
+				$record->branches->found = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "BRH") {
+				$record->branches->hit = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "DA") {
+				if ($data->length < 2) {
+					throw new LcovException("Invalid line data.", $coverage, $offset);
+				}
+				$_this1 = $record->lines->data;
+				$_g5 = \Std::parseInt(($data->arr[0] ?? null));
+				$x1 = \Std::parseInt(($data->arr[1] ?? null));
+				$x2 = new LineData($_g5, $x1, ($data->length >= 3 ? ($data->arr[2] ?? null) : ""));
+				$_this1->arr[$_this1->length++] = $x2;
+			} else if ($token === "FN") {
+				if ($data->length < 2) {
+					throw new LcovException("Invalid function name.", $coverage, $offset);
+				}
+				$_this2 = $record->functions->data;
+				$_g6 = ($data->arr[1] ?? null);
+				$x3 = new FunctionData($_g6, \Std::parseInt(($data->arr[0] ?? null)), 0);
+				$_this2->arr[$_this2->length++] = $x3;
+			} else if ($token === "FNDA") {
+				if ($data->length < 2) {
+					throw new LcovException("Invalid function data.", $coverage, $offset);
+				}
+				$_g7 = 0;
+				$_g8 = $record->functions->data;
+				while ($_g7 < $_g8->length) {
+					$item = ($_g8->arr[$_g7] ?? null);
+					++$_g7;
+					if ($item->functionName === ($data->arr[1] ?? null)) {
+						$item->executionCount = \Std::parseInt(($data->arr[0] ?? null));
+						break;
+					}
+				}
+			} else if ($token === "FNF") {
+				$record->functions->found = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "FNH") {
+				$record->functions->hit = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "LF") {
+				$record->lines->found = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "LH") {
+				$record->lines->hit = \Std::parseInt(($data->arr[0] ?? null));
+			} else if ($token === "SF") {
+				$data1 = ($data->arr[0] ?? null);
+				$record1 = new BranchCoverage();
+				$record2 = new FunctionCoverage();
+				$record = new Record($data1, [
+					"branches" => $record1,
+					"functions" => $record2,
+					"lines" => new LineCoverage(),
+				]);
+			} else if ($token === "TN") {
+				if (mb_strlen($report->testName) === 0) {
+					$report->testName = ($data->arr[0] ?? null);
+				}
+			} else if ($token === "end_of_record") {
+				$_this3 = $report->records;
+				$_this3->arr[$_this3->length++] = $record;
+			} else {
+				throw new LcovException("Unknown token.", $coverage, $offset);
 			}
 		}
 		if ($report->records->length === 0) {
