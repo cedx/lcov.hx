@@ -3,6 +3,7 @@
 	"exclude": {
 		"path": "RELATIVE_TO_SOURCE",
 		"CyclomaticComplexity": ["lcov/Report:fromCoverage"],
+		"MemberName": ["lcov/Token"],
 		"MethodLength": ["lcov/Report:fromCoverage"],
 		"NestedControlFlow": ["lcov/Report:fromCoverage"]
 	},
