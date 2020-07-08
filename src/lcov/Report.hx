@@ -41,7 +41,7 @@ using StringTools;
 			final token: Token = parts.shift();
 			final data = parts.join(":").split(",");
 
-			switch (token) {
+			switch token {
 				case TestName: if (report.testName.length == 0) report.testName = data[0];
 				case EndOfRecord: report.records.push(record);
 
