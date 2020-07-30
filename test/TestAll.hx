@@ -1,6 +1,4 @@
 import lcov.*;
-import mcover.coverage.MCoverage;
-import mcover.coverage.client.LcovPrintClient;
 import utest.UTest;
 
 /** Runs the test suite. **/
@@ -19,9 +17,5 @@ class TestAll {
 	];
 
 	/** Application entry point. **/
-	static function main() UTest.run(tests, () -> {
-		final logger = MCoverage.getLogger();
-		logger.addClient(new LcovPrintClient("which", "var/lcov.info"));
-		logger.report();
-	});
+	static function main() UTest.run(tests);
 }

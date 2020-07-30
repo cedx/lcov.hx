@@ -1,7 +1,8 @@
 --class-path src
 --class-path test
---library mcover
+--define coverage-lcov-reporter=var/lcov.info
+--library instrument
 --library utest
---macro mcover.MCover.coverage([''], ['src'])
+--macro instrument.Instrumentation.coverage(['lcov'], ['src'])
 --main TestAll
 --resource test/fixtures/lcov.info@report
