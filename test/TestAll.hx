@@ -1,3 +1,4 @@
+import instrument.coverage.Coverage;
 import lcov.*;
 import utest.UTest;
 
@@ -17,5 +18,5 @@ class TestAll {
 	];
 
 	/** Application entry point. **/
-	static function main() UTest.run(tests);
+	static function main() UTest.run(tests, Coverage.endCoverage);
 }
