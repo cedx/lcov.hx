@@ -2,7 +2,7 @@
 --class-path test
 --define coverage-lcov-reporter=var/lcov.info
 --library instrument:1.1.0
---library utest:1.13.0
+--library utest:1.13.1
 --macro instrument.Instrumentation.coverage(['lcov'], ['src'])
 --main TestAll
 --resource test/fixtures/lcov.info@report
