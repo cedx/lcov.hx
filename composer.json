@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"name": "cedx/lcov.hx",
 	"type": "library",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"authors": [
 		{"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
 	],
