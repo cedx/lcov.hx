@@ -29,6 +29,9 @@
 		"ext-mbstring": "*",
 		"cedx/haxe": "^1.3.0"
 	},
+	"scripts": {
+		"coverage": "composer global exec coveralls var/lcov.info"
+	},
 	"support": {
 		"docs": "https://api.belin.io/lcov.hx",
 		"issues": "https://git.belin.io/cedx/lcov.hx/issues"
