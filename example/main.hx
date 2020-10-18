@@ -22,16 +22,10 @@ class Main {
 	}
 
 	/** Parses a LCOV report to coverage data. **/
-	public function parseReport() {
-		try {
-			final coverage = File.getContent("/path/to/lcov.info");
-			final report = Report.fromCoverage(coverage);
-			Sys.println('The coverage report contains ${report.records.length} records:');
-			Sys.println(Json.stringify(report, null, "\t"));
-		}
-
-		catch (e: LcovException) {
-			Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
-		}
-	}
+	public function parseReport() try {
+		final coverage = File.getContent("/path/to/lcov.info");
+		final report = Report.fromCoverage(coverage);
+		Sys.println('The coverage report contains ${report.records.length} records:');
+		Sys.println(Json.stringify(report, null, "\t"));
+	} catch (e: LcovException) Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
 }
