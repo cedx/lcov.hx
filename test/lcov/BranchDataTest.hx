@@ -1,12 +1,14 @@
 package lcov;
 
 /** Tests the features of the `BranchData` class. **/
-class BranchDataTest extends Test {
+class BranchDataTest {
+
+	/** Creates a new test. **/
+	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	function testToString() {
-		// It should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>".
-		Assert.equals("BRDA:0,0,0,-", new BranchData(0, 0, 0).toString());
-		Assert.equals("BRDA:127,3,2,1", new BranchData(127, 3, 2, 1).toString());
-	}
+	@:variant(new lcov.BranchData(0, 0, 0), "BRDA:0,0,0,-")
+	@:variant(new lcov.BranchData(127, 3, 2, 1), "BRDA:127,3,2,1")
+	public function testToString(input: BranchData, output: String)
+		return assert(input.toString() == output);
 }

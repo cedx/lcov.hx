@@ -1,16 +1,17 @@
 package lcov;
 
 /** Tests the features of the `FunctionData` class. **/
-class FunctionDataTest extends Test {
+@:asserts class FunctionDataTest {
+
+	/** Creates a new test. **/
+	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	function testToString() {
-		// It should return a format like "FN:<lineNumber>,<functionName>" when used as definition.
-		Assert.equals("FN:0,", new FunctionData("", 0).toString(true));
-		Assert.equals("FN:127,main", new FunctionData("main", 127, 3).toString(true));
-
-		// It should return a format like "FNDA:<executionCount>,<functionName>" when used as data.
-		Assert.equals("FNDA:0,", new FunctionData("", 0).toString(false));
-		Assert.equals("FNDA:3,main", new FunctionData("main", 127, 3).toString(false));
+	@:variant(new lcov.FunctionData("", 0), "FNDA:0,", "FN:0,")
+	@:variant(new lcov.FunctionData("main", 127, 3), "FNDA:3,main", "FN:127,main")
+	public function testToString(input: FunctionData, asData: String, asDefinition: String) {
+		asserts.assert(input.toString(false) == asData);
+		asserts.assert(input.toString(true) == asDefinition);
+		return asserts.done();
 	}
 }

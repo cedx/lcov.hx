@@ -1,18 +1,21 @@
 package lcov;
 
 /** Tests the features of the `Record` class. **/
-class RecordTest extends Test {
+@:asserts class RecordTest {
+
+	/** Creates a new test. **/
+	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	function testToString() {
-		// It should return a format like "SF:<sourceFile>\nend_of_record".
+	public function testToString() {
 		final record = new Record("/home/cedx/lcov.hx", {
 			branches: new BranchCoverage(),
 			functions: new FunctionCoverage(),
 			lines: new LineCoverage()
 		});
 
-		Assert.equals("SF:\nend_of_record", new Record("").toString());
-		Assert.equals('SF:/home/cedx/lcov.hx\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record', record.toString());
+		asserts.assert(new Record("").toString() == "SF:\nend_of_record");
+		asserts.assert(record.toString() == 'SF:/home/cedx/lcov.hx\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record');
+		return asserts.done();
 	}
 }

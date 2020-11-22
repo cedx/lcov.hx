@@ -1,63 +1,66 @@
 package lcov;
 
 import haxe.Resource;
+using AssertionTools;
 
 /** Tests the features of the `Report` class. **/
-class ReportTest extends Test {
+@:asserts class ReportTest {
+
+	/** Creates a new test. **/
+	public function new() {}
 
 	/** Tests the `fromCoverage()` method. **/
-	function testFromCoverage() {
+	public function testFromCoverage() {
 		final report = Report.fromCoverage(Resource.getString("report"));
 
 		// It should have a test name.
-		Assert.equals("Example", report.testName);
+		asserts.assert(report.testName == "Example");
 
 		// It should contain three records.
-		Assert.equals(3, report.records.length);
-		Assert.isOfType(report.records[0], Record);
-		Assert.equals("/home/cedx/lcov.hx/fixture.hx", report.records[0].sourceFile);
-		Assert.equals("/home/cedx/lcov.hx/func1.hx", report.records[1].sourceFile);
-		Assert.equals("/home/cedx/lcov.hx/func2.hx", report.records[2].sourceFile);
+		asserts.assert(report.records.length == 3);
+		asserts.assert(Std.isOfType(report.records[0], Record));
+		asserts.assert(report.records[0].sourceFile == "/home/cedx/lcov.hx/fixture.hx");
+		asserts.assert(report.records[1].sourceFile == "/home/cedx/lcov.hx/func1.hx");
+		asserts.assert(report.records[2].sourceFile == "/home/cedx/lcov.hx/func2.hx");
 
 		// It should have detailed branch coverage.
 		final branches = report.records[1].branches;
-		Assert.equals(4, branches.found);
-		Assert.equals(4, branches.hit);
+		asserts.assert(branches.found == 4);
+		asserts.assert(branches.hit == 4);
 
-		Assert.equals(4, branches.data.length);
-		Assert.isOfType(branches.data[0], BranchData);
-		Assert.equals(8, branches.data[0].lineNumber);
+		asserts.assert(branches.data.length == 4);
+		asserts.assert(Std.isOfType(branches.data[0], BranchData));
+		asserts.assert(branches.data[0].lineNumber == 8);
 
 		// It should have detailed function coverage.
 		final functions = report.records[1].functions;
-		Assert.equals(1, functions.found);
-		Assert.equals(1, functions.hit);
+		asserts.assert(functions.found == 1);
+		asserts.assert(functions.hit == 1);
 
-		Assert.equals(1, functions.data.length);
-		Assert.isOfType(functions.data[0], FunctionData);
-		Assert.equals("func1", functions.data[0].functionName);
+		asserts.assert(functions.data.length == 1);
+		asserts.assert(Std.isOfType(functions.data[0], FunctionData));
+		asserts.assert(functions.data[0].functionName == "func1");
 
 		// It should have detailed line coverage.
 		final lines = report.records[1].lines;
-		Assert.equals(9, lines.found);
-		Assert.equals(9, lines.hit);
+		asserts.assert(lines.found == 9);
+		asserts.assert(lines.hit == 9);
 
-		Assert.equals(9, lines.data.length);
-		Assert.isOfType(lines.data[0], LineData);
-		Assert.equals("5kX7OTfHFcjnS98fjeVqNA", lines.data[0].checksum);
+		asserts.assert(lines.data.length == 9);
+		asserts.assert(Std.isOfType(lines.data[0], LineData));
+		asserts.assert(lines.data[0].checksum == "5kX7OTfHFcjnS98fjeVqNA");
 
-		// It should throw an error if the input is invalid.
-		Assert.raises(() -> Report.fromCoverage("ZZ"), LcovException);
+		// It should throw an exception if the input is invalid.
+		asserts.throws(() -> Report.fromCoverage("ZZ"), LcovException);
 
-		// It should throw an error if the report is empty.
-		Assert.raises(() -> Report.fromCoverage("TN:Example"), LcovException);
+		// It should throw an exception if the report is empty.
+		asserts.throws(() -> Report.fromCoverage("TN:Example"), LcovException);
+		return asserts.done();
 	}
 
 	/** Tests the `toString()` method. **/
-	function testToString() {
-		// It should return a format like "TN:<testName>".
-		final record = new Record("");
-		Assert.equals(0, new Report().toString().length);
-		Assert.equals('TN:LcovTest\n$record', new Report("LcovTest", [record]).toString());
-	}
+	@:variant(new lcov.Report(), "")
+	@:variant(new lcov.Report("LcovTest", [new lcov.Record("")]), "TN:LcovTest\nSF:\nend_of_record")
+	public function testToString(input: Report, output: String)
+		return assert(input.toString() == output);
 }

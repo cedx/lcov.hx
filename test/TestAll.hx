@@ -1,22 +1,27 @@
 import instrument.coverage.Coverage;
 import lcov.*;
-import utest.UTest;
+import tink.testrunner.Runner;
+import tink.unit.TestBatch;
 
 /** Runs the test suite. **/
 class TestAll {
 
-	/** The test cases. **/
-	static final tests = [
-		new BranchCoverageTest(),
-		new BranchDataTest(),
-		new FunctionCoverageTest(),
-		new FunctionDataTest(),
-		new LineCoverageTest(),
-		new LineDataTest(),
-		new RecordTest(),
-		new ReportTest()
-	];
-
 	/** Application entry point. **/
-	static function main() UTest.run(tests, Coverage.endCoverage);
+	static function main() {
+		final tests = TestBatch.make([
+			new BranchCoverageTest(),
+			new BranchDataTest(),
+			new FunctionCoverageTest(),
+			new FunctionDataTest(),
+			new LineCoverageTest(),
+			new LineDataTest(),
+			new RecordTest(),
+			new ReportTest()
+		]);
+
+		Runner.run(tests).handle(outcome -> {
+			Coverage.endCoverage();
+			Runner.exit(outcome);
+		});
+	}
 }

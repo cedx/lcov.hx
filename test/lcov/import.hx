@@ -1,2 +1,1 @@
-import utest.Assert;
-import utest.Test;
+import tink.unit.Assert.assert;

@@ -1,12 +1,14 @@
 package lcov;
 
 /** Tests the features of the `LineData` class. **/
-class LineDataTest extends Test {
+class LineDataTest {
+
+	/** Creates a new test. **/
+	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	function testToString() {
-		// It should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]".
-		Assert.equals("DA:0,0", new LineData(0).toString());
-		Assert.equals("DA:127,3,ed076287532e86365e841e92bfc50d8c", new LineData(127, 3, "ed076287532e86365e841e92bfc50d8c").toString());
-	}
+	@:variant(new lcov.LineData(0), "DA:0,0")
+	@:variant(new lcov.LineData(127, 3, "ed076287532e86365e841e92bfc50d8c"), "DA:127,3,ed076287532e86365e841e92bfc50d8c")
+	public function testToString(input: LineData, output: String)
+		return assert(input.toString() == output);
 }
