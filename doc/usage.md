@@ -29,7 +29,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 				}
 
 				catch (e: LcovException) {
-					Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
+					Sys.println('An error occurred: ${e.message} at offset ${e.offset}.');
 				}
 			}
 		}
@@ -70,7 +70,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 			}
 
 			catch (LcovException $e) {
-				print "An error occurred: '{$e->getMessage()}' at offset {$e->offset}.";
+				print "An error occurred: {$e->getMessage()} at offset {$e->offset}.";
 			}
 		}
 
@@ -124,8 +124,8 @@ All you have to do is to create the adequate structure using these different cla
 		class Main {
 			static function main() {
 				final lineCoverage = new LineCoverage(2, 2, [
-					{lineNumber: 6, executionCount: 2, checksum: "PF4Rz2r7RTliO9u6bZ7h6g"},
-					{lineNumber: 7, executionCount: 2, checksum: "yGMB6FhEEAd8OyASe3Ni1w"}
+					new LineData(6, 2, "PF4Rz2r7RTliO9u6bZ7h6g"),
+					new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
 				]);
 
 				final record = new Record("/home/cedx/lcov.hx/fixture.hx", {
@@ -172,8 +172,8 @@ All you have to do is to create the adequate structure using these different cla
 			]);
 
 			$record = new Record("/home/cedx/lcov.hx/fixture.php", [
-				'functions' => new FunctionCoverage(1, 1),
-				'lines' => $lineCoverage
+				"functions" => new FunctionCoverage(1, 1),
+				"lines" => $lineCoverage
 			]);
 
 			$report = new Report("Example", [$record]);
