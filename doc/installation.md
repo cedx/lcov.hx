@@ -17,10 +17,10 @@ You can verify if you're already good to go with the following commands:
 === "JavaScript"
 		:::shell
 		node --version
-		# v15.1.0
+		# v15.3.0
 
 		npm --version
-		# 7.0.8
+		# 7.0.14
 
 === "PHP"
 		:::shell
@@ -28,7 +28,7 @@ You can verify if you're already good to go with the following commands:
 		# PHP 7.4.12 (cli) (built: Oct 27 2020 17:18:33) ( NTS Visual C++ 2017 x64 )
 
 		composer --version
-		# Composer version 2.0.4 2020-10-30 22:39:11
+		# Composer version 2.0.7 2020-11-13 17:31:06
 
 !!! info
 	If you plan to play with the package sources, you will also need
