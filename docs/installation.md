@@ -6,78 +6,92 @@ Before installing **LCOV Reports**, you need to make sure you have either
 		
 You can verify if you're already good to go with the following commands:
 
-=== "Haxe"
-		:::shell
-		haxe --version
-		# 4.1.4
+<!-- tabs:start -->
 
-		haxelib version
-		# 4.0.2
+#### **Haxe**
+```shell
+haxe --version
+# 4.1.4
 
-=== "JavaScript"
-		:::shell
-		node --version
-		# v15.3.0
+haxelib version
+# 4.0.2
+```
 
-		npm --version
-		# 7.0.14
+#### **JavaScript**
+```shell
+node --version
+# v15.3.0
 
-=== "PHP"
-		:::shell
-		php --version
-		# PHP 7.4.12 (cli) (built: Oct 27 2020 17:18:33) ( NTS Visual C++ 2017 x64 )
+npm --version
+# 7.0.14
+```
 
-		composer --version
-		# Composer version 2.0.7 2020-11-13 17:31:06
+#### **PHP**
+```shell
+php --version
+# PHP 8.0.0 (cli) (built: Nov 24 2020 22:02:58) ( NTS Visual C++ 2019 x64 )
 
-!!! info
-	If you plan to play with the package sources, you will also need
-	[PowerShell](https://docs.microsoft.com/en-us/powershell) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
+composer --version
+# Composer version 2.0.7 2020-11-13 17:31:06
+```
+
+<!-- tabs:end -->
+
+?> If you plan to play with the package sources, you will also need [PowerShell](https://docs.microsoft.com/en-us/powershell).
 
 ## Installing with a package manager
 
-=== "Haxe"
-	From a command prompt, run:
+<!-- tabs:start -->
 
-		:::shell
-		haxelib install lcov
+#### **Haxe**
+From a command prompt, run:
 
-	Now in your [Haxe](https://haxe.org) code, you can use:
+```shell
+haxelib install lcov
+```
 
-		:::haxe
-		import lcov.*;
+Now in your [Haxe](https://haxe.org) code, you can use:
 
-=== "JavaScript"
-	From a command prompt, run:
+```haxe
+import lcov.*;
+```
 
-		:::shell
-		npm install @cedx/lcov.hx
+#### **JavaScript**
+From a command prompt, run:
 
-	Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code, you can use:
+```shell
+npm install @cedx/lcov.hx
+```
 
-		:::js
-		// CommonJS module.
-		const lcov = require("@cedx/lcov.hx");
+Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code, you can use:
 
-		// ECMAScript module.
-		import * as lcov from "@cedx/lcov.hx";
+```javascript
+// CommonJS module.
+const lcov = require("@cedx/lcov.hx");
 
-=== "PHP"
-	From a command prompt, run:
+// ECMAScript module.
+import * as lcov from "@cedx/lcov.hx";
+```
 
-		:::shell
-		composer require cedx/lcov.hx
+#### **PHP**
+From a command prompt, run:
 
-	Now in your [PHP](https://www.php.net) code, you can use:
+```shell
+composer require cedx/lcov.hx
+```
 
-		:::php
-		<?php
-		use lcov\{
-			BranchCoverage, BranchData,
-			FunctionCoverage, FunctionData,
-			LineCoverage, LineData,
-			LcovException, Record, Report
-		};
+Now in your [PHP](https://www.php.net) code, you can use:
+
+```php
+use lcov\{
+	BranchCoverage, BranchData,
+	FunctionCoverage, FunctionData,
+	LineCoverage, LineData,
+	LcovException, Record, Report
+};
+```
+
+<!-- tabs:end -->
 
 ## Installing from a content delivery network
 This library is also available as a ready-made JavaScript bundle.
