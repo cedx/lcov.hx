@@ -83,7 +83,7 @@ You can verify if you're already good to go with the following commands:
 This library is also available as a ready-made JavaScript bundle.
 To install it, add one of these code snippets to the `<head>` of your HTML document:
 
-``` html
+```html
 <!-- jsDelivr -->
 <script src="https://cdn.jsdelivr.net/npm/@cedx/lcov.hx/build/lcov.min.js"></script>
 
@@ -93,7 +93,7 @@ To install it, add one of these code snippets to the `<head>` of your HTML docum
 
 The classes of this library are exposed as `lcov` property on the `window` global object:
 
-``` html
+```html
 <script>
 	const {
 		BranchCoverage, BranchData,

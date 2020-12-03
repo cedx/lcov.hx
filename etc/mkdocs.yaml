@@ -10,7 +10,7 @@ repo_name: git.belin.io
 repo_url: https://git.belin.io/cedx/lcov.hx
 edit_uri: ""
 
-copyright: Copyright &copy; 2020 Cédric Belin
+copyright: Copyright &copy; 2020 - 2021 Cédric Belin
 extra:
   social:
     - icon: fontawesome/solid/globe

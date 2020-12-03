@@ -79,7 +79,7 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 
 Converting the `Report` instance to [JSON](https://www.json.org) format will return a map like this:
 
-``` json
+```json
 {
 	"testName": "Example",
 	"records": [
@@ -182,7 +182,7 @@ All you have to do is to create the adequate structure using these different cla
 
 The `Report.toString()` method will return a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) report formatted like this:
 
-```
+```lcov
 TN:Example
 SF:/home/cedx/lcov.hx/fixture.hx
 FNF:1
