@@ -6,7 +6,6 @@
 	"main": "./lib/js/index.js",
 	"name": "@cedx/lcov.hx",
 	"type": "commonjs",
-	"types": "./lib/js/index.d.ts",
 	"version": "1.0.4",
 	"author": {
 		"email": "cedric@belin.io",
