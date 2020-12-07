@@ -17,7 +17,9 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: haxelib install all --always
+        run: |
+          haxelib install all --always
+          haxelib set tink_core 1.27.1 --always
       - name: Run tests
         run: haxe test_eval.hxml
   js:
@@ -40,6 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           haxelib install all --always
+          haxelib set tink_core 1.27.1 --always
           npm install
       - name: Run tests
         run: haxe test_js.hxml
@@ -70,6 +73,7 @@ jobs:
       - name: Install dependencies
         run: |
           haxelib install all --always
+          haxelib set tink_core 1.27.1 --always
           composer global require cedx/coveralls
           composer install --no-interaction
       - name: Run tests
