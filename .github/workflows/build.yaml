@@ -58,9 +58,9 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
-          coverage: none
-          extensions: mbstring
+          php-version: 8.0
+          coverage: xdebug
+          extensions: mbstring, simplexml
       - name: Check environment
         run: |
           php --version
