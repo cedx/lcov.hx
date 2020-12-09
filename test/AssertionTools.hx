@@ -1,7 +1,7 @@
 import haxe.Exception;
 import tink.unit.AssertionBuffer;
 
-/** Provides helper methods for assertions. **/
+/** Provides helper methods for handling assertions. **/
 class AssertionTools {
 
 	/** Expects the function `func` to throw an exception. **/
