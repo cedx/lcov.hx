@@ -1,3 +1,3 @@
 --define js-es=6
---js lib/js/lcov.js
+--js lib/js/bundle.js
 share/build.hxml
