@@ -11,7 +11,7 @@ jobs:
       - name: Set up Haxe
         uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.1.4
+          haxe-version: 4.1.5
       - name: Set up HashLink
         run: |
           Invoke-WebRequest https://github.com/HaxeFoundation/hashlink/releases/download/1.11/hl-1.11.0-win.zip -OutFile var/hashlink.zip
@@ -33,7 +33,7 @@ jobs:
       - name: Set up Haxe
         uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.1.4
+          haxe-version: 4.1.5
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
@@ -60,7 +60,7 @@ jobs:
       - name: Set up Haxe
         uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.1.4
+          haxe-version: 4.1.5
       - name: Set up Java
         uses: actions/setup-java@v1
         with:
@@ -82,7 +82,7 @@ jobs:
       - name: Set up Haxe
         uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.1.4
+          haxe-version: 4.1.5
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
