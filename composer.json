@@ -1,6 +1,6 @@
 {
 	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
-	"homepage": "https://docs.belin.io/lcov.hx",
+	"homepage": "https://cedx.github.io/lcov.hx",
 	"license": "MIT",
 	"name": "cedx/lcov.hx",
 	"type": "library",
@@ -32,7 +32,7 @@
 		"coverage": "composer global exec coveralls var/lcov.info"
 	},
 	"support": {
-		"docs": "https://api.belin.io/lcov.hx",
-		"issues": "https://git.belin.io/cedx/lcov.hx/issues"
+		"docs": "https://cedx.github.io/lcov.hx/api",
+		"issues": "https://github.com/cedx/lcov.hx/issues"
 	}
 }

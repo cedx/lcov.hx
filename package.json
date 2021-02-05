@@ -1,10 +1,11 @@
 {
-	"bugs": "https://git.belin.io/cedx/lcov.hx/issues",
+	"bugs": "https://github.com/cedx/lcov.hx/issues",
 	"description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
-	"homepage": "https://docs.belin.io/lcov.hx",
+	"homepage": "https://cedx.github.io/lcov.hx",
 	"license": "MIT",
 	"main": "./lib/js/index.js",
 	"name": "@cedx/lcov.hx",
+	"repository": "cedx/lcov.hx",
 	"type": "commonjs",
 	"version": "1.0.4",
 	"author": {
@@ -38,10 +39,6 @@
 		"parser",
 		"test"
 	],
-	"repository": {
-		"type": "git",
-		"url": "https://git.belin.io/cedx/lcov.hx.git"
-	},
 	"scripts": {
 		"coverage": "coveralls var/lcov.info",
 		"dist": "terser --config-file=etc/terser.json --output=build/lcov.min.js build/lcov.js",

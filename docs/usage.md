@@ -110,7 +110,7 @@ Converting the `Report` instance to [JSON](https://www.json.org) format will ret
 }
 ```
 
-?> See the [API reference](https://api.belin.io/lcov.hx) of this library for more information on the `Report` class.
+?> See the [API reference](https://cedx.github.io/lcov.hx/api) of this library for more information on the `Report` class.
 
 ## Format coverage data to the LCOV format
 Each class provided by this library has a dedicated `toString()` method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
@@ -199,4 +199,4 @@ LH:2
 end_of_record
 ```
 
-?> See the [API reference](https://api.belin.io/lcov.hx) of this library for detailed information on the available classes.
+?> See the [API reference](https://cedx.github.io/lcov.hx/api) of this library for detailed information on the available classes.

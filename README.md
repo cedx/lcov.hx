@@ -8,8 +8,8 @@
 > in [Haxe](https://haxe.org), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [PHP](https://www.php.net).
 
 ## Documentation
-- [User guide](https://docs.belin.io/lcov.hx)
-- [API reference](https://api.belin.io/lcov.hx)
+- [User guide](https://cedx.github.io/lcov.hx)
+- [API reference](https://cedx.github.io/lcov.hx/api)
 
 ## Packages
 - Haxe: `lcov` on [Haxelib](https://lib.haxe.org/p/lcov)
@@ -17,8 +17,8 @@
 - PHP: `cedx/lcov.hx` on [Packagist](https://packagist.org/packages/cedx/lcov.hx)
 
 ## Development
-- [Git repository](https://git.belin.io/cedx/lcov.hx)
-- [Submit an issue](https://git.belin.io/cedx/lcov.hx/issues)
+- [Git repository](https://github.com/cedx/lcov.hx)
+- [Submit an issue](https://github.com/cedx/lcov.hx/issues)
 
 ## License
-[LCOV Reports](https://docs.belin.io/lcov.hx) is distributed under the MIT License.
+[LCOV Reports](https://cedx.github.io/lcov.hx) is distributed under the MIT License.

@@ -6,10 +6,10 @@ $version = (Get-Content haxelib.json | ConvertFrom-Json).version
 haxe build_doc.hxml
 haxelib run dox `
 	--define description "Parse and format to LCOV your code coverage reports, in Haxe, JavaScript and PHP. The best way to share your code coverage stats." `
-	--define source-path "https://git.belin.io/cedx/lcov.hx/src/branch/main/src" `
+	--define source-path "https://github.com/cedx/lcov.hx/blob/main/src" `
 	--define themeColor 0xffc105 `
 	--define version $version `
-	--define website "https://docs.belin.io/lcov.hx" `
+	--define website "https://cedx.github.io/lcov.hx" `
 	--input-path var `
 	--output-path docs/api `
 	--title "LCOV Reports" `

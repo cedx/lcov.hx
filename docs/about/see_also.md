@@ -1,8 +1,8 @@
 # See also
 
 ## Development
-- [API reference](https://api.belin.io/lcov.hx)
-- [Submit an issue](https://git.belin.io/cedx/lcov.hx/issues)
+- [API reference](https://cedx.github.io/lcov.hx/api)
+- [Submit an issue](https://github.com/cedx/lcov.hx/issues)
 
 ## Packages
 - Haxe: `lcov` on [Haxelib](https://lib.haxe.org/p/lcov)
