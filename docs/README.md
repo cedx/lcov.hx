@@ -1,32 +1,13 @@
-# LCOV Reports
-![Haxe](https://badgen.net/badge/haxe/%3E%3D4.1.0/green) ![Haxelib](https://badgen.net/haxelib/v/lcov) ![Downloads](https://badgen.net/haxelib/d/lcov)  
-![Node.js](https://badgen.net/npm/node/@cedx/lcov.hx) ![npm](https://badgen.net/npm/v/@cedx/lcov.hx) ![Downloads](https://badgen.net/npm/dt/@cedx/lcov.hx)  
-![PHP](https://badgen.net/packagist/php/cedx/lcov.hx) ![Packagist](https://badgen.net/packagist/v/cedx/lcov.hx) ![Downloads](https://badgen.net/packagist/dt/cedx/lcov.hx)  
-![License](https://badgen.net/badge/license/MIT/blue) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.hx) ![Build](https://badgen.net/github/checks/cedx/lcov.hx/main)
+# LCOV Reports for Haxe
+![Haxe](https://badgen.net/badge/haxe/%3E%3D4.2.0/green) ![Haxelib](https://badgen.net/haxelib/v/lcov) ![Downloads](https://badgen.net/haxelib/d/lcov) ![License](https://badgen.net/badge/license/MIT/blue) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.hx) ![Build](https://badgen.net/github/checks/cedx/lcov.hx/main)
 
-> Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
-> in [Haxe](https://haxe.org), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [PHP](https://www.php.net).
+Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Haxe](https://haxe.org).
 
 ## Quick start
-Install the latest version of **LCOV Reports** with your favorite package manager:
+Install the latest version of **LCOV Reports for Haxe** with [lix](https://github.com/lix-pm/lix.client) package manager:
 
-<!-- tabs:start -->
-
-#### **Haxe**
 ```shell
-haxelib install lcov
+lix +lib lcov
 ```
 
-#### **JavaScript**
-```shell
-npm install @cedx/lcov.hx
-```
-
-#### **PHP**
-```shell
-composer require cedx/lcov.hx
-```
-
-<!-- tabs:end -->
-
-For detailed instructions, see the [installation guide](installation.md).
+For detailed instructions, see the [installation guide](installation.md) and the [usage information](usage.md).
