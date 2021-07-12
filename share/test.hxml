@@ -1,5 +1,6 @@
 --class-path src
 --class-path test
+--dce full
 --define coverage-lcov-reporter=var/lcov.info
 --define no-deprecation-warnings
 --library instrument

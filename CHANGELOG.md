@@ -1,5 +1,12 @@
 # Changelog
 
+## Version [1.1.0](https://github.com/cedx/lcov.hx/compare/v1.0.4...v1.1.0)
+- Added support for [HashLink](https://hashlink.haxe.org) and [JVM](https://www.java.com) testing.
+- Dropped the [Composer](https://getcomposer.org) and [npm](https://www.npmjs.com) packages.
+- Replaced the build system based on [PowerShell](https://docs.microsoft.com/en-us/powershell) by [lix](https://github.com/lix-pm/lix.client) scripts.
+- Replaced the [`utest`](https://lib.haxe.org/p/utest) package by [`tink_unittest`](https://lib.haxe.org/p/tink_unittest) for testing.
+- Updated the package dependencies.
+
 ## Version [1.0.4](https://github.com/cedx/lcov.hx/compare/v1.0.3...v1.0.4)
 - Added the `@:structInit` compiler metadata to data classes.
 - Fixed the [TypeScript](https://www.typescriptlang.org) typings.
