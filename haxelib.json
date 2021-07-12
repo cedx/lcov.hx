@@ -7,5 +7,5 @@
 	"releasenote": "Added the '@:structInit' compiler metadata to data classes.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
 	"url": "https://cedx.github.io/lcov.hx",
-	"version": "1.0.4"
+	"version": "1.1.0"
 }
