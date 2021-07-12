@@ -1,9 +1,7 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-@:expose
-@:structInit
-class LineData {
+@:structInit class LineData {
 
 	/** The data checksum. **/
 	public var checksum: String;
@@ -22,7 +20,7 @@ class LineData {
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString(): String {
+	public function toString() {
 		final value = '${Token.LineData}:$lineNumber,$executionCount';
 		return checksum.length > 0 ? '$value,$checksum' : value;
 	}

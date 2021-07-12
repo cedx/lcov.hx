@@ -1,13 +1,9 @@
 package lcov;
 
-#if php
-import php.NativeIndexedArray;
-#end
-
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
-@:expose class Report {
+class Report {
 
 	/** The record list. **/
 	public final records: Array<Record>;
@@ -16,7 +12,7 @@ using StringTools;
 	public var testName: String;
 
 	/** Creates a new report. **/
-	public function new(testName = "", ?records: #if php NativeIndexedArray<Record> #else Array<Record> #end) {
+	public function new(testName = "", ?records: Array<Record>) {
 		this.records = records != null ? records : [];
 		this.testName = testName;
 	}
@@ -25,7 +21,7 @@ using StringTools;
 		Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
 		Throws a `LcovException` if a parsing error occurred.
 	**/
-	public static function fromCoverage(coverage: String): Report {
+	public static function fromCoverage(coverage: String) {
 		var offset = 0;
 		var record: Record = null;
 		final report = new Report();
@@ -95,7 +91,7 @@ using StringTools;
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString(): String {
+	public function toString() {
 		final lines = testName.length > 0 ? ['${Token.TestName}:$testName'] : [];
 		for (record in records.map(item -> item.toString())) lines.push(record);
 		return lines.join("\n");

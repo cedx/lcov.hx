@@ -3,7 +3,7 @@ package lcov;
 import haxe.Exception;
 
 /** An exception caused by a parsing error. **/
-@:expose class LcovException extends Exception {
+class LcovException extends Exception {
 
 	/** The offset in `source` where the error was detected. **/
 	public final offset: Int;

@@ -1,6 +1,7 @@
 --class-path src
---dce full
 --define analyzer-optimize
+--define js-es=6
+--js var/bundle.js
 
 lcov.BranchCoverage
 lcov.BranchData

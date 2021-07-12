@@ -1,9 +1,7 @@
 package lcov;
 
 /** Provides details for branch coverage. **/
-@:expose
-@:structInit
-class BranchData {
+@:structInit class BranchData {
 
 	/** The block number. **/
 	public var blockNumber: Int;
@@ -26,7 +24,7 @@ class BranchData {
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString(): String {
+	public function toString() {
 		final value = '${Token.BranchData}:$lineNumber,$blockNumber,$branchNumber';
 		return taken > 0 ? '$value,$taken' : '$value,-';
 	}

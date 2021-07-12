@@ -1,12 +1,7 @@
 package lcov;
 
-#if php
-import php.Global.isset;
-import php.NativeStructArray;
-#end
-
 /** Provides the coverage data of a source file. **/
-@:expose class Record {
+class Record {
 
 	/** The branch coverage. **/
 	public var branches: Null<BranchCoverage> = null;
@@ -21,23 +16,17 @@ import php.NativeStructArray;
 	public var sourceFile: String;
 
 	/** Creates a new record with the specified source file. **/
-	public function new(sourceFile: String, ?options: #if php NativeStructArray<RecordOptions> #else RecordOptions #end) {
+	public function new(sourceFile: String, ?options: RecordOptions) {
 		this.sourceFile = sourceFile;
 		if (options != null) {
-			#if php
-				if (isset(options["branches"])) branches = options["branches"];
-				if (isset(options["functions"])) functions = options["functions"];
-				if (isset(options["lines"])) lines = options["lines"];
-			#else
-				if (options.branches != null) branches = options.branches;
-				if (options.functions != null) functions = options.functions;
-				if (options.lines != null) lines = options.lines;
-			#end
+			if (options.branches != null) branches = options.branches;
+			if (options.functions != null) functions = options.functions;
+			if (options.lines != null) lines = options.lines;
 		}
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString(): String {
+	public function toString() {
 		final output = ['${Token.SourceFile}:$sourceFile'];
 		if (functions != null) output.push(functions.toString());
 		if (branches != null) output.push(branches.toString());

@@ -1,11 +1,7 @@
 package lcov;
 
-#if php
-import php.NativeIndexedArray;
-#end
-
 /** Provides the coverage data of lines. **/
-@:expose class LineCoverage {
+class LineCoverage {
 
 	/** The coverage data. **/
 	public final data: Array<LineData>;
@@ -17,14 +13,14 @@ import php.NativeIndexedArray;
 	public var hit: Int;
 
 	/** Creates a new line coverage. **/
-	public function new(found = 0, hit = 0, ?data: #if php NativeIndexedArray<LineData> #else Array<LineData> #end) {
+	public function new(found = 0, hit = 0, ?data: Array<LineData>) {
 		this.data = data != null ? data : [];
 		this.found = found;
 		this.hit = hit;
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString(): String {
+	public function toString() {
 		final lines = data.map(item -> item.toString());
 		lines.push('${Token.LinesFound}:$found');
 		lines.push('${Token.LinesHit}:$hit');
