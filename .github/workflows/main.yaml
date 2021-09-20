@@ -16,6 +16,12 @@ jobs:
         run: lix download
       - name: Run tests
         run: haxe test_hl.hxml
+      - name: Collect code coverage
+        if: success()
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          path-to-lcov: var/lcov.info
   js:
     runs-on: windows-latest
     steps:
@@ -31,6 +37,12 @@ jobs:
         run: lix download
       - name: Run tests
         run: haxe test_js.hxml
+      - name: Collect code coverage
+        if: success()
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          path-to-lcov: var/lcov.info
   jvm:
     runs-on: windows-latest
     steps:
@@ -46,6 +58,12 @@ jobs:
         run: lix download
       - name: Run tests
         run: haxe test_jvm.hxml
+      - name: Collect code coverage
+        if: success()
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          path-to-lcov: var/lcov.info
   php:
     runs-on: windows-latest
     steps:
@@ -62,3 +80,9 @@ jobs:
         run: lix download
       - name: Run tests
         run: haxe test_php.hxml
+      - name: Collect code coverage
+        if: success()
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          path-to-lcov: var/lcov.info
