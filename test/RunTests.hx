@@ -1,19 +1,18 @@
 import instrument.coverage.Coverage;
-import lcov.*;
 import tink.testrunner.Runner;
 import tink.unit.TestBatch;
 
-/** Application entry point. **/
+/** Runs the test suite. **/
 function main() {
 	final tests = TestBatch.make([
-		new BranchCoverageTest(),
-		new BranchDataTest(),
-		new FunctionCoverageTest(),
-		new FunctionDataTest(),
-		new LineCoverageTest(),
-		new LineDataTest(),
-		new RecordTest(),
-		new ReportTest()
+		new lcov.BranchCoverageTest(),
+		new lcov.BranchDataTest(),
+		new lcov.FunctionCoverageTest(),
+		new lcov.FunctionDataTest(),
+		new lcov.LineCoverageTest(),
+		new lcov.LineDataTest(),
+		new lcov.RecordTest(),
+		new lcov.ReportTest()
 	]);
 
 	Runner.run(tests).handle(outcome -> {
