@@ -3,11 +3,7 @@ package lcov;
 /** Provides the coverage data of lines. **/
 #if tink_json
 @:jsonParse(json -> new lcov.LineCoverage(json))
-@:jsonStringify(coverage -> {
-	data: coverage.data,
-	found: coverage.found,
-	hit: coverage.hit
-})
+@:jsonStringify(coverage -> {data: coverage.data, found: coverage.found, hit: coverage.hit})
 #end
 class LineCoverage implements Model {
 

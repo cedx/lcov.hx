@@ -3,11 +3,7 @@ package lcov;
 /** Provides details for function coverage. **/
 #if tink_json
 @:jsonParse(json -> new lcov.FunctionData(json))
-@:jsonStringify(data -> {
-	executionCount: data.executionCount,
-	functionName: data.functionName,
-	lineNumber: data.lineNumber
-})
+@:jsonStringify(data -> {executionCount: data.executionCount, functionName: data.functionName, lineNumber: data.lineNumber})
 #end
 class FunctionData implements Model {
 

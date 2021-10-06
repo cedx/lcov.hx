@@ -3,12 +3,7 @@ package lcov;
 /** Provides the coverage data of a source file. **/
 #if tink_json
 @:jsonParse(json -> new lcov.Record(json))
-@:jsonStringify(record -> {
-	branches: record.branches,
-	functions: record.functions,
-	lines: record.lines,
-	sourceFile: record.sourceFile
-})
+@:jsonStringify(record -> {branches: record.branches, functions: record.functions, lines: record.lines, sourceFile: record.sourceFile})
 #end
 class Record implements Model {
 
