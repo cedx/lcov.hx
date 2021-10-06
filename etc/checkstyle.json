@@ -3,6 +3,7 @@
 	"exclude": {
 		"path": "RELATIVE_TO_PROJECT",
 		"CyclomaticComplexity": ["src/lcov/Report:fromCoverage"],
+		"LineLength": ["test/lcov/FunctionCoverageTest:testToString"],
 		"MemberName": ["src/lcov/Token"],
 		"MethodLength": ["src/lcov/Report:fromCoverage"],
 		"NestedControlFlow": ["src/lcov/Report:fromCoverage"]
