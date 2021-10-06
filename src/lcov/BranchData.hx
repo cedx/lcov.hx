@@ -1,27 +1,28 @@
 package lcov;
 
 /** Provides details for branch coverage. **/
-@:structInit class BranchData {
+#if tink_json
+@:jsonParse(json -> new lcov.BranchData(json))
+@:jsonStringify(data -> {
+	blockNumber: data.blockNumber,
+	branchNumber: data.branchNumber,
+	lineNumber: data.lineNumber,
+	taken: data.taken
+})
+#end
+class BranchData implements Model {
 
 	/** The block number. **/
-	public var blockNumber: Int;
+	@:editable var blockNumber: Int;
 
 	/** The branch number. **/
-	public var branchNumber: Int;
+	@:editable var branchNumber: Int;
 
 	/** The line number. **/
-	public var lineNumber: Int;
+	@:editable var lineNumber: Int;
 
 	/** A number indicating how often this branch was taken. **/
-	public var taken: Int;
-
-	/** Creates a new branch data. **/
-	public function new(lineNumber: Int, blockNumber: Int, branchNumber: Int, taken = 0) {
-		this.blockNumber = blockNumber;
-		this.branchNumber = branchNumber;
-		this.lineNumber = lineNumber;
-		this.taken = taken;
-	}
+	@:editable var taken: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {

@@ -1,26 +1,27 @@
 package lcov;
 
 /** Provides details for function coverage. **/
-@:structInit class FunctionData {
+#if tink_json
+@:jsonParse(json -> new lcov.FunctionData(json))
+@:jsonStringify(data -> {
+	executionCount: data.executionCount,
+	functionName: data.functionName,
+	lineNumber: data.lineNumber
+})
+#end
+class FunctionData implements Model {
 
 	/** The execution count. **/
-	public var executionCount: Int;
+	@:editable var executionCount: Int = @byDefault 0;
 
 	/** The function name. **/
-	public var functionName: String;
+	@:editable var functionName: String;
 
 	/** The line number of the function start. **/
-	public var lineNumber: Int;
-
-	/** Creates a new function data. **/
-	public function new(functionName: String, lineNumber: Int, executionCount = 0) {
-		this.executionCount = executionCount;
-		this.functionName = functionName;
-		this.lineNumber = lineNumber;
-	}
+	@:editable var lineNumber: Int;
 
 	/** Returns a string representation of this object. **/
-	public function toString(asDefinition: Bool = false): String {
+	public function toString(asDefinition: Bool = false) {
 		final token: Token = asDefinition ? FunctionName : FunctionData;
 		final number = asDefinition ? lineNumber : executionCount;
 		return '$token:$number,$functionName';

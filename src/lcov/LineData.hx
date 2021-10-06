@@ -1,23 +1,24 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-@:structInit class LineData {
+#if tink_json
+@:jsonParse(json -> new lcov.LineData(json))
+@:jsonStringify(data -> {
+	checksum: data.checksum,
+	executionCount: data.executionCount,
+	lineNumber: data.lineNumber
+})
+#end
+class LineData implements Model {
 
 	/** The data checksum. **/
-	public var checksum: String;
+	@:editable var checksum: String = @byDefault "";
 
 	/** The execution count. **/
-	public var executionCount: Int;
+	@:editable var executionCount: Int = @byDefault 0;
 
 	/** The line number. **/
-	public var lineNumber: Int;
-
-	/** Creates a new line data. **/
-	public function new(lineNumber: Int, executionCount = 0, checksum = "") {
-		this.checksum = checksum;
-		this.executionCount = executionCount;
-		this.lineNumber = lineNumber;
-	}
+	@:editable var lineNumber: Int;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {

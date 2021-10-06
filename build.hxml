@@ -2,6 +2,7 @@
 --define analyzer-optimize
 --define js-es=6
 --js var/bundle.js
+--library coconut.data
 
 lcov.BranchCoverage
 lcov.BranchData

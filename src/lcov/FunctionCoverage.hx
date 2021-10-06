@@ -1,27 +1,28 @@
 package lcov;
 
 /** Provides the coverage data of functions. **/
-class FunctionCoverage {
+#if tink_json
+@:jsonParse(json -> new lcov.FunctionCoverage(json))
+@:jsonStringify(coverage -> {
+	data: coverage.data,
+	found: coverage.found,
+	hit: coverage.hit
+})
+#end
+class FunctionCoverage implements Model {
 
 	/** The coverage data. **/
-	public final data: Array<FunctionData>;
+	@:editable var data: List<FunctionData> = @byDefault [];
 
 	/** The number of functions found. **/
-	public var found: Int;
+	@:editable var found: Int = @byDefault 0;
 
 	/** The number of functions hit. **/
-	public var hit: Int;
-
-	/** Creates a new function coverage. **/
-	public function new(found = 0, hit = 0, ?data: Array<FunctionData>) {
-		this.data = data != null ? data : [];
-		this.found = found;
-		this.hit = hit;
-	}
+	@:editable var hit: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {
-		final lines = data.map(item -> item.toString(true));
+		final lines = data.toArray().map(item -> item.toString(true));
 		for (line in data.map(item -> item.toString(false))) lines.push(line);
 		lines.push('${Token.FunctionsFound}:$found');
 		lines.push('${Token.FunctionsHit}:$hit');

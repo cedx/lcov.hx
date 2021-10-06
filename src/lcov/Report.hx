@@ -3,19 +3,20 @@ package lcov;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
-class Report {
+#if tink_json
+@:jsonParse(json -> new lcov.Report(json))
+@:jsonStringify(report -> {
+	records: report.records,
+	testName: report.testName
+})
+#end
+class Report implements Model {
 
 	/** The record list. **/
-	public final records: Array<Record>;
+	@:editable var records: List<Record> = @byDefault [];
 
 	/** The test name. **/
-	public var testName: String;
-
-	/** Creates a new report. **/
-	public function new(testName = "", ?records: Array<Record>) {
-		this.records = records != null ? records : [];
-		this.testName = testName;
-	}
+	@:editable var testName: String = @byDefault "";
 
 	/**
 		Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
@@ -39,16 +40,16 @@ class Report {
 
 			switch token {
 				case TestName: if (report.testName.length == 0) report.testName = data[0];
-				case EndOfRecord: report.records.push(record);
+				case EndOfRecord: report.records = report.records.append(record);
 
 				case BranchData:
 					if (data.length < 4) throw new LcovException("Invalid branch data.", coverage, offset);
-					record.branches.data.push({
+					record.branches.data = record.branches.data.append(new BranchData({
 						lineNumber: Std.parseInt(data[0]),
 						blockNumber: Std.parseInt(data[1]),
 						branchNumber: Std.parseInt(data[2]),
 						taken: data[3] == "-" ? 0 : Std.parseInt(data[3])
-					});
+					}));
 
 				case FunctionData:
 					if (data.length < 2) throw new LcovException("Invalid function data.", coverage, offset);
@@ -59,17 +60,18 @@ class Report {
 
 				case FunctionName:
 					if (data.length < 2) throw new LcovException("Invalid function name.", coverage, offset);
-					record.functions.data.push({functionName: data[1], lineNumber: Std.parseInt(data[0])});
+					record.functions.data = record.functions.data.append(new FunctionData({functionName: data[1], lineNumber: Std.parseInt(data[0])}));
 
 				case LineData:
 					if (data.length < 2) throw new LcovException("Invalid line data.", coverage, offset);
-					record.lines.data.push({
+					record.lines.data = record.lines.data.append(new LineData({
 						lineNumber: Std.parseInt(data[0]),
 						executionCount: Std.parseInt(data[1]),
 						checksum: data.length >= 3 ? data[2] : ""
-					});
+					}));
 
-				case SourceFile: record = new Record(data[0], {
+				case SourceFile: record = new Record({
+					sourceFile: data[0],
 					branches: new BranchCoverage(),
 					functions: new FunctionCoverage(),
 					lines: new LineCoverage()

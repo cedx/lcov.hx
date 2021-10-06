@@ -1,27 +1,28 @@
 package lcov;
 
 /** Provides the coverage data of lines. **/
-class LineCoverage {
+#if tink_json
+@:jsonParse(json -> new lcov.LineCoverage(json))
+@:jsonStringify(coverage -> {
+	data: coverage.data,
+	found: coverage.found,
+	hit: coverage.hit
+})
+#end
+class LineCoverage implements Model {
 
 	/** The coverage data. **/
-	public final data: Array<LineData>;
+	@:editable var data: List<LineData> = @byDefault [];
 
 	/** The number of lines found. **/
-	public var found: Int;
+	@:editable var found: Int = @byDefault 0;
 
 	/** The number of lines hit. **/
-	public var hit: Int;
-
-	/** Creates a new line coverage. **/
-	public function new(found = 0, hit = 0, ?data: Array<LineData>) {
-		this.data = data != null ? data : [];
-		this.found = found;
-		this.hit = hit;
-	}
+	@:editable var hit: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {
-		final lines = data.map(item -> item.toString());
+		final lines = data.toArray().map(item -> item.toString());
 		lines.push('${Token.LinesFound}:$found');
 		lines.push('${Token.LinesHit}:$hit');
 		return lines.join("\n");

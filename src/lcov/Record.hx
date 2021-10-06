@@ -1,29 +1,28 @@
 package lcov;
 
 /** Provides the coverage data of a source file. **/
-class Record {
+#if tink_json
+@:jsonParse(json -> new lcov.Record(json))
+@:jsonStringify(record -> {
+	branches: record.branches,
+	functions: record.functions,
+	lines: record.lines,
+	sourceFile: record.sourceFile
+})
+#end
+class Record implements Model {
 
 	/** The branch coverage. **/
-	public var branches: Null<BranchCoverage> = null;
+	@:editable var branches: Null<BranchCoverage> = @byDefault null;
 
 	/** The function coverage. **/
-	public var functions: Null<FunctionCoverage> = null;
+	@:editable var functions: Null<FunctionCoverage> = @byDefault null;
 
 	/** The line coverage. **/
-	public var lines: Null<LineCoverage> = null;
+	@:editable var lines: Null<LineCoverage> = @byDefault null;
 
 	/** The path to the source file. **/
-	public var sourceFile: String;
-
-	/** Creates a new record with the specified source file. **/
-	public function new(sourceFile: String, ?options: RecordOptions) {
-		this.sourceFile = sourceFile;
-		if (options != null) {
-			if (options.branches != null) branches = options.branches;
-			if (options.functions != null) functions = options.functions;
-			if (options.lines != null) lines = options.lines;
-		}
-	}
+	@:editable var sourceFile: String;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {
@@ -34,17 +33,4 @@ class Record {
 		output.push(Token.EndOfRecord);
 		return output.join("\n");
 	}
-}
-
-/** Defines the options of a `Record` instance. **/
-typedef RecordOptions = {
-
-	/** The branch coverage. **/
-	var ?branches: BranchCoverage;
-
-	/** The function coverage. **/
-	var ?functions: FunctionCoverage;
-
-	/** The line coverage. **/
-	var ?lines: LineCoverage;
 }
