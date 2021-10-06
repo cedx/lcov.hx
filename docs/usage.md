@@ -6,25 +6,16 @@ The `Report` class, the main one, provides the parsing and formatting features.
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ```haxe
-import haxe.Json;
 import lcov.LcovException;
 import lcov.Report;
 import sys.io.File;
+import tink.Json;
 
-function main() {
-	try {
-		final coverage = File.getContent("/path/to/lcov.info");
-		final report = Report.fromCoverage(coverage);
-
-		final count = report.records.length;
-		Sys.println('The coverage report contains $count records:');
-		Sys.println(Json.stringify(report, null, "\t"));
-	}
-
-	catch (e: LcovException) {
-		Sys.println('An error occurred: ${e.message} at offset ${e.offset}.');
-	}
-}
+function main() try {
+	final report = Report.fromCoverage(File.getContent("/path/to/lcov.info"));
+	Sys.println('The coverage report contains ${report.records.length} records:');
+	Sys.println(Json.stringify(report, null, "\t"));
+} catch (e: LcovException) Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
 ```
 
 ?> A `LcovException` is thrown if any error occurred while parsing the coverage report.
@@ -72,17 +63,18 @@ All you have to do is to create the adequate structure using these different cla
 import lcov.*;
 
 function main() {
-	final lineCoverage = new LineCoverage(2, 2, [
-		new LineData(6, 2, "PF4Rz2r7RTliO9u6bZ7h6g"),
-		new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
-	]);
+	final lineCoverage = new LineCoverage({found: 2, hit: 2, data: [
+		new LineData({lineNumber: 6, executionCount: 2, checksum: "PF4Rz2r7RTliO9u6bZ7h6g"}),
+		new LineData({lineNumber: 7, executionCount: 2, checksum: "yGMB6FhEEAd8OyASe3Ni1w"})
+	]});
 
-	final record = new Record("/home/cedx/lcov.hx/fixture.hx", {
-		functions: new FunctionCoverage(1, 1),
+	final record = new Record({
+		sourceFile: "/home/cedx/lcov.hx/fixture.hx",
+		functions: new FunctionCoverage({found: 1, hit: 1}),
 		lines: lineCoverage
 	});
 
-	final report = new Report("Example", [record]);
+	final report = new Report({testName: "Example", records: [record]});
 	Sys.println(report.toString());
 }
 ```
