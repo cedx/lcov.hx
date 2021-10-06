@@ -7,8 +7,8 @@ class FunctionCoverageTest {
 	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	@:variant(new lcov.FunctionCoverage(), "FNF:0\nFNH:0")
-	@:variant(new lcov.FunctionCoverage(23, 11, [new lcov.FunctionData("main", 127, 3)]), "FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11")
-	public function testToString(input: FunctionCoverage, output: String)
-		return assert(input.toString() == output);
+	@:variant({}, "FNF:0\nFNH:0")
+	@:variant({found: 23, hit: 11, data: [new lcov.FunctionData({functionName: "main", lineNumber: 127, executionCount: 3})]}, "FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11")
+	public function testToString(input, output: String)
+		return assert(new FunctionCoverage(input).toString() == output);
 }

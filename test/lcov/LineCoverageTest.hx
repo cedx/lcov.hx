@@ -7,8 +7,8 @@ class LineCoverageTest {
 	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	@:variant(new lcov.LineCoverage(), "LF:0\nLH:0")
-	@:variant(new lcov.LineCoverage(23, 11, [new lcov.LineData(127, 3)]), "DA:127,3\nLF:23\nLH:11")
-	public function testToString(input: LineCoverage, output: String)
-		return assert(input.toString() == output);
+	@:variant({}, "LF:0\nLH:0")
+	@:variant({found: 23, hit: 11, data: [new lcov.LineData({lineNumber: 127, executionCount: 3})]}, "DA:127,3\nLF:23\nLH:11")
+	public function testToString(input, output: String)
+		return assert(new LineCoverage(input).toString() == output);
 }

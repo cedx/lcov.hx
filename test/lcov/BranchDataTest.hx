@@ -7,8 +7,8 @@ class BranchDataTest {
 	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	@:variant(new lcov.BranchData(0, 0, 0), "BRDA:0,0,0,-")
-	@:variant(new lcov.BranchData(127, 3, 2, 1), "BRDA:127,3,2,1")
-	public function testToString(input: BranchData, output: String)
-		return assert(input.toString() == output);
+	@:variant({lineNumber: 0, blockNumber: 0, branchNumber: 0}, "BRDA:0,0,0,-")
+	@:variant({lineNumber: 127, blockNumber: 3, branchNumber: 2, taken: 1}, "BRDA:127,3,2,1")
+	public function testToString(input, output: String)
+		return assert(new BranchData(input).toString() == output);
 }

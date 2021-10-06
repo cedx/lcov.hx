@@ -7,11 +7,12 @@ package lcov;
 	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	@:variant(new lcov.FunctionData("", 0), "FNDA:0,", "FN:0,")
-	@:variant(new lcov.FunctionData("main", 127, 3), "FNDA:3,main", "FN:127,main")
-	public function testToString(input: FunctionData, asData: String, asDefinition: String) {
-		asserts.assert(input.toString(false) == asData);
-		asserts.assert(input.toString(true) == asDefinition);
+	@:variant({functionName: "", lineNumber: 0}, "FNDA:0,", "FN:0,")
+	@:variant({functionName: "main", lineNumber: 127, executionCount: 3}, "FNDA:3,main", "FN:127,main")
+	public function testToString(input, asData: String, asDefinition: String) {
+		final data = new FunctionData(input);
+		asserts.assert(data.toString(false) == asData);
+		asserts.assert(data.toString(true) == asDefinition);
 		return asserts.done();
 	}
 }
