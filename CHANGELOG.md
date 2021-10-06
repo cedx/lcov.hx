@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [2.0.0](https://github.com/cedx/lcov.hx/compare/v1.1.0...v2.0.0)
+- Breaking change: the model classes are now implemented as [Coconut Data](https://github.com/MVCoconut/coconut.data) models.
+
 ## Version [1.1.0](https://github.com/cedx/lcov.hx/compare/v1.0.4...v1.1.0)
 - Added support for [HashLink](https://hashlink.haxe.org) and [JVM](https://www.java.com) testing.
 - Dropped the [Composer](https://getcomposer.org) and [npm](https://www.npmjs.com) packages.
