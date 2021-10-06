@@ -2,7 +2,7 @@ import haxe.Exception;
 import tink.unit.AssertionBuffer;
 
 /** Provides helper methods for handling assertions. **/
-class AssertionTools {
+abstract class AssertionTools {
 
 	/** Expects the function `func` to throw an exception. **/
 	public static function throws(asserts: AssertionBuffer, func: () -> Void, ?exceptionClass: Class<Exception>)
