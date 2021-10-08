@@ -15,7 +15,7 @@ function main() {
 		"--define", "source-path", "https://github.com/cedx/lcov.hx/blob/main/src",
 		"--define", "themeColor", "0xffc105",
 		"--define", "version", Json.parse(getContent("haxelib.json")).version,
-		"--define", "website", "https://github.com/cedx/lcov.hx",
+		"--define", "website", "https://cedx.github.io/lcov.hx",
 		"--input-path", "var",
 		"--output-path", "docs/api",
 		"--title", "LCOV Reports for Haxe",
