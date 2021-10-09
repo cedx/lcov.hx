@@ -5,7 +5,7 @@ import lcov.Record;
 import lcov.Report;
 
 /** Formats coverage data as LCOV report. **/
-function formatReport() {
+function main() {
 	final record = new Record({
 		sourceFile: "/home/cedx/lcov.hx/fixture.hx",
 		functions: new FunctionCoverage({found: 1, hit: 1}),
