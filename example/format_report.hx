@@ -1,6 +1,8 @@
-import lcov.*;
-import sys.io.File;
-import tink.Json;
+import lcov.FunctionCoverage;
+import lcov.LineCoverage;
+import lcov.LineData;
+import lcov.Record;
+import lcov.Report;
 
 /** Formats coverage data as LCOV report. **/
 function formatReport() {
@@ -16,10 +18,3 @@ function formatReport() {
 	final report = new Report({testName: "Example", records: [record]});
 	Sys.println(report.toString());
 }
-
-/** Parses a LCOV report to coverage data. **/
-function parseReport() try {
-	final report = Report.fromCoverage(File.getContent("/path/to/lcov.info"));
-	Sys.println('The coverage report contains ${report.records.length} records:');
-	Sys.println(Json.stringify(report, null, "\t"));
-} catch (e: LcovException) Sys.println('An error occurred: "${e.message}" at offset ${e.offset}.');
