@@ -9,4 +9,4 @@
 --library tink_unittest
 --macro instrument.Instrumentation.coverage(['lcov'], ['src'])
 --main RunTests
---resource test/fixtures/lcov.info@report
+--resource test/fixture/lcov.info@report
