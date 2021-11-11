@@ -5,8 +5,8 @@
 	"description": "Parse and format to LCOV your code coverage reports.",
 	"license": "MIT",
 	"name": "lcov",
-	"releasenote": "The model classes are now implemented as Coconut Data models.",
+	"releasenote": "Updated the documentation, updated the project URL.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
-	"url": "https://cedx.github.io/lcov.hx",
-	"version": "2.0.0"
+	"url": "https://bitbucket.org/cedx/lcov.hx",
+	"version": "2.0.1"
 }
