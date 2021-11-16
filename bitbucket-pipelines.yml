@@ -23,11 +23,19 @@ pipelines:
                 - haxe test_java.hxml
           - step:
               name: JavaScript
+              caches: [haxe, node]
+              image: cedxbelin/haxe.js
+              script:
+                - lix download
+                - npm install
+                - haxe test_js.hxml
+          - step:
+              name: Node.js
               caches: [haxe]
               image: cedxbelin/haxe.node
               script:
                 - lix download
-                - haxe test_js.hxml
+                - haxe test_node.hxml
           - step:
               name: PHP
               caches: [haxe]

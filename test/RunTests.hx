@@ -2,6 +2,10 @@ import instrument.coverage.Coverage;
 import tink.testrunner.Runner;
 import tink.unit.TestBatch;
 
+#if (js && !nodejs)
+import js.Syntax;
+#end
+
 /** Runs the test suite. **/
 function main() {
 	final tests = TestBatch.make([
@@ -15,8 +19,8 @@ function main() {
 		new lcov.ReportTest()
 	]);
 
-	Runner.run(tests).handle(outcome -> {
+	Runner.run(tests).handle(result -> {
 		Coverage.endCoverage();
-		Runner.exit(outcome);
+		#if (js && !nodejs) Syntax.code("exit({0})", result.summary().failures.length) #else Runner.exit(result) #end;
 	});
 }

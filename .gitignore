@@ -1,4 +1,5 @@
 /lib/
+/node_modules/
 /res/
 /var/
 
@@ -6,3 +7,4 @@
 /*.iml
 /**/.DS_Store
 /index.php
+/npm-debug.log
