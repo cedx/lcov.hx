@@ -5,6 +5,7 @@ import sys.io.File.*;
 
 /** Runs the script. **/
 function main() {
+	command("lix Dist");
 	compress(["CHANGELOG.md", "LICENSE.md", "README.md", "haxelib.json", "src"], "var/haxelib.zip");
 	command("haxelib submit var/haxelib.zip");
 
