@@ -6,7 +6,7 @@
 	"name": "@cedx/lcov",
 	"private": true,
 	"repository": "bitbucket:cedx/lcov.hx",
-	"type": "module",
+	"type": "commonjs",
 	"version": "2.0.1",
 	"author": {
 		"email": "cedric@belin.io",
