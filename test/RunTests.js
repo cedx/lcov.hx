@@ -1,13 +1,14 @@
-#!/usr/bin/env node
-const {writeFile} = require("fs/promises");
-const {createServer} = require("http");
-const {join} = require("path");
-const {chromium} = require("playwright");
-const handler = require("serve-handler");
+import {writeFile} from "node:fs/promises";
+import {createServer} from "node:http";
+import {dirname, join} from "node:path";
+import {fileURLToPath} from "node:url";
+import {chromium} from "playwright";
+import handler from "serve-handler";
 
 // Start the application.
 (async function main() {
-	await writeFile(join(__dirname, "../var/tests.html"), [
+	const directory = dirname(fileURLToPath(import.meta.url));
+	await writeFile(join(directory, "../var/tests.html"), [
 		'<!DOCTYPE html>',
 		'<html dir="ltr" lang="en">',
 		'\t<head><meta charset="UTF-8"/></head>',
@@ -15,7 +16,7 @@ const handler = require("serve-handler");
 		'</html>'
 	].join("\n"));
 
-	const server = createServer((req, res) => handler(req, res, {public: join(__dirname, "../var")}));
+	const server = createServer((req, res) => handler(req, res, {public: join(directory, "../var")}));
 	server.listen(8080);
 
 	const browser = await chromium.launch();
