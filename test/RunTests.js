@@ -7,8 +7,7 @@ import handler from "serve-handler";
 
 // Start the application.
 (async function main() {
-	const directory = dirname(fileURLToPath(import.meta.url));
-	await writeFile(join(directory, "../var/tests.html"), [
+	await writeFile(new URL("../var/tests.html", import.meta.url), [
 		'<!DOCTYPE html>',
 		'<html dir="ltr" lang="en">',
 		'\t<head><meta charset="UTF-8"/></head>',
@@ -16,6 +15,7 @@ import handler from "serve-handler";
 		'</html>'
 	].join("\n"));
 
+	const directory = dirname(fileURLToPath(import.meta.url));
 	const server = createServer((req, res) => handler(req, res, {public: join(directory, "../var")}));
 	server.listen(8080);
 
