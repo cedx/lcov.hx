@@ -6,5 +6,5 @@
 /*.code-workspace
 /*.iml
 /**/.DS_Store
-/index.php
 /npm-debug.log
+/test/*.php
