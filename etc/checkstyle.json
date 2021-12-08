@@ -2,10 +2,11 @@
 	"defaultSeverity": "ERROR",
 	"exclude": {
 		"path": "RELATIVE_TO_PROJECT",
-		"CyclomaticComplexity": ["src/lcov/Report:fromCoverage"],
+		"CyclomaticComplexity": ["src/lcov/Report:fromString"],
 		"LineLength": ["test/lcov/FunctionCoverageTest:testToString"],
-		"MethodLength": ["src/lcov/Report:fromCoverage"],
-		"NestedControlFlow": ["src/lcov/Report:fromCoverage"]
+		"MethodLength": ["src/lcov/Report:fromString"],
+		"NestedControlFlow": ["src/lcov/Report:fromString"],
+		"ReturnCount": ["src/lcov/Report:fromString"]
 	},
 	"checks": [
 		{"type": "BlockBreakingConditional"},
