@@ -3,6 +3,7 @@
 --hl var/build.hl
 --library coconut.data
 --library tink_core
+--library tink_json
 
 lcov.BranchCoverage
 lcov.BranchData
