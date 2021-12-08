@@ -8,7 +8,6 @@ lcov.BranchCoverage
 lcov.BranchData
 lcov.FunctionCoverage
 lcov.FunctionData
-lcov.LcovException
 lcov.LineCoverage
 lcov.LineData
 lcov.Record
