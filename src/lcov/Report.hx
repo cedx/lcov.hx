@@ -27,7 +27,8 @@ class Report implements Model {
 			if (line.length == 0) continue;
 
 			final parts = line.split(":");
-			if (parts.length < 2 && parts[0] != Token.EndOfRecord) throw new LcovException("Invalid token format.", coverage, offset);
+			if (parts.length < 2 && parts[0] != Token.EndOfRecord)
+				return Failure(Error.withData(UnprocessableEntity, "Invalid token format.", offset));
 
 			final token: Token = parts.shift();
 			final data = parts.join(":").split(",");
@@ -37,7 +38,7 @@ class Report implements Model {
 				case EndOfRecord: report.records = report.records.append(record);
 
 				case BranchData:
-					if (data.length < 4) throw new LcovException("Invalid branch data.", coverage, offset);
+					if (data.length < 4) return Failure(Error.withData(UnprocessableEntity, "Invalid branch data.", offset));
 					record.branches.data = record.branches.data.append(new BranchData({
 						lineNumber: Std.parseInt(data[0]),
 						blockNumber: Std.parseInt(data[1]),
@@ -46,18 +47,18 @@ class Report implements Model {
 					}));
 
 				case FunctionData:
-					if (data.length < 2) throw new LcovException("Invalid function data.", coverage, offset);
+					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid function data.", offset));
 					for (item in record.functions.data) if (item.functionName == data[1]) {
 						item.executionCount = Std.parseInt(data[0]);
 						break;
 					}
 
 				case FunctionName:
-					if (data.length < 2) throw new LcovException("Invalid function name.", coverage, offset);
+					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid function name.", offset));
 					record.functions.data = record.functions.data.append(new FunctionData({functionName: data[1], lineNumber: Std.parseInt(data[0])}));
 
 				case LineData:
-					if (data.length < 2) throw new LcovException("Invalid line data.", coverage, offset);
+					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid line data.", offset));
 					record.lines.data = record.lines.data.append(new LineData({
 						lineNumber: Std.parseInt(data[0]),
 						executionCount: Std.parseInt(data[1]),
@@ -78,12 +79,13 @@ class Report implements Model {
 				case LinesFound: record.lines.found = Std.parseInt(data[0]);
 				case LinesHit: record.lines.hit = Std.parseInt(data[0]);
 
-				default: throw new LcovException("Unknown token.", coverage, offset);
+				default: return Failure(Error.withData(UnprocessableEntity, "Unknown token.", offset));
 			}
 		}
 
-		if (report.records.length == 0) throw new LcovException("The coverage data is empty or invalid.", coverage);
-		return report;
+		return report.records.length > 0
+			? Success(report)
+			: Failure(Error.withData(BadRequest, "The coverage data is empty or invalid.", offset));
 	}
 
 	/** Returns a string representation of this object. **/
