@@ -18,7 +18,6 @@ import haxe.Resource;
 
 		// It should contain three records.
 		asserts.assert(records.length == 3);
-		asserts.assert(Std.isOfType(records[0], Record));
 		asserts.assert(records[0].sourceFile == "/home/cedx/lcov.hx/fixture.hx");
 		asserts.assert(records[1].sourceFile == "/home/cedx/lcov.hx/func1.hx");
 		asserts.assert(records[2].sourceFile == "/home/cedx/lcov.hx/func2.hx");
@@ -30,7 +29,6 @@ import haxe.Resource;
 
 		final data = branches.data.toArray();
 		asserts.assert(data.length == 4);
-		asserts.assert(Std.isOfType(data[0], BranchData));
 		asserts.assert(data[0].lineNumber == 8);
 
 		// It should have detailed function coverage.
@@ -40,7 +38,6 @@ import haxe.Resource;
 
 		final data = functions.data.toArray();
 		asserts.assert(data.length == 1);
-		asserts.assert(Std.isOfType(data[0], FunctionData));
 		asserts.assert(data[0].functionName == "func1");
 
 		// It should have detailed line coverage.
@@ -50,7 +47,6 @@ import haxe.Resource;
 
 		final data = lines.data.toArray();
 		asserts.assert(data.length == 9);
-		asserts.assert(Std.isOfType(data[0], LineData));
 		asserts.assert(data[0].checksum == "5kX7OTfHFcjnS98fjeVqNA");
 
 		// It should return a failure if the input is invalid.
