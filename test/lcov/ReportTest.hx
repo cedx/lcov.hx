@@ -1,7 +1,6 @@
 package lcov;
 
 import haxe.Resource;
-using AssertionTools;
 
 /** Tests the features of the `Report` class. **/
 @:asserts class ReportTest {
@@ -9,9 +8,9 @@ using AssertionTools;
 	/** Creates a new test. **/
 	public function new() {}
 
-	/** Tests the `fromCoverage()` method. **/
-	public function testFromCoverage() {
-		final report = Report.fromCoverage(Resource.getString("report"));
+	/** Tests the `fromString()` method. **/
+	public function testFromString() {
+		final report = Report.fromString(Resource.getString("report")).sure();
 		final records = report.records.toArray();
 
 		// It should have a test name.
@@ -54,11 +53,11 @@ using AssertionTools;
 		asserts.assert(Std.isOfType(data[0], LineData));
 		asserts.assert(data[0].checksum == "5kX7OTfHFcjnS98fjeVqNA");
 
-		// It should throw an exception if the input is invalid.
-		asserts.throws(() -> Report.fromCoverage("ZZ"), LcovException);
+		// It should return a failure if the input is invalid.
+		asserts.assert(!Report.fromString("ZZ").isSuccess());
 
-		// It should throw an exception if the report is empty.
-		asserts.throws(() -> Report.fromCoverage("TN:Example"), LcovException);
+		// It should return a failure if the report is empty.
+		asserts.assert(!Report.fromString("TN:Example").isSuccess());
 		return asserts.done();
 	}
 
