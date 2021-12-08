@@ -1,7 +1,7 @@
 {
 	"classPath": "src/",
 	"contributors": ["cedx"],
-	"dependencies": {"coconut.data": ""},
+	"dependencies": {"coconut.data": "", "tink_core": ""},
 	"description": "Parse and format to LCOV your code coverage reports.",
 	"license": "MIT",
 	"name": "lcov",

@@ -2,6 +2,7 @@
 --define analyzer-optimize
 --hl var/build.hl
 --library coconut.data
+--library tink_core
 
 lcov.BranchCoverage
 lcov.BranchData

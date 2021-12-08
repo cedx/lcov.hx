@@ -6,6 +6,7 @@
 --define no-deprecation-warnings
 --library coconut.data
 --library instrument
+--library tink_core
 --library tink_unittest
 --macro instrument.Instrumentation.coverage(['lcov'], ['src'])
 --main RunTests
