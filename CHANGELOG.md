@@ -1,5 +1,11 @@
 # Changelog
 
+## Version [3.0.0](https://bitbucket.org/cedx/lcov.hx/branches/compare/v3.0.0..v2.0.1)
+- Breaking change: the `Report.fromCoverage()` method now returns an `Outcome<Report, Error>`.
+- Breaking change: renamed the `Report.fromCoverage()` method to `fromString()`.
+- Breaking change: removed the `LcovException` class.
+- Updated the package dependencies.
+
 ## Version [2.0.1](https://bitbucket.org/cedx/lcov.hx/branches/compare/v2.0.1..v2.0.0)
 - Updated the documentation.
 - Updated the project URL.
