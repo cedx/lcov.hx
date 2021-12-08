@@ -8,5 +8,5 @@
 	"releasenote": "Updated the documentation, updated the project URL.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test"],
 	"url": "https://bitbucket.org/cedx/lcov.hx",
-	"version": "2.0.1"
+	"version": "3.0.0"
 }
