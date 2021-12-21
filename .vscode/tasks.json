@@ -14,7 +14,7 @@
 		{
 			"label": "Install",
 			"group": "build",
-			"type": "shell", "command": "lix", "args": ["download"]
+			"type": "shell", "command": "lix", "args": ["Install"]
 		},
 		{
 			"label": "Lint",
