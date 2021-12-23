@@ -1,4 +1,6 @@
 import instrument.coverage.Coverage;
+import tink.testrunner.Reporter.AnsiFormatter;
+import tink.testrunner.Reporter.BasicReporter;
 import tink.testrunner.Runner;
 import tink.unit.TestBatch;
 
@@ -19,8 +21,9 @@ function main() {
 		new lcov.ReportTest()
 	]);
 
-	Runner.run(tests).handle(result -> {
+	ANSI.stripIfUnavailable = false;
+	Runner.run(tests, new BasicReporter(new AnsiFormatter())).handle(outcome -> {
 		Coverage.endCoverage();
-		#if (js && !nodejs) Syntax.code("exit({0})", result.summary().failures.length) #else Runner.exit(result) #end;
+		#if (js && !nodejs) Syntax.code("exit({0})", outcome.summary().failures.length) #else Runner.exit(outcome) #end;
 	});
 }
