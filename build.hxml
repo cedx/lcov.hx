@@ -1,6 +1,6 @@
 --class-path src
 --define analyzer-optimize
---hl var/build.hl
+--js var/build.js
 --library coconut.data
 --library tink_core
 --library tink_json
