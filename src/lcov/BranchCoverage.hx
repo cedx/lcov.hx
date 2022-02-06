@@ -8,7 +8,7 @@ package lcov;
 class BranchCoverage implements Model {
 
 	/** The coverage data. **/
-	@:editable var data: List<BranchData> = @byDefault [];
+	@:editable var data: List<BranchData> = new List();
 
 	/** The number of branches found. **/
 	@:editable var found: Int = @byDefault 0;

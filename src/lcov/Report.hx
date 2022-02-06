@@ -10,7 +10,7 @@ using StringTools;
 class Report implements Model {
 
 	/** The record list. **/
-	@:editable var records: List<Record> = @byDefault [];
+	@:editable var records: List<Record> = new List();
 
 	/** The test name. **/
 	@:editable var testName: String = @byDefault "";
