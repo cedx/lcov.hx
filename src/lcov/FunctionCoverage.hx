@@ -8,7 +8,7 @@ package lcov;
 class FunctionCoverage implements Model {
 
 	/** The coverage data. **/
-	@:editable var data: List<FunctionData> = new List();
+	@:editable var data: List<FunctionData> = @byDefault new List();
 
 	/** The number of functions found. **/
 	@:editable var found: Int = @byDefault 0;

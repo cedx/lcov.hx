@@ -8,7 +8,7 @@ package lcov;
 class LineCoverage implements Model {
 
 	/** The coverage data. **/
-	@:editable var data: List<LineData> = new List();
+	@:editable var data: List<LineData> = @byDefault new List();
 
 	/** The number of lines found. **/
 	@:editable var found: Int = @byDefault 0;
