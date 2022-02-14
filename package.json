@@ -17,7 +17,7 @@
 		"node": ">=16.0.0"
 	},
 	"devDependencies": {
-		"playwright": "^1.18.1",
+		"playwright": "^1.19.0",
 		"serve-handler": "^6.1.3"
 	}
 }
