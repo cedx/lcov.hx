@@ -1,5 +1,5 @@
 # LCOV Reports for Haxe
-![Haxe](https://flat.badgen.net/badge/haxe/%3E%3D4.2.0/green) ![Haxelib](https://flat.badgen.net/haxelib/v/lcov) ![License](https://flat.badgen.net/haxelib/license/lcov) ![Downloads](https://flat.badgen.net/haxelib/d/lcov) ![Coverage](https://flat.badgen.net/coveralls/c/bitbucket/cedx/lcov.hx)
+![Haxe](https://badgen.net/badge/haxe/%3E%3D4.2.0/green) ![Haxelib](https://badgen.net/haxelib/v/lcov) ![License](https://badgen.net/haxelib/license/lcov) ![Downloads](https://badgen.net/haxelib/d/lcov) ![Coverage](https://badgen.net/coveralls/c/bitbucket/cedx/lcov.hx)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [Haxe](https://haxe.org).
 
