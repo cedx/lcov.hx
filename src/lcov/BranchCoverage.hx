@@ -1,10 +1,8 @@
 package lcov;
 
 /** Provides the coverage data of branches. **/
-#if tink_json
 @:jsonParse(json -> new lcov.BranchCoverage(json))
 @:jsonStringify(coverage -> {data: coverage.data, found: coverage.found, hit: coverage.hit})
-#end
 class BranchCoverage implements Model {
 
 	/** The coverage data. **/

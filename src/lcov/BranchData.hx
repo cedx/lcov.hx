@@ -1,7 +1,6 @@
 package lcov;
 
 /** Provides details for branch coverage. **/
-#if tink_json
 @:jsonParse(json -> new lcov.BranchData(json))
 @:jsonStringify(data -> {
 	blockNumber: data.blockNumber,
@@ -9,7 +8,6 @@ package lcov;
 	lineNumber: data.lineNumber,
 	taken: data.taken
 })
-#end
 class BranchData implements Model {
 
 	/** The block number. **/

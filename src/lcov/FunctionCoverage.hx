@@ -1,10 +1,8 @@
 package lcov;
 
 /** Provides the coverage data of functions. **/
-#if tink_json
 @:jsonParse(json -> new lcov.FunctionCoverage(json))
 @:jsonStringify(coverage -> {data: coverage.data, found: coverage.found, hit: coverage.hit})
-#end
 class FunctionCoverage implements Model {
 
 	/** The coverage data. **/

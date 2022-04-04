@@ -3,10 +3,8 @@ package lcov;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/
-#if tink_json
 @:jsonParse(json -> new lcov.Report(json))
 @:jsonStringify(report -> {records: report.records, testName: report.testName})
-#end
 class Report implements Model {
 
 	/** The record list. **/

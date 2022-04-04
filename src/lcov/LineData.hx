@@ -1,14 +1,12 @@
 package lcov;
 
 /** Provides details for line coverage. **/
-#if tink_json
 @:jsonParse(json -> new lcov.LineData(json))
 @:jsonStringify(data -> {
 	checksum: data.checksum,
 	executionCount: data.executionCount,
 	lineNumber: data.lineNumber
 })
-#end
 class LineData implements Model {
 
 	/** The data checksum. **/
