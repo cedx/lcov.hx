@@ -7,6 +7,6 @@
 	"name": "lcov",
 	"releasenote": "The `Report.fromString()` method now returns an `Outcome<Report, Error>`, removed the `LcovException` class.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink"],
-	"url": "https://bitbucket.org/cedx/lcov.hx",
+	"url": "https://github.com/cedx/lcov.hx",
 	"version": "3.0.0"
 }
