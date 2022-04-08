@@ -25,7 +25,7 @@ const handler = require("serve-handler");
 	await page.exposeFunction("exit", async code => {
 		process.exitCode = code;
 		server.close();
-		return browser.close().catch(error => console.error(error));
+		await browser.close();
 	});
 
 	await page.evaluate(() => console.info(navigator.userAgent));
