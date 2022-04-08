@@ -10,7 +10,7 @@ const handler = require("serve-handler");
 		'<!DOCTYPE html>',
 		'<html dir="ltr" lang="en">',
 		'\t<head><meta charset="UTF-8"/></head>',
-		'\t<body><script defer src="tests.js"></script></body>',
+		'\t<body><script src="tests.js"></script></body>',
 		'</html>'
 	].join("\n"));
 
