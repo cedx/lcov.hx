@@ -25,9 +25,9 @@ const handler = require("serve-handler");
 	await page.exposeFunction("exit", async code => {
 		process.exitCode = code;
 		server.close();
-		await browser.close();
+		try { await browser.close(); } catch {}
 	});
 
 	await page.evaluate(() => console.info(navigator.userAgent));
-	await page.goto("http://localhost:8080/tests.html", {waitUntil: "domcontentloaded"});
+	await page.goto("http://localhost:8080/tests.html");
 })();
