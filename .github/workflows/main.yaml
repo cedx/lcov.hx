@@ -32,6 +32,7 @@ jobs:
       - name: Set up GraalVM
         uses: graalvm/setup-graalvm@v1
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
           java-version: 17
           version: latest
       - name: Install dependencies
@@ -56,6 +57,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 16
       - name: Install dependencies
         run: |
