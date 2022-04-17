@@ -1,4 +1,4 @@
 --define js-es=6
 --js var/tests.js
 share/test.hxml
---cmd node test/RunTests.js
+--cmd node test/RunTests.mjs
