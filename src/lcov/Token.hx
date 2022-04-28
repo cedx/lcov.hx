@@ -4,13 +4,13 @@ package lcov;
 enum abstract Token(String) from String to String {
 
 	/** The coverage data of a branch. **/
-	var BranchesFound = "BRF";
+	var BranchData = "BRDA";
 
 	/** The number of branches found. **/
-	var BranchesHit = "BRH";
+	var BranchesFound = "BRF";
 
 	/** The number of branches hit. **/
-	var BranchData = "BRDA";
+	var BranchesHit = "BRH";
 
 	/** The end of a section. **/
 	var EndOfRecord = "end_of_record";
