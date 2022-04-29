@@ -16,17 +16,17 @@ class Report implements Model {
 	/** Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format. **/
 	public static function fromString(coverage: String) {
 		var offset = 0;
-		var record: Record = null;
+		var record = new Record({sourceFile: ""});
 		final report = new Report();
 
 		for (line in ~/\r?\n/g.split(coverage)) {
-			offset += line.length;
+			offset++;
 			line = line.trim();
 			if (line.length == 0) continue;
 
 			final parts = line.split(":");
 			if (parts.length < 2 && parts[0] != Token.EndOfRecord)
-				return Failure(Error.withData(UnprocessableEntity, "Invalid token format.", offset));
+				return Failure(new Error(UnprocessableEntity, 'Invalid token format at line #$offset.'));
 
 			final token: Token = parts.shift();
 			final data = parts.join(":").split(",");
@@ -36,54 +36,54 @@ class Report implements Model {
 				case EndOfRecord: report.records = report.records.append(record);
 
 				case BranchData:
-					if (data.length < 4) return Failure(Error.withData(UnprocessableEntity, "Invalid branch data.", offset));
-					record.branches.data = record.branches.data.append(new BranchData({
-						lineNumber: Std.parseInt(data[0]),
+					if (data.length < 4) return Failure(new Error(UnprocessableEntity, 'Invalid branch data at line #$offset.'));
+					if (record.branches != null) record.branches.data = record.branches.data.append(new BranchData({
 						blockNumber: Std.parseInt(data[1]),
 						branchNumber: Std.parseInt(data[2]),
+						lineNumber: Std.parseInt(data[0]),
 						taken: data[3] == "-" ? 0 : Std.parseInt(data[3])
 					}));
 
 				case FunctionData:
-					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid function data.", offset));
-					for (item in record.functions.data) if (item.functionName == data[1]) {
+					if (data.length < 2) return Failure(new Error(UnprocessableEntity, 'Invalid function data at line #$offset.'));
+					if (record.functions != null) for (item in record.functions.data) if (item.functionName == data[1]) {
 						item.executionCount = Std.parseInt(data[0]);
 						break;
 					}
 
 				case FunctionName:
-					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid function name.", offset));
-					record.functions.data = record.functions.data.append(new FunctionData({functionName: data[1], lineNumber: Std.parseInt(data[0])}));
+					if (data.length < 2) return Failure(new Error(UnprocessableEntity, 'Invalid function name at line #$offset.'));
+					if (record.functions != null)
+						record.functions.data = record.functions.data.append(new FunctionData({functionName: data[1], lineNumber: Std.parseInt(data[0])}));
 
 				case LineData:
-					if (data.length < 2) return Failure(Error.withData(UnprocessableEntity, "Invalid line data.", offset));
-					record.lines.data = record.lines.data.append(new LineData({
-						lineNumber: Std.parseInt(data[0]),
+					if (data.length < 2) return Failure(new Error(UnprocessableEntity, 'Invalid line data at line #$offset.'));
+					if (record.lines != null) record.lines.data = record.lines.data.append(new LineData({
+						checksum: data.length >= 3 ? data[2] : "",
 						executionCount: Std.parseInt(data[1]),
-						checksum: data.length >= 3 ? data[2] : ""
+						lineNumber: Std.parseInt(data[0])
 					}));
 
 				case SourceFile: record = new Record({
-					sourceFile: data[0],
 					branches: new BranchCoverage(),
 					functions: new FunctionCoverage(),
-					lines: new LineCoverage()
+					lines: new LineCoverage(),
+					sourceFile: data[0]
 				});
 
-				case BranchesFound: record.branches.found = Std.parseInt(data[0]);
-				case BranchesHit: record.branches.hit = Std.parseInt(data[0]);
-				case FunctionsFound: record.functions.found = Std.parseInt(data[0]);
-				case FunctionsHit: record.functions.hit = Std.parseInt(data[0]);
-				case LinesFound: record.lines.found = Std.parseInt(data[0]);
-				case LinesHit: record.lines.hit = Std.parseInt(data[0]);
-
-				default: return Failure(Error.withData(UnprocessableEntity, "Unknown token.", offset));
+				case BranchesFound: if (record.branches != null) record.branches.found = Std.parseInt(data[0]);
+				case BranchesHit: if (record.branches != null) record.branches.hit = Std.parseInt(data[0]);
+				case FunctionsFound: if (record.functions != null) record.functions.found = Std.parseInt(data[0]);
+				case FunctionsHit: if (record.functions != null) record.functions.hit = Std.parseInt(data[0]);
+				case LinesFound: if (record.lines != null) record.lines.found = Std.parseInt(data[0]);
+				case LinesHit: if (record.lines != null) record.lines.hit = Std.parseInt(data[0]);
+				default: return Failure(new Error(UnprocessableEntity, 'Unknown token at line #$offset.'));
 			}
 		}
 
 		return report.records.length > 0
 			? Success(report)
-			: Failure(Error.withData(BadRequest, "The coverage data is empty or invalid.", offset));
+			: Failure(new Error(BadRequest, "The coverage data is empty or invalid."));
 	}
 
 	/** Returns a string representation of this object. **/
