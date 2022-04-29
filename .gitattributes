@@ -5,6 +5,7 @@
 *.hx text
 *.hxml text
 *.info text
+*.js text
 *.json text
 *.md text
 *.txt text
