@@ -16,7 +16,7 @@ class LineData implements Model {
 	@:editable var executionCount: Int = @byDefault 0;
 
 	/** The line number. **/
-	@:editable var lineNumber: Int;
+	@:editable var lineNumber: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {

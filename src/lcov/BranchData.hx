@@ -11,13 +11,13 @@ package lcov;
 class BranchData implements Model {
 
 	/** The block number. **/
-	@:editable var blockNumber: Int;
+	@:editable var blockNumber: Int = @byDefault 0;
 
 	/** The branch number. **/
-	@:editable var branchNumber: Int;
+	@:editable var branchNumber: Int = @byDefault 0;
 
 	/** The line number. **/
-	@:editable var lineNumber: Int;
+	@:editable var lineNumber: Int = @byDefault 0;
 
 	/** A number indicating how often this branch was taken. **/
 	@:editable var taken: Int = @byDefault 0;

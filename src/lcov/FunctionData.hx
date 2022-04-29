@@ -13,10 +13,10 @@ class FunctionData implements Model {
 	@:editable var executionCount: Int = @byDefault 0;
 
 	/** The function name. **/
-	@:editable var functionName: String;
+	@:editable var functionName: String = @byDefault "";
 
 	/** The line number of the function start. **/
-	@:editable var lineNumber: Int;
+	@:editable var lineNumber: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
 	public function toString(asDefinition: Bool = false) {
