@@ -23,6 +23,7 @@ export function clean() {
 
 /** Builds the documentation. */
 export async function doc() {
+	await del("docs");
 	await exec("haxe", ["--define", "doc-gen", "--no-output", "--xml", "var/api.xml", "build.hxml"]);
 	await exec("lix", [
 		"run", "dox",
