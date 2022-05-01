@@ -1,5 +1,10 @@
 # Changelog
 
+## Version [4.0.0](https://github.com/cedx/lcov.hx/compare/v3.0.1...v4.0.0)
+- Breaking change: renamed the `Record` class to `File`.
+- Breaking change: renamed the `Report.records` property to `files`.
+- Breaking change: renamed the `Report.fromCoverage()` method to `fromString()`.
+
 ## Version [3.0.1](https://github.com/cedx/lcov.hx/compare/v3.0.0...v3.0.1)
 - Restored the [HashLink](https://hashlink.haxe.org) tests.
 - Updated the project URL.
