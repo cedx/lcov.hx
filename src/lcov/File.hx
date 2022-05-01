@@ -1,14 +1,14 @@
 package lcov;
 
 /** Provides the coverage data of a source file. **/
-@:jsonParse(json -> new lcov.Record(json))
-@:jsonStringify(record -> {
-	branches: record.branches,
-	functions: record.functions,
-	lines: record.lines,
-	sourceFile: record.sourceFile
+@:jsonParse(json -> new lcov.File(json))
+@:jsonStringify(file -> {
+	branches: file.branches,
+	functions: file.functions,
+	lines: file.lines,
+	path: file.path
 })
-class Record implements Model {
+class File implements Model {
 
 	/** The branch coverage. **/
 	@:editable var branches: Null<BranchCoverage> = @byDefault null;
@@ -20,11 +20,11 @@ class Record implements Model {
 	@:editable var lines: Null<LineCoverage> = @byDefault null;
 
 	/** The path to the source file. **/
-	@:editable var sourceFile: String;
+	@:editable var path: String;
 
 	/** Returns a string representation of this object. **/
 	public function toString() {
-		final output = ['${Token.SourceFile}:$sourceFile'];
+		final output = ['${Token.SourceFile}:$path'];
 		if (functions != null) output.push(functions.toString());
 		if (branches != null) output.push(branches.toString());
 		if (lines != null) output.push(lines.toString());

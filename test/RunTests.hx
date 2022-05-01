@@ -13,11 +13,11 @@ function main() {
 	final tests = TestBatch.make([
 		new lcov.BranchCoverageTest(),
 		new lcov.BranchDataTest(),
+		new lcov.FileTest(),
 		new lcov.FunctionCoverageTest(),
 		new lcov.FunctionDataTest(),
 		new lcov.LineCoverageTest(),
 		new lcov.LineDataTest(),
-		new lcov.RecordTest(),
 		new lcov.ReportTest()
 	]);
 
