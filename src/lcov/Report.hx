@@ -11,13 +11,13 @@ class Report implements Model {
 	@:editable var files: List<File> = @byDefault new List();
 
 	/** The test name. **/
-	@:editable var testName: String = @byDefault "";
+	@:editable var testName: String;
 
 	/** Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format. **/
 	public static function fromString(coverage: String) {
 		var file = new File({path: ""});
 		var offset = 0;
-		final report = new Report();
+		final report = new Report({testName: ""});
 
 		for (line in ~/\r?\n/g.split(coverage)) {
 			offset++;

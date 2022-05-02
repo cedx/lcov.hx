@@ -9,10 +9,10 @@ package lcov;
 	/** Tests the `toString()` method. **/
 	public function testToString() {
 		final file = new File({
-			path: "/home/cedx/lcov.hx",
 			branches: new BranchCoverage(),
 			functions: new FunctionCoverage(),
-			lines: new LineCoverage()
+			lines: new LineCoverage(),
+			path: "/home/cedx/lcov.hx"
 		});
 
 		asserts.assert(new File({path: ""}).toString() == "SF:\nend_of_record");

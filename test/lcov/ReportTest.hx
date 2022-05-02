@@ -58,7 +58,7 @@ import haxe.Resource;
 	}
 
 	/** Tests the `toString()` method. **/
-	@:variant({}, "")
+	@:variant({testName: ""}, "")
 	@:variant({testName: "LcovTest", files: [new lcov.File({path: ""})]}, "TN:LcovTest\nSF:\nend_of_record")
 	public function testToString(input, output: String)
 		return assert(new Report(input).toString() == output);
