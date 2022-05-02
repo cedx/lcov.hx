@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"name": "lcov",
 	"releasenote": "Restored the HashLink tests, updated the project URL.",
-	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink"],
+	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink", "writer"],
 	"url": "https://github.com/cedx/lcov.hx",
 	"version": "3.0.1"
 }
