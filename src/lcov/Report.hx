@@ -83,7 +83,7 @@ class Report implements Model {
 
 		return report.files.length > 0
 			? Success(report)
-			: Failure(new Error(BadRequest, "The coverage data is empty or invalid."));
+			: Failure(new Error(UnprocessableEntity, "The coverage data is empty or invalid."));
 	}
 
 	/** Returns a string representation of this object. **/
