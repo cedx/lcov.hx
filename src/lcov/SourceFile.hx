@@ -1,14 +1,14 @@
 package lcov;
 
 /** Provides the coverage data of a source file. **/
-@:jsonParse(json -> new lcov.File(json))
-@:jsonStringify(file -> {
-	branches: file.branches,
-	functions: file.functions,
-	lines: file.lines,
-	path: file.path
+@:jsonParse(json -> new lcov.SourceFile(json))
+@:jsonStringify(sourceFile -> {
+	branches: sourceFile.branches,
+	functions: sourceFile.functions,
+	lines: sourceFile.lines,
+	path: sourceFile.path
 })
-class File implements Model {
+class SourceFile implements Model {
 
 	/** The branch coverage. **/
 	@:editable var branches: Null<BranchCoverage> = @byDefault null;

@@ -7,6 +7,6 @@ function main() switch Report.fromString(File.getContent("/path/to/lcov.info")) 
 	case Failure(error):
 		Sys.println(error.message);
 	case Success(report):
-		Sys.println('The coverage report contains ${report.files.length} files:');
+		Sys.println('The coverage report contains ${report.sourceFiles.length} source files:');
 		Sys.println(Json.stringify(report));
 }

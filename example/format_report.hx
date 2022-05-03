@@ -1,12 +1,12 @@
-import lcov.File;
 import lcov.FunctionCoverage;
 import lcov.LineCoverage;
 import lcov.LineData;
 import lcov.Report;
+import lcov.SourceFile;
 
 /** Formats coverage data as LCOV report. **/
 function main() {
-	final file = new File({
+	final sourceFile = new SourceFile({
 		path: "/home/cedx/lcov.hx/fixture.hx",
 		functions: new FunctionCoverage({found: 1, hit: 1}),
 		lines: new LineCoverage({found: 2, hit: 2, data: [
@@ -15,6 +15,6 @@ function main() {
 		]})
 	});
 
-	final report = new Report({testName: "Example", files: [file]});
+	final report = new Report({testName: "Example", sourceFiles: [sourceFile]});
 	Sys.println(report.toString());
 }

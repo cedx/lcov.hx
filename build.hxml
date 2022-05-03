@@ -7,10 +7,10 @@
 
 lcov.BranchCoverage
 lcov.BranchData
-lcov.File
 lcov.FunctionCoverage
 lcov.FunctionData
 lcov.LineCoverage
 lcov.LineData
 lcov.Report
+lcov.SourceFile
 lcov.Token

@@ -5,7 +5,7 @@
 	"description": "Parse and format to LCOV your code coverage reports.",
 	"license": "MIT",
 	"name": "lcov",
-	"releasenote": "Renamed the `Record` class to `File`, renamed the `Report.records` property to `files`, renamed the `Report.fromCoverage()` method to `fromString()`.",
+	"releasenote": "Renamed the `Record` class to `SourceFile`, renamed the `Report.records` property to `sourceFiles`, renamed the `Report.fromCoverage()` method to `fromString()`.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink", "writer"],
 	"url": "https://github.com/cedx/lcov.hx",
 	"version": "4.0.0"
