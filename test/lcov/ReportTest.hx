@@ -8,9 +8,9 @@ import haxe.Resource;
 	/** Creates a new test. **/
 	public function new() {}
 
-	/** Tests the `fromString()` method. **/
-	public function testFromString() {
-		final report = Report.fromString(Resource.getString("report")).sure();
+	/** Tests the `parse()` method. **/
+	public function testParse() {
+		final report = Report.parse(Resource.getString("report")).sure();
 		final sourceFiles = report.sourceFiles.toArray();
 
 		// It should have a test name.
@@ -50,10 +50,10 @@ import haxe.Resource;
 		asserts.assert(data[0].checksum == "5kX7OTfHFcjnS98fjeVqNA");
 
 		// It should return a failure if the input is invalid.
-		asserts.assert(!Report.fromString("ZZ").isSuccess());
+		asserts.assert(!Report.parse("ZZ").isSuccess());
 
 		// It should return a failure if the report is empty.
-		asserts.assert(!Report.fromString("TN:Example").isSuccess());
+		asserts.assert(!Report.parse("TN:Example").isSuccess());
 		return asserts.done();
 	}
 
