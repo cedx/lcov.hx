@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [5.0.0](https://github.com/cedx/lcov.hx/compare/v4.0.0...v5.0.0)
+- Breaking change: renamed the `Report.fromString()` method to `parse()`.
+
 ## Version [4.0.0](https://github.com/cedx/lcov.hx/compare/v3.0.1...v4.0.0)
 - Breaking change: renamed the `Record` class to `SourceFile`.
 - Breaking change: renamed the `Report.records` property to `sourceFiles`.
