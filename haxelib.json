@@ -8,5 +8,5 @@
 	"releasenote": "Renamed the `Report.fromString()` method to `parse()`.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink", "writer"],
 	"url": "https://github.com/cedx/lcov.hx",
-	"version": "4.0.0"
+	"version": "5.0.0"
 }
