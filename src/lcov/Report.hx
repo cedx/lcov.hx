@@ -1,5 +1,7 @@
 package lcov;
 
+import coconut.data.List;
+import coconut.data.Model;
 using StringTools;
 
 /** Represents a trace file, that is a coverage report. **/

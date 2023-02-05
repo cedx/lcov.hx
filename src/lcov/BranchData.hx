@@ -1,5 +1,7 @@
 package lcov;
 
+import coconut.data.Model;
+
 /** Provides details for branch coverage. **/
 @:jsonParse(json -> new lcov.BranchData(json))
 @:jsonStringify(data -> {

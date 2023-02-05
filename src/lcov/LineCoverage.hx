@@ -1,5 +1,8 @@
 package lcov;
 
+import coconut.data.List;
+import coconut.data.Model;
+
 /** Provides the coverage data of lines. **/
 @:jsonParse(json -> new lcov.LineCoverage(json))
 @:jsonStringify(coverage -> {data: coverage.data, found: coverage.found, hit: coverage.hit})

@@ -1,5 +1,7 @@
 package lcov;
 
+import coconut.data.Model;
+
 /** Provides the coverage data of a source file. **/
 @:jsonParse(json -> new lcov.SourceFile(json))
 @:jsonStringify(sourceFile -> {

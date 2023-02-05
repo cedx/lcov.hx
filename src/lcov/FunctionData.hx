@@ -1,5 +1,7 @@
 package lcov;
 
+import coconut.data.Model;
+
 /** Provides details for function coverage. **/
 @:jsonParse(json -> new lcov.FunctionData(json))
 @:jsonStringify(data -> {
