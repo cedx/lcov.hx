@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `LineData` class. **/
-class LineDataTest {
+final class LineDataTest {
 
 	/** Creates a new test. **/
 	public function new() {}

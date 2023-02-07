@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `FunctionData` class. **/
-@:asserts class FunctionDataTest {
+@:asserts final class FunctionDataTest {
 
 	/** Creates a new test. **/
 	public function new() {}

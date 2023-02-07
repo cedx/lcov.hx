@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `BranchData` class. **/
-class BranchDataTest {
+final class BranchDataTest {
 
 	/** Creates a new test. **/
 	public function new() {}

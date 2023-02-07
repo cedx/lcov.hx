@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `FunctionCoverage` class. **/
-class FunctionCoverageTest {
+final class FunctionCoverageTest {
 
 	/** Creates a new test. **/
 	public function new() {}

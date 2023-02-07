@@ -3,7 +3,7 @@ package lcov;
 import haxe.Resource;
 
 /** Tests the features of the `Report` class. **/
-@:asserts class ReportTest {
+@:asserts final class ReportTest {
 
 	/** Creates a new test. **/
 	public function new() {}

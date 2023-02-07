@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `BranchCoverage` class. **/
-class BranchCoverageTest {
+final class BranchCoverageTest {
 
 	/** Creates a new test. **/
 	public function new() {}

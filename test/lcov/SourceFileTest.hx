@@ -1,7 +1,7 @@
 package lcov;
 
 /** Tests the features of the `SourceFile` class. **/
-@:asserts class SourceFileTest {
+@:asserts final class SourceFileTest {
 
 	/** Creates a new test. **/
 	public function new() {}
