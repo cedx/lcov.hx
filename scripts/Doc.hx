@@ -3,7 +3,7 @@ import lcov.Version;
 import sys.FileSystem;
 import sys.io.File;
 
-/** Runs the script. **/
+/** Builds the documentation. **/
 function main() {
 	if (FileSystem.exists("docs")) Tools.removeDirectory("docs");
 
