@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [5.1.0](https://github.com/cedx/lcov.hx/compare/v5.0.0...v5.1.0)
+- Updated the dependencies.
+
 ## Version [5.0.0](https://github.com/cedx/lcov.hx/compare/v4.0.0...v5.0.0)
 - Breaking change: renamed the `Report.fromString()` method to `parse()`.
 
