@@ -5,7 +5,7 @@ Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage r
 
 ## Documentation
 - [User guide](https://github.com/cedx/lcov.hx/wiki)
-- [API reference](https://cedx.github.io/lcov.hx)
+- [API reference](https://docs.belin.io/lcov.hx)
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.hx)
