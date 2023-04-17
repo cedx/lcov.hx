@@ -11,7 +11,7 @@ function main() {
 	Sys.command("lix", ["run", "dox",
 		"--define", "description", "Parse and format to LCOV your code coverage reports, in Haxe.",
 		"--define", "source-path", "https://github.com/cedx/lcov.hx/blob/main/src",
-		"--define", "themeColor", "0xffc105",
+		"--define", "themeColor", "0xea8220",
 		"--define", "version", Version.packageVersion,
 		"--define", "website", "https://github.com/cedx/lcov.hx",
 		"--input-path", "var",
