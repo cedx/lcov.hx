@@ -10,7 +10,7 @@ import haxe.Resource;
 
 	/** Tests the `parse()` method. **/
 	public function testParse() {
-		final report = Report.parse(Resource.getString("report")).sure();
+		final report = Report.parse(Resource.getString("lcov.info")).sure();
 		final sourceFiles = report.sourceFiles.toArray();
 
 		// It should have a test name.
