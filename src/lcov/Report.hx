@@ -15,7 +15,7 @@ class Report implements Model {
 	/** The test name. **/
 	@:editable var testName: String;
 
-	/** Parses the specified `coverage` data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format. **/
+	/** Parses the specified `coverage` data in LCOV format. **/
 	public static function parse(coverage: String): Outcome<Report, Error> {
 		final report = new Report({testName: ""});
 		var offset = 0;
