@@ -16,5 +16,5 @@ function main() {
 	});
 
 	final report = new Report({testName: "Example", sourceFiles: [sourceFile]});
-	Sys.println(report.toString());
+	Sys.println(report);
 }
