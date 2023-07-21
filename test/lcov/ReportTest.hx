@@ -9,7 +9,7 @@ import haxe.Resource;
 	public function new() {}
 
 	/** Tests the `parse()` method. **/
-	public function testParse() {
+	public function parse() {
 		final report = Report.parse(Resource.getString("lcov.info")).sure();
 		final sourceFiles = report.sourceFiles.toArray();
 
@@ -60,6 +60,6 @@ import haxe.Resource;
 	/** Tests the `toString()` method. **/
 	@:variant({testName: ""}, "")
 	@:variant({testName: "LcovTest", sourceFiles: [new lcov.SourceFile({path: ""})]}, "TN:LcovTest\nSF:\nend_of_record")
-	public function testToString(input, output: String)
+	public function toString(input, output: String)
 		return assert(new Report(input).toString() == output);
 }
