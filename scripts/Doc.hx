@@ -15,7 +15,7 @@ function main() {
 		"--define", "source-path", "https://github.com/cedx/lcov.hx/blob/main/src",
 		"--define", "themeColor", "0xea8220",
 		"--define", "version", Platform.packageVersion,
-		"--define", "website", "https://docs.belin.io/lcov.hx",
+		"--define", "website", "https://cedx.github.io/lcov.hx",
 		"--input-path", "var",
 		"--output-path", "docs/api",
 		"--title", "LCOV Reports for Haxe",

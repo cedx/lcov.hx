@@ -7,6 +7,6 @@
 	"name": "lcov",
 	"releasenote": "Updated the dependencies.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink", "writer"],
-	"url": "https://docs.belin.io/lcov.hx",
+	"url": "https://cedx.github.io/lcov.hx",
 	"version": "5.1.0"
 }

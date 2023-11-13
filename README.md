@@ -4,8 +4,8 @@
 Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage reports, in [Haxe](https://haxe.org).
 
 ## Documentation
-- [User guide](https://docs.belin.io/lcov.hx)
-- [API reference](https://docs.belin.io/lcov.hx/api)
+- [User guide](https://cedx.github.io/lcov.hx)
+- [API reference](https://cedx.github.io/lcov.hx/api)
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.hx)
@@ -13,4 +13,4 @@ Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage rep
 - [Submit an issue](https://github.com/cedx/lcov.hx/issues)
 
 ## License
-[LCOV Reports for Haxe](https://docs.belin.io/lcov.hx) is distributed under the MIT License.
+[LCOV Reports for Haxe](https://cedx.github.io/lcov.hx) is distributed under the MIT License.
