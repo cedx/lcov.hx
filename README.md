@@ -13,4 +13,4 @@ Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage rep
 - [Submit an issue](https://github.com/cedx/lcov.hx/issues)
 
 ## License
-[LCOV Reports for Haxe](https://cedx.github.io/lcov.hx) is distributed under the MIT License.
+[LCOV Reports for Haxe](https://github.com/cedx/lcov.hx) is distributed under the MIT License.
