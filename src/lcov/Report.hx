@@ -79,7 +79,7 @@ class Report implements Model {
 				case FunctionsHit: if (sourceFile.functions != null) sourceFile.functions.hit = Std.parseInt(data[0]);
 				case LinesFound: if (sourceFile.lines != null) sourceFile.lines.found = Std.parseInt(data[0]);
 				case LinesHit: if (sourceFile.lines != null) sourceFile.lines.hit = Std.parseInt(data[0]);
-				default: return Failure(new Error(UnprocessableEntity, 'Unknown token at line #$offset.'));
+				case _: return Failure(new Error(UnprocessableEntity, 'Unknown token at line #$offset.'));
 			}
 		}
 
