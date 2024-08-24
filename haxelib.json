@@ -8,5 +8,5 @@
 	"releasenote": "Updated the dependencies.",
 	"tags": ["coverage", "cross", "formatter", "lcov", "parser", "test", "tink", "writer"],
 	"url": "https://github.com/cedx/lcov.hx",
-	"version": "5.1.0"
+	"version": "5.2.0"
 }
