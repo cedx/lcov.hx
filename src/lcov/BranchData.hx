@@ -25,7 +25,7 @@ class BranchData implements Model {
 	@:editable var taken: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final value = '${Token.BranchData}:$lineNumber,$blockNumber,$branchNumber';
 		return taken > 0 ? '$value,$taken' : '$value,-';
 	}

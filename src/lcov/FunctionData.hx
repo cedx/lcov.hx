@@ -21,7 +21,7 @@ class FunctionData implements Model {
 	@:editable var lineNumber: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
-	public function toString(asDefinition = false) {
+	public function toString(asDefinition = false): String {
 		final token: Token = asDefinition ? FunctionName : FunctionData;
 		final number = asDefinition ? lineNumber : executionCount;
 		return '$token:$number,$functionName';

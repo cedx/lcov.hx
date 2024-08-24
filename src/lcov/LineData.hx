@@ -21,7 +21,7 @@ class LineData implements Model {
 	@:editable var lineNumber: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final value = '${Token.LineData}:$lineNumber,$executionCount';
 		return checksum.length > 0 ? '$value,$checksum' : value;
 	}

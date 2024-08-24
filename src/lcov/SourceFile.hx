@@ -25,7 +25,7 @@ class SourceFile implements Model {
 	@:editable var path: String;
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final output = ['${Token.SourceFile}:$path'];
 		if (functions != null) output.push(functions.toString());
 		if (branches != null) output.push(branches.toString());

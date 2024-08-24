@@ -18,7 +18,7 @@ class FunctionCoverage implements Model {
 	@:editable var hit: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final lines = data.toArray().map(item -> item.toString(true));
 		for (line in data.map(item -> item.toString(false))) lines.push(line);
 		lines.push('${Token.FunctionsFound}:$found');

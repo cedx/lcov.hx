@@ -18,7 +18,7 @@ class LineCoverage implements Model {
 	@:editable var hit: Int = @byDefault 0;
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final lines = data.toArray().map(item -> item.toString());
 		lines.push('${Token.LinesFound}:$found');
 		lines.push('${Token.LinesHit}:$hit');

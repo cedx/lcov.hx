@@ -7,7 +7,7 @@ package lcov;
 	public function new() {}
 
 	/** Tests the `toString()` method. **/
-	public function toString() {
+	public function toString(): String {
 		final sourceFile = new SourceFile({
 			branches: new BranchCoverage(),
 			functions: new FunctionCoverage(),

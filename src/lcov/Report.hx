@@ -89,7 +89,7 @@ class Report implements Model {
 	}
 
 	/** Returns a string representation of this object. **/
-	public function toString() {
+	public function toString(): String {
 		final lines = testName.length > 0 ? ['${Token.TestName}:$testName'] : [];
 		for (sourceFile in sourceFiles.map(item -> item.toString())) lines.push(sourceFile);
 		return lines.join("\n");
