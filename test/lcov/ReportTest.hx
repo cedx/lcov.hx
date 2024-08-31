@@ -10,13 +10,16 @@ import haxe.Resource;
 
 	/** Tests the `parse()` method. **/
 	public function parse() {
-		final report = Report.parse(Resource.getString("lcov.info")).sure();
-		final sourceFiles = report.sourceFiles.toArray();
+		// It should properly parse the test report.
+		final outcome = Report.parse(Resource.getString("lcov.info"));
+		asserts.assert(outcome.isSuccess());
 
 		// It should have a test name.
+		final report = outcome.sure();
 		asserts.assert(report.testName == "Example");
 
 		// It should contain three source files.
+		final sourceFiles = report.sourceFiles.toArray();
 		asserts.assert(sourceFiles.length == 3);
 		asserts.assert(sourceFiles[0].path == "/home/cedx/lcov.hx/fixture.hx");
 		asserts.assert(sourceFiles[1].path == "/home/cedx/lcov.hx/func1.hx");
