@@ -5,6 +5,7 @@
 --define no-deprecation-warnings
 --library coconut.data
 --library tink_core
+--library tink_json
 --library tink_unittest
 --main RunTests
 --resource share/lcov.info@lcov.info
